@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Yolink — Staff Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<style>
+  /* ============================================================
+     Yolink admin — standalone page, reuses styles.css tokens
+     (not linked directly; this page must work with no other files).
+     ============================================================ */
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --ink: #21201f;
+    --muted: #8a8580;
+    --faint: #b5b0aa;
+    --border: #eae5df;
+    --plum: #3a1b3f;
+    --plum-soft: #f3edf4;
+    --plum-hover: #552a5c;
+    --success: #2e7d5b;
+    --success-soft: #eaf5ef;
+    --danger: #c0392b;
+    --danger-soft: #fbecea;
+    --shadow: 0 2px 10px rgba(33, 32, 31, 0.06), 0 8px 30px rgba(33, 32, 31, 0.05);
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    --mono: 'SFMono-Regular', Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: #f2efeb;
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  #shell {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+  header.page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+  }
+  .brand .dot { color: var(--plum); }
+  .brand .tag {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  #signout-btn { display: none; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .card-pad { padding: 24px 26px; }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  .section-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+
+  /* ---------- Forms ---------- */
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block; font-size: 12.5px; font-weight: 700;
+    letter-spacing: .03em; margin-bottom: 6px; color: var(--ink);
+  }
+  input[type="text"], input[type="password"], input[type="search"] {
+    width: 100%; padding: 12px 14px; font-size: 15px; font-family: var(--sans);
+    border: 1.5px solid var(--border); border-radius: 12px;
+    background: var(--card); color: var(--ink);
+  }
+  input:focus { outline: 2px solid var(--plum); outline-offset: -1px; border-color: var(--plum); }
+
+  .btn {
+    font-family: var(--sans);
+    padding: 12px 22px; font-size: 14.5px; font-weight: 600;
+    border: none; border-radius: 999px; cursor: pointer;
+    background: var(--plum); color: #fff;
+    transition: background .12s ease, transform .06s ease;
+    white-space: nowrap;
+  }
+  .btn:hover:not(:disabled) { background: var(--plum-hover); }
+  .btn:active:not(:disabled) { transform: scale(.98); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.secondary { background: var(--card); color: var(--ink); border: 1.5px solid var(--border); }
+  .btn.secondary:hover:not(:disabled) { background: var(--bg); }
+  .btn.small { padding: 7px 14px; font-size: 12.5px; }
+  .btn.full { width: 100%; display: block; }
+
+  .error-text { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
+  .error-text.visible { display: block; }
+  .banner {
+    padding: 12px 16px; border-radius: 12px; font-size: 13.5px; font-weight: 600;
+    margin-bottom: 16px; display: none;
+  }
+  .banner.visible { display: block; }
+  .banner.success { background: var(--success-soft); color: var(--success); }
+  .banner.error { background: var(--danger-soft); color: var(--danger); }
+  .banner.info { background: var(--plum-soft); color: var(--plum); }
+
+  /* ---------- Gate ---------- */
+  #gate { max-width: 420px; margin: 10vh auto 0; }
+  #gate .card-pad { text-align: left; }
+  #gate .lock { font-size: 34px; margin-bottom: 6px; }
+
+  #not-configured {
+    max-width: 520px; margin: 12vh auto 0; text-align: center;
+  }
+  #not-configured .glyph { font-size: 40px; margin-bottom: 12px; }
+  #not-configured h1 { font-family: var(--serif); font-size: 24px; margin: 0 0 8px; }
+  #not-configured p { color: var(--muted); font-size: 14.5px; }
+  #not-configured code {
+    display: block; background: var(--plum-soft); color: var(--plum);
+    padding: 12px 16px; border-radius: 10px; margin-top: 14px;
+    font-family: var(--mono); font-size: 12.5px; text-align: left;
+  }
+
+  /* ---------- Matchmaker ---------- */
+  .matchmaker-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .picker { position: relative; }
+  .picker-results {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 20;
+    background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
+    margin-top: 4px; max-height: 240px; overflow-y: auto;
+    box-shadow: var(--shadow); display: none;
+  }
+  .picker-results.visible { display: block; }
+  .picker-result-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; cursor: pointer; border-bottom: 1px solid var(--border);
+  }
+  .picker-result-row:last-child { border-bottom: none; }
+  .picker-result-row:hover { background: var(--plum-soft); }
+  .picker-result-row .meta { min-width: 0; }
+  .picker-result-row .name { font-weight: 600; font-size: 13.5px; }
+  .picker-result-row .sub { font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .picker-empty { padding: 14px 12px; font-size: 13px; color: var(--muted); }
+
+  .avatar {
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 700; color: #fff; flex-shrink: 0;
+    user-select: none;
+  }
+  .avatar.md { width: 40px; height: 40px; font-size: 15px; }
+  .avatar.lg { width: 52px; height: 52px; font-size: 19px; }
+
+  .mini-profile {
+    margin-top: 12px; border: 1.5px solid var(--border); border-radius: 16px;
+    padding: 16px 18px; display: none;
+  }
+  .mini-profile.visible { display: block; }
+  .mini-profile .mp-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .mini-profile .mp-name { font-family: var(--serif); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .mini-profile .mp-title { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+  .mp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .chip {
+    font-size: 11.5px; font-weight: 600; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .mp-prompt { padding: 8px 0; }
+  .mp-prompt + .mp-prompt { border-top: 1px solid var(--border); }
+  .mp-prompt-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .mp-prompt-answer { font-family: var(--serif); font-size: 14.5px; line-height: 1.4; overflow-wrap: break-word; }
+  .mp-id-row {
+    display: flex; align-items: center; gap: 8px; margin-top: 12px;
+    padding-top: 12px; border-top: 1px solid var(--border);
+  }
+  .mp-id-row .idtext {
+    font-family: var(--mono); font-size: 11px; color: var(--faint);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+  }
+
+  .match-cta { display: flex; justify-content: center; margin: 22px 0 4px; }
+  .match-cta .btn { min-width: 240px; }
+
+  /* ---------- Tables ---------- */
+  .table-toolbar {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .table-toolbar input[type="search"] { max-width: 260px; }
+  .table-count { font-size: 12.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead th {
+    text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 8px 10px; border-bottom: 1.5px solid var(--border);
+  }
+  tbody td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:hover { background: var(--bg); }
+  .cell-id { font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .cell-sub { color: var(--muted); font-size: 12px; }
+  .badge {
+    font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px; display: inline-block;
+  }
+  .badge.mutual { background: var(--success-soft); color: var(--success); }
+  .badge.staff { background: var(--plum-soft); color: var(--plum); }
+  .table-scroll { overflow-x: auto; }
+  .table-empty { padding: 30px 10px; text-align: center; color: var(--muted); font-size: 13.5px; }
+  .spinner-row { padding: 24px; text-align: center; color: var(--muted); font-size: 13px; }
+
+  #app-wrap { display: none; }
+  #app-wrap.visible { display: block; }
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <!-- Not-configured notice -->
+  <div id="not-configured" style="display:none;">
+    <div class="glyph">&#9881;</div>
+    <h1>Supabase not configured yet</h1>
+    <p>This admin tool needs your Supabase project connected before it can run. Open <strong>config.js</strong> and fill in <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> from your Supabase dashboard (Settings &rarr; API), then reload this page.</p>
+    <code>window.YOLINK_CONFIG = { SUPABASE_URL: "...", SUPABASE_ANON_KEY: "..." };</code>
+  </div>
+
+  <div id="main-ui" style="display:none;">
+    <header class="page-head">
+      <div class="brand">Yolink<span class="dot">.</span><span class="tag">STAFF ADMIN</span></div>
+      <button class="btn secondary small" id="signout-btn">Sign out</button>
+    </header>
+
+    <!-- Passcode gate -->
+    <div id="gate">
+      <div class="card">
+        <div class="card-pad">
+          <div class="lock">&#128274;</div>
+          <div class="section-title">Staff access</div>
+          <p class="section-sub">Enter the staff passcode to open the matchmaking tool.</p>
+          <div class="field">
+            <label for="passcode-input">Passcode</label>
+            <input type="password" id="passcode-input" autocomplete="off" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
+          </div>
+          <button class="btn full" id="gate-submit">Enter</button>
+          <div class="error-text" id="gate-error"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main app (shown after gate passes) -->
+    <div id="app-wrap">
+
+      <!-- Matchmaker -->
+      <div class="card">
+        <div class="card-pad">
+          <div class="section-title">Matchmaker</div>
+          <p class="section-sub">Search two members and create a manual match. Both will see it instantly in the app.</p>
+
+          <div id="match-banner" class="banner"></div>
+
+          <div class="matchmaker-cols">
+            <div>
+              <div class="field picker">
+                <label for="picker-a-input">Member A</label>
+                <input type="search" id="picker-a-input" placeholder="Search by name or paste an id&hellip;" autocomplete="off" />
+                <div class="picker-results" id="picker-a-results"></div>
+              </div>
+              <div class="mini-profile" id="mini-a"></div>
+            </div>
+            <div>
+              <div class="field picker">
+                <label for="picker-b-input">Member B</label>
+                <input type="search" id="picker-b-input" placeholder="Search by name or paste an id&hellip;" autocomplete="off" />
+                <div class="picker-results" id="picker-b-results"></div>
+              </div>
+              <div class="mini-profile" id="mini-b"></div>
+            </div>
+          </div>
+
+          <div class="match-cta">
+            <button class="btn" id="create-match-btn" disabled>Create Match</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member directory -->
+      <div class="card">
+        <div class="card-pad">
+          <div class="section-title">Member directory</div>
+          <p class="section-sub">Everyone who has created a Yolink profile. Use Copy ID for the Excel tracking sheet.</p>
+
+          <div class="table-toolbar">
+            <input type="search" id="directory-filter" placeholder="Filter by name, title, company&hellip;" />
+            <button class="btn secondary small" id="directory-refresh">Refresh</button>
+            <span class="table-count" id="directory-count"></span>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Title / Company</th>
+                  <th>Industry</th>
+                  <th>Years</th>
+                  <th>Joined</th>
+                  <th>ID</th>
+                </tr>
+              </thead>
+              <tbody id="directory-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matches -->
+      <div class="card">
+        <div class="card-pad">
+          <div class="section-title">Existing matches</div>
+          <p class="section-sub">All matches so far, newest first.</p>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Member A</th>
+                  <th>Member B</th>
+                  <th>Source</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody id="matches-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /app-wrap -->
+  </div><!-- /main-ui -->
+</div><!-- /shell -->
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Escaping helper ----------
+  // Profiles contain free text from members; never insert it into HTML unescaped.
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // ---------- Config check ----------
+  var cfg = window.YOLINK_CONFIG || {};
+  if (!cfg.SUPABASE_URL || cfg.SUPABASE_URL === "YOUR_SUPABASE_URL") {
+    document.getElementById("not-configured").style.display = "block";
+    return;
+  }
+  document.getElementById("main-ui").style.display = "block";
+
+  var sb = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+  // ---------- Error message mapping ----------
+  var ERROR_MESSAGES = {
+    BAD_ADMIN_PASSCODE: "That passcode isn't right.",
+    SELF_MATCH: "Those are the same member — pick two different people.",
+  };
+  function friendlyError(err) {
+    var token = (err && err.message) ? err.message.trim() : "";
+    return ERROR_MESSAGES[token] || (token || "Something went wrong. Please try again.");
+  }
+
+  // ---------- State ----------
+  var STORAGE_KEY = "yolink_admin_pass";
+  var adminPass = null;
+  var profiles = [];         // full profile list, loaded once gate passes
+  var profilesById = {};
+  var selected = { a: null, b: null };
+
+  // ---------- DOM refs ----------
+  var $gate = document.getElementById("gate");
+  var $appWrap = document.getElementById("app-wrap");
+  var $signoutBtn = document.getElementById("signout-btn");
+  var $passcodeInput = document.getElementById("passcode-input");
+  var $gateSubmit = document.getElementById("gate-submit");
+  var $gateError = document.getElementById("gate-error");
+
+  // ---------- Gate ----------
+  function showGate(errorMsg) {
+    $gate.style.display = "block";
+    $appWrap.classList.remove("visible");
+    $signoutBtn.style.display = "none";
+    if (errorMsg) {
+      $gateError.textContent = errorMsg;
+      $gateError.classList.add("visible");
+    }
+  }
+
+  function showApp() {
+    $gate.style.display = "none";
+    $appWrap.classList.add("visible");
+    $signoutBtn.style.display = "inline-block";
+    loadEverything();
+  }
+
+  function attemptGate(pass, fromStorage) {
+    $gateSubmit.disabled = true;
+    sb.rpc("admin_check", { p_admin_pass: pass }).then(function (res) {
+      $gateSubmit.disabled = false;
+      if (res.error) {
+        if (!fromStorage) showGate(friendlyError(res.error));
+        return;
+      }
+      if (res.data === true) {
+        adminPass = pass;
+        sessionStorage.setItem(STORAGE_KEY, pass);
+        $gateError.classList.remove("visible");
+        showApp();
+      } else {
+        sessionStorage.removeItem(STORAGE_KEY);
+        if (!fromStorage) showGate("That passcode isn't right.");
+      }
+    });
+  }
+
+  $gateSubmit.addEventListener("click", function () {
+    var pass = $passcodeInput.value.trim();
+    if (!pass) return;
+    attemptGate(pass, false);
+  });
+  $passcodeInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") $gateSubmit.click();
+  });
+  $signoutBtn.addEventListener("click", function () {
+    sessionStorage.removeItem(STORAGE_KEY);
+    adminPass = null;
+    $passcodeInput.value = "";
+    showGate(null);
+  });
+
+  // Re-validate a stored passcode automatically on load.
+  var stored = sessionStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    attemptGate(stored, true);
+  } else {
+    showGate(null);
+  }
+
+  // ---------- Re-gate on BAD_ADMIN_PASSCODE from any RPC ----------
+  function handleRpcError(err) {
+    if (err && err.message === "BAD_ADMIN_PASSCODE") {
+      sessionStorage.removeItem(STORAGE_KEY);
+      adminPass = null;
+      showGate("Your session passcode was rejected. Please sign in again.");
+      return true;
+    }
+    return false;
+  }
+
+  // ---------- Load profiles + matches ----------
+  function loadEverything() {
+    loadProfiles();
+    loadMatches();
+  }
+
+  function loadProfiles() {
+    document.getElementById("directory-tbody").innerHTML =
+      '<tr><td colspan="6" class="spinner-row">Loading members&hellip;</td></tr>';
+    sb.from("profiles").select("*").then(function (res) {
+      if (res.error) {
+        document.getElementById("directory-tbody").innerHTML =
+          '<tr><td colspan="6" class="table-empty">Couldn\'t load members: ' + esc(res.error.message) + "</td></tr>";
+        return;
+      }
+      profiles = res.data || [];
+      profiles.sort(function (a, b) { return a.name.localeCompare(b.name); });
+      profilesById = {};
+      profiles.forEach(function (p) { profilesById[p.id] = p; });
+      renderDirectory();
+      renderMatches(); // names may now resolve
+    });
+  }
+
+  var latestMatches = [];
+  function loadMatches() {
+    sb.from("matches").select("*").order("created_at", { ascending: false }).then(function (res) {
+      if (res.error) {
+        document.getElementById("matches-tbody").innerHTML =
+          '<tr><td colspan="4" class="table-empty">Couldn\'t load matches: ' + esc(res.error.message) + "</td></tr>";
+        return;
+      }
+      latestMatches = res.data || [];
+      renderMatches();
+    });
+  }
+
+  // ---------- Directory rendering ----------
+  function initials(name) {
+    var parts = String(name || "").trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return "?";
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return "";
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+
+  function renderDirectory() {
+    var filterVal = document.getElementById("directory-filter").value.trim().toLowerCase();
+    var rows = profiles.filter(function (p) {
+      if (!filterVal) return true;
+      var hay = [p.name, p.title, p.company, p.industry].filter(Boolean).join(" ").toLowerCase();
+      return hay.indexOf(filterVal) !== -1;
+    });
+    document.getElementById("directory-count").textContent =
+      rows.length + (rows.length === 1 ? " member" : " members") +
+      (filterVal ? " (of " + profiles.length + ")" : "");
+
+    var tbody = document.getElementById("directory-tbody");
+    if (rows.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="table-empty">No members match that filter.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function (p) {
+      var titleCompany = esc(p.title) + (p.company ? ' &middot; ' + esc(p.company) : "");
+      return (
+        "<tr>" +
+        '<td><strong>' + esc(p.name) + "</strong></td>" +
+        "<td>" + titleCompany + "</td>" +
+        "<td>" + esc(p.industry) + "</td>" +
+        "<td>" + esc(p.years_exp) + "</td>" +
+        '<td class="cell-sub">' + esc(fmtDate(p.created_at)) + "</td>" +
+        '<td><div class="mp-id-row" style="border:none;margin:0;padding:0;">' +
+          '<span class="cell-id">' + esc(p.id) + "</span>" +
+          '<button class="btn secondary small" data-copy-id="' + esc(p.id) + '">Copy ID</button>' +
+        "</div></td>" +
+        "</tr>"
+      );
+    }).join("");
+  }
+
+  document.getElementById("directory-filter").addEventListener("input", renderDirectory);
+  document.getElementById("directory-refresh").addEventListener("click", loadProfiles);
+
+  document.getElementById("directory-tbody").addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-copy-id]");
+    if (!btn) return;
+    copyToClipboard(btn.getAttribute("data-copy-id"), btn);
+  });
+
+  function copyToClipboard(text, btn) {
+    var done = function () {
+      if (!btn) return;
+      var orig = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(function () { btn.textContent = orig; }, 1200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, done);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  // ---------- Matches rendering ----------
+  function renderMatches() {
+    var tbody = document.getElementById("matches-tbody");
+    if (latestMatches.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" class="table-empty">No matches yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = latestMatches.map(function (m) {
+      var pa = profilesById[m.user_a];
+      var pb = profilesById[m.user_b];
+      var nameA = pa ? pa.name : m.user_a;
+      var nameB = pb ? pb.name : m.user_b;
+      return (
+        "<tr>" +
+        "<td>" + esc(nameA) + "</td>" +
+        "<td>" + esc(nameB) + "</td>" +
+        '<td><span class="badge ' + esc(m.source) + '">' + esc(m.source) + "</span></td>" +
+        '<td class="cell-sub">' + esc(fmtDate(m.created_at)) + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+  }
+
+  // ---------- Typeahead pickers ----------
+  function setupPicker(key, inputId, resultsId, miniId) {
+    var $input = document.getElementById(inputId);
+    var $results = document.getElementById(resultsId);
+    var $mini = document.getElementById(miniId);
+
+    function search(q) {
+      q = q.trim().toLowerCase();
+      if (!q) return [];
+      var exactId = profiles.filter(function (p) { return p.id.toLowerCase() === q; });
+      if (exactId.length) return exactId;
+      return profiles.filter(function (p) { return p.name.toLowerCase().indexOf(q) !== -1; }).slice(0, 20);
+    }
+
+    function renderResults(list) {
+      if (list.length === 0) {
+        $results.innerHTML = '<div class="picker-empty">No members found.</div>';
+        $results.classList.add("visible");
+        return;
+      }
+      $results.innerHTML = list.map(function (p) {
+        return (
+          '<div class="picker-result-row" data-id="' + esc(p.id) + '">' +
+            '<div class="avatar md" style="background:' + esc(p.avatar_color || "#3A1B3F") + '">' + esc(initials(p.name)) + "</div>" +
+            '<div class="meta">' +
+              '<div class="name">' + esc(p.name) + "</div>" +
+              '<div class="sub">' + esc(p.title) + (p.company ? " &middot; " + esc(p.company) : "") + "</div>" +
+            "</div>" +
+          "</div>"
+        );
+      }).join("");
+      $results.classList.add("visible");
+    }
+
+    $input.addEventListener("input", function () {
+      var list = search($input.value);
+      if ($input.value.trim()) renderResults(list);
+      else $results.classList.remove("visible");
+    });
+    $input.addEventListener("focus", function () {
+      if ($input.value.trim()) renderResults(search($input.value));
+    });
+    document.addEventListener("click", function (e) {
+      if (!$results.contains(e.target) && e.target !== $input) {
+        $results.classList.remove("visible");
+      }
+    });
+
+    $results.addEventListener("click", function (e) {
+      var row = e.target.closest("[data-id]");
+      if (!row) return;
+      var p = profilesById[row.getAttribute("data-id")];
+      if (!p) return;
+      selected[key] = p;
+      $input.value = p.name;
+      $results.classList.remove("visible");
+      renderMini($mini, p);
+      updateCreateButton();
+    });
+
+    return {
+      clear: function () {
+        selected[key] = null;
+        $input.value = "";
+        $mini.classList.remove("visible");
+        $mini.innerHTML = "";
+        updateCreateButton();
+      }
+    };
+  }
+
+  function renderMini($el, p) {
+    $el.innerHTML =
+      '<div class="mp-head">' +
+        '<div class="avatar lg" style="background:' + esc(p.avatar_color || "#3A1B3F") + '">' + esc(initials(p.name)) + "</div>" +
+        '<div>' +
+          '<div class="mp-name">' + esc(p.name) + "</div>" +
+          '<div class="mp-title">' + esc(p.title) + (p.company ? " &middot; " + esc(p.company) : "") + "</div>" +
+        "</div>" +
+      "</div>" +
+      '<div class="mp-chips">' +
+        '<span class="chip">' + esc(p.industry) + '</span>' +
+        '<span class="chip">' + esc(p.years_exp) + (p.years_exp === 1 ? " year" : " years") + '</span>' +
+      "</div>" +
+      '<div class="mp-prompt">' +
+        '<div class="mp-prompt-label">My background is in&hellip;</div>' +
+        '<div class="mp-prompt-answer">' + esc(p.background) + "</div>" +
+      "</div>" +
+      '<div class="mp-prompt">' +
+        '<div class="mp-prompt-label">I\'m looking to network with&hellip;</div>' +
+        '<div class="mp-prompt-answer">' + esc(p.looking_for) + "</div>" +
+      "</div>" +
+      '<div class="mp-id-row">' +
+        '<span class="idtext">' + esc(p.id) + "</span>" +
+        '<button class="btn secondary small" data-copy-mini="' + esc(p.id) + '">Copy</button>' +
+      "</div>";
+    $el.classList.add("visible");
+  }
+
+  document.getElementById("mini-a").addEventListener("click", handleMiniCopy);
+  document.getElementById("mini-b").addEventListener("click", handleMiniCopy);
+  function handleMiniCopy(e) {
+    var btn = e.target.closest("[data-copy-mini]");
+    if (!btn) return;
+    copyToClipboard(btn.getAttribute("data-copy-mini"), btn);
+  }
+
+  var pickerA = setupPicker("a", "picker-a-input", "picker-a-results", "mini-a");
+  var pickerB = setupPicker("b", "picker-b-input", "picker-b-results", "mini-b");
+
+  function updateCreateButton() {
+    var btn = document.getElementById("create-match-btn");
+    var ok = selected.a && selected.b && selected.a.id !== selected.b.id;
+    btn.disabled = !ok;
+  }
+
+  // ---------- Create match ----------
+  function showMatchBanner(kind, html) {
+    var $b = document.getElementById("match-banner");
+    $b.className = "banner visible " + kind;
+    $b.innerHTML = html;
+  }
+  function hideMatchBanner() {
+    document.getElementById("match-banner").classList.remove("visible");
+  }
+
+  document.getElementById("create-match-btn").addEventListener("click", function () {
+    if (!selected.a || !selected.b || selected.a.id === selected.b.id) return;
+    var btn = this;
+    btn.disabled = true;
+    hideMatchBanner();
+    var a = selected.a, b = selected.b;
+    sb.rpc("admin_match", { p_admin_pass: adminPass, p_user_a: a.id, p_user_b: b.id }).then(function (res) {
+      if (res.error) {
+        if (handleRpcError(res.error)) return;
+        showMatchBanner("error", esc(friendlyError(res.error)));
+        updateCreateButton();
+        return;
+      }
+      showMatchBanner("success",
+        "Matched <strong>" + esc(a.name) + "</strong> with <strong>" + esc(b.name) + "</strong> " +
+        "&mdash; they'll both see it instantly.");
+      pickerA.clear();
+      pickerB.clear();
+      loadMatches();
+    });
+  });
+
+  // ---------- Enter key inside search inputs shouldn't submit anything ----------
+  document.getElementById("picker-a-input").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") e.preventDefault();
+  });
+  document.getElementById("picker-b-input").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") e.preventDefault();
+  });
+
+})();
+</script>
+</body>
+</html>

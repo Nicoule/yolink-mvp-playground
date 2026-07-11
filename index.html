@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Yolink — Network with intention</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ Welcome ============ -->
+  <section class="screen" id="screen-welcome">
+    <h1 class="welcome-logo brand">Yolink<span class="dot">.</span></h1>
+    <p class="welcome-tag">Network with intention. Meet professionals who are looking for someone like you.</p>
+    <button class="btn full" id="btn-start-onboarding">Create my profile</button>
+    <div style="height:10px"></div>
+    <button class="btn full ghost" id="btn-goto-login">I have a secret code</button>
+  </section>
+
+  <!-- ============ Login ============ -->
+  <section class="screen" id="screen-login">
+    <h1 class="screen-title">Welcome back</h1>
+    <p class="screen-sub">Enter the secret code you received when you created your profile.</p>
+    <div class="field">
+      <label for="login-code">Secret code</label>
+      <input type="text" id="login-code" placeholder="YO-XXXX-XXXX" autocomplete="off" autocapitalize="characters">
+      <p class="error-text" id="login-error"></p>
+    </div>
+    <button class="btn full" id="btn-login">Log in</button>
+    <div style="height:10px"></div>
+    <button class="btn full ghost" id="btn-login-back">Back</button>
+  </section>
+
+  <!-- ============ Onboarding ============ -->
+  <section class="screen" id="screen-onboarding">
+    <div class="step-dots" id="ob-dots"><span></span><span></span><span></span></div>
+
+    <div class="ob-step" id="ob-step-1">
+      <h1 class="screen-title">First, the basics</h1>
+      <div class="field">
+        <label for="ob-name">Your name</label>
+        <input type="text" id="ob-name" maxlength="80" placeholder="Alex Rivera" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="ob-title">Job title</label>
+        <input type="text" id="ob-title" maxlength="120" placeholder="Product Manager">
+      </div>
+      <div class="field">
+        <label for="ob-company">Company <span class="hint">(optional)</span></label>
+        <input type="text" id="ob-company" maxlength="120" placeholder="Acme Corp">
+      </div>
+    </div>
+
+    <div class="ob-step" id="ob-step-2" style="display:none">
+      <h1 class="screen-title">Your experience</h1>
+      <div class="field">
+        <label for="ob-industry">Industry</label>
+        <input type="text" id="ob-industry" maxlength="80" placeholder="Tech, Healthcare, Finance…" list="industry-options">
+        <datalist id="industry-options">
+          <option>Technology</option><option>Healthcare</option><option>Finance</option>
+          <option>Consulting</option><option>Education</option><option>Marketing</option>
+          <option>Design</option><option>Legal</option><option>Manufacturing</option>
+          <option>Real Estate</option><option>Media & Entertainment</option><option>Nonprofit</option>
+        </datalist>
+      </div>
+      <div class="field">
+        <label for="ob-years">Years of experience</label>
+        <input type="number" id="ob-years" min="0" max="60" inputmode="numeric" placeholder="5">
+      </div>
+    </div>
+
+    <div class="ob-step" id="ob-step-3" style="display:none">
+      <h1 class="screen-title">Now, your story</h1>
+      <div class="field">
+        <label for="ob-background">My background is in…</label>
+        <textarea id="ob-background" maxlength="600" placeholder="B2B SaaS product management — I spent 6 years shipping analytics tools and leading a team of 4."></textarea>
+        <div class="char-count"><span id="ob-background-count">0</span>/600</div>
+      </div>
+      <div class="field">
+        <label for="ob-looking">I'm looking to network with…</label>
+        <textarea id="ob-looking" maxlength="600" placeholder="Healthcare product leaders — I'm exploring a move into health tech and would love a coffee chat about the transition."></textarea>
+        <div class="char-count"><span id="ob-looking-count">0</span>/600</div>
+      </div>
+    </div>
+
+    <p class="error-text" id="ob-error"></p>
+    <button class="btn full" id="btn-ob-next">Next</button>
+    <div style="height:10px"></div>
+    <button class="btn full ghost" id="btn-ob-back">Back</button>
+  </section>
+
+  <!-- ============ Secret code reveal ============ -->
+  <section class="screen" id="screen-code">
+    <h1 class="screen-title">Save your secret code</h1>
+    <p class="screen-sub">This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe.</p>
+    <div class="code-box" id="code-display">YO-XXXX-XXXX</div>
+    <button class="btn full secondary" id="btn-copy-code">Copy code</button>
+    <div style="height:10px"></div>
+    <button class="btn full" id="btn-code-done">I saved it — start browsing</button>
+  </section>
+
+  <!-- ============ Discover ============ -->
+  <section class="screen" id="screen-discover">
+    <h1 class="screen-title">Discover</h1>
+    <div id="demo-banner-slot"></div>
+    <div id="discover-list"></div>
+  </section>
+
+  <!-- ============ Requests ============ -->
+  <section class="screen" id="screen-requests">
+    <h1 class="screen-title">Requests</h1>
+    <div id="requests-incoming"></div>
+    <div id="requests-outgoing"></div>
+  </section>
+
+  <!-- ============ Matches ============ -->
+  <section class="screen" id="screen-matches">
+    <h1 class="screen-title">Matches</h1>
+    <div id="matches-list"></div>
+  </section>
+
+  <!-- ============ Chat ============ -->
+  <section class="screen" id="screen-chat">
+    <div class="chat-header">
+      <button class="back-btn" id="btn-chat-back" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="avatar sm" id="chat-avatar"></div>
+      <div style="min-width:0">
+        <div class="name" id="chat-name"></div>
+        <div class="sub" id="chat-sub"></div>
+      </div>
+    </div>
+    <div id="chat-messages"></div>
+    <form class="chat-input-bar" id="chat-form">
+      <input type="text" id="chat-input" placeholder="Say hello…" maxlength="2000" autocomplete="off">
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- ============ Profile ============ -->
+  <section class="screen" id="screen-profile">
+    <h1 class="screen-title">My profile</h1>
+    <div id="profile-preview"></div>
+
+    <div class="section-label">Your secret code</div>
+    <div class="code-box" id="profile-code"></div>
+    <button class="btn full secondary" id="btn-profile-copy-code">Copy code</button>
+
+    <div class="section-label">Edit profile</div>
+    <div class="card card-pad">
+      <div class="field"><label for="pf-name">Name</label><input type="text" id="pf-name" maxlength="80"></div>
+      <div class="field"><label for="pf-title">Job title</label><input type="text" id="pf-title" maxlength="120"></div>
+      <div class="field"><label for="pf-company">Company <span class="hint">(optional)</span></label><input type="text" id="pf-company" maxlength="120"></div>
+      <div class="field"><label for="pf-industry">Industry</label><input type="text" id="pf-industry" maxlength="80" list="industry-options"></div>
+      <div class="field"><label for="pf-years">Years of experience</label><input type="number" id="pf-years" min="0" max="60" inputmode="numeric"></div>
+      <div class="field"><label for="pf-background">My background is in…</label><textarea id="pf-background" maxlength="600"></textarea></div>
+      <div class="field"><label for="pf-looking">I'm looking to network with…</label><textarea id="pf-looking" maxlength="600"></textarea></div>
+      <p class="error-text" id="pf-error"></p>
+      <button class="btn full" id="btn-save-profile">Save changes</button>
+    </div>
+
+    <div style="height:20px"></div>
+    <button class="btn full danger-ghost" id="btn-logout">Log out</button>
+  </section>
+
+</div>
+
+<!-- ============ Bottom nav ============ -->
+<nav id="bottom-nav">
+  <div class="nav-inner">
+    <button class="nav-btn" data-screen="discover" aria-label="Discover">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+      Discover
+    </button>
+    <button class="nav-btn" data-screen="requests" aria-label="Requests">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      Requests
+      <span class="badge" id="badge-requests"></span>
+    </button>
+    <button class="nav-btn" data-screen="matches" aria-label="Matches">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Matches
+      <span class="badge" id="badge-matches"></span>
+    </button>
+    <button class="nav-btn" data-screen="profile" aria-label="Profile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+      Profile
+    </button>
+  </div>
+</nav>
+
+<!-- ============ Match celebration ============ -->
+<div id="match-overlay">
+  <div class="inner">
+    <div class="avatars" id="overlay-avatars"></div>
+    <h2>You matched!</h2>
+    <p id="overlay-text"></p>
+    <button class="btn" id="btn-overlay-chat">Say hello</button>
+    <button class="btn ghost" id="btn-overlay-close">Keep browsing</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

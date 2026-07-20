@@ -22,11 +22,12 @@ create table if not exists profiles (
   name         text not null check (char_length(name) between 1 and 80),
   title        text not null check (char_length(title) <= 120),
   company      text check (char_length(company) <= 120),
-  industry     text not null check (char_length(industry) <= 80),
+  industry     text not null check (char_length(industry) between 1 and 240 and array_length(string_to_array(industry, '|'), 1) between 1 and 3),
   years_exp    int  not null check (years_exp between 0 and 60),
   background   text not null check (char_length(background) <= 600),
   looking_for  text not null check (char_length(looking_for) <= 600),
   avatar_color text not null default '#3A1B3F',
+  avatar_image text check (avatar_image is null or (char_length(avatar_image) <= 800000 and avatar_image ~ '^data:image/(jpeg|png|webp);base64,')),
   created_at   timestamptz not null default now()
 );
 
@@ -64,6 +65,36 @@ create table if not exists messages (
   created_at timestamptz not null default now()
 );
 
+create table if not exists events (
+  id          uuid primary key default gen_random_uuid(),
+  creator_id  uuid not null references profiles(id) on delete cascade,
+  title       text not null check (char_length(title) between 1 and 120),
+  description text check (char_length(description) <= 1000),
+  starts_at   timestamptz not null,
+  location    text not null check (char_length(location) between 1 and 160),
+  industries  text not null check (char_length(industries) between 1 and 161 and array_length(string_to_array(industries, '|'), 1) between 1 and 2),
+  max_participants int not null default 20 check (max_participants between 1 and 500),
+  created_at  timestamptz not null default now()
+);
+
+create table if not exists event_participants (
+  event_id   uuid not null references events(id) on delete cascade,
+  profile_id uuid not null references profiles(id) on delete cascade,
+  joined_at  timestamptz not null default now(),
+  primary key (event_id, profile_id)
+);
+
+create table if not exists profile_reports (
+  id                  uuid primary key default gen_random_uuid(),
+  reporter_id         uuid not null references profiles(id) on delete cascade,
+  reported_profile_id uuid not null references profiles(id) on delete cascade,
+  reason              text not null check (char_length(reason) between 1 and 1000),
+  status              text not null default 'open' check (status in ('open', 'reviewed', 'resolved')),
+  created_at          timestamptz not null default now(),
+  unique (reporter_id, reported_profile_id),
+  check (reporter_id <> reported_profile_id)
+);
+
 create table if not exists app_config (
   key   text primary key,
   value text not null
@@ -76,6 +107,9 @@ on conflict (key) do update set value = excluded.value;
 
 create index if not exists idx_messages_match on messages (match_id, created_at);
 create index if not exists idx_requests_to on requests (to_id, status);
+create index if not exists idx_events_starts_at on events (starts_at);
+create index if not exists idx_event_participants_profile on event_participants (profile_id);
+create index if not exists idx_profile_reports_status on profile_reports (status, created_at desc);
 
 -- ---------- Row Level Security ----------
 
@@ -84,6 +118,9 @@ alter table profile_secrets enable row level security;
 alter table requests        enable row level security;
 alter table matches         enable row level security;
 alter table messages        enable row level security;
+alter table events          enable row level security;
+alter table event_participants enable row level security;
+alter table profile_reports enable row level security;
 alter table app_config      enable row level security;
 
 -- Read-only access for the app (trusted pool tradeoff: any member
@@ -92,7 +129,10 @@ create policy "anon read profiles" on profiles for select using (true);
 create policy "anon read requests" on requests for select using (true);
 create policy "anon read matches"  on matches  for select using (true);
 create policy "anon read messages" on messages for select using (true);
+create policy "anon read events" on events for select using (true);
+create policy "anon read event participants" on event_participants for select using (true);
 -- profile_secrets and app_config: RLS on, no policies => no access.
+-- profile_reports also has no anon read policy: only staff see reports in the dashboard.
 
 -- ---------- Helper functions ----------
 
@@ -161,7 +201,7 @@ $$;
 
 create or replace function create_profile(
   p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text, p_avatar_color text
+  p_years_exp int, p_background text, p_looking_for text, p_avatar_color text, p_avatar_image text
 )
 returns json
 language plpgsql
@@ -172,9 +212,9 @@ declare
   v_profile profiles;
   v_code text;
 begin
-  insert into profiles (name, title, company, industry, years_exp, background, looking_for, avatar_color)
+  insert into profiles (name, title, company, industry, years_exp, background, looking_for, avatar_color, avatar_image)
   values (trim(p_name), trim(p_title), nullif(trim(p_company), ''), trim(p_industry),
-          p_years_exp, trim(p_background), trim(p_looking_for), p_avatar_color)
+          p_years_exp, trim(p_background), trim(p_looking_for), p_avatar_color, p_avatar_image)
   returning * into v_profile;
 
   loop
@@ -208,7 +248,7 @@ $$;
 
 create or replace function update_profile(
   p_code text, p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text
+  p_years_exp int, p_background text, p_looking_for text, p_avatar_image text
 )
 returns json
 language plpgsql
@@ -222,7 +262,8 @@ begin
   update profiles set
     name = trim(p_name), title = trim(p_title),
     company = nullif(trim(p_company), ''), industry = trim(p_industry),
-    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for)
+    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for),
+    avatar_image = p_avatar_image
   where id = v_id
   returning * into v_profile;
   return row_to_json(v_profile);
@@ -319,6 +360,184 @@ begin
 end;
 $$;
 
+-- Create an event and automatically join its creator.
+create or replace function create_event(
+  p_code text, p_title text, p_description text, p_starts_at timestamptz, p_location text, p_industries text, p_max_participants int
+)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_creator uuid := _yolink_auth(p_code);
+  v_event events;
+begin
+  insert into events (creator_id, title, description, starts_at, location, industries, max_participants)
+  values (v_creator, trim(p_title), nullif(trim(p_description), ''), p_starts_at, trim(p_location), trim(p_industries), p_max_participants)
+  returning * into v_event;
+  insert into event_participants (event_id, profile_id) values (v_event.id, v_creator);
+  return row_to_json(v_event);
+end;
+$$;
+
+-- Join an event once, authenticated by the member secret code.
+create or replace function join_event(p_code text, p_event_id uuid)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_profile uuid := _yolink_auth(p_code);
+  v_participant event_participants;
+  v_capacity int;
+begin
+  select max_participants into v_capacity from events where id = p_event_id for update;
+  if not found then
+    raise exception 'EVENT_NOT_FOUND';
+  end if;
+  if (select count(*) from event_participants where event_id = p_event_id) >= v_capacity then
+    raise exception 'EVENT_FULL';
+  end if;
+  insert into event_participants (event_id, profile_id) values (p_event_id, v_profile)
+  returning * into v_participant;
+  return row_to_json(v_participant);
+exception when unique_violation then
+  raise exception 'ALREADY_JOINED';
+end;
+$$;
+
+-- The host can edit their event but cannot reduce capacity below attendees.
+create or replace function update_event(
+  p_code text, p_event_id uuid, p_title text, p_description text, p_starts_at timestamptz,
+  p_location text, p_industries text, p_max_participants int
+)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_host uuid := _yolink_auth(p_code);
+  v_event events;
+begin
+  if not exists (select 1 from events where id = p_event_id and creator_id = v_host) then
+    raise exception 'NOT_EVENT_HOST';
+  end if;
+  if p_max_participants < (select count(*) from event_participants where event_id = p_event_id) then
+    raise exception 'CAPACITY_TOO_LOW';
+  end if;
+  update events set title = trim(p_title), description = nullif(trim(p_description), ''),
+    starts_at = p_starts_at, location = trim(p_location), industries = trim(p_industries),
+    max_participants = p_max_participants
+  where id = p_event_id
+  returning * into v_event;
+  return row_to_json(v_event);
+end;
+$$;
+
+-- The host can remove an attendee, but never themselves.
+create or replace function remove_event_participant(p_code text, p_event_id uuid, p_profile_id uuid)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_host uuid := _yolink_auth(p_code);
+  v_participant event_participants;
+begin
+  if not exists (select 1 from events where id = p_event_id and creator_id = v_host) then
+    raise exception 'NOT_EVENT_HOST';
+  end if;
+  if p_profile_id = v_host then
+    raise exception 'CANNOT_REMOVE_HOST';
+  end if;
+  delete from event_participants where event_id = p_event_id and profile_id = p_profile_id
+  returning * into v_participant;
+  if not found then
+    raise exception 'PARTICIPANT_NOT_FOUND';
+  end if;
+  return row_to_json(v_participant);
+end;
+$$;
+
+-- An attendee can leave an event, but the host must cancel it instead.
+create or replace function leave_event(p_code text, p_event_id uuid)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_profile uuid := _yolink_auth(p_code);
+  v_participant event_participants;
+begin
+  if not exists (select 1 from events where id = p_event_id) then
+    raise exception 'EVENT_NOT_FOUND';
+  end if;
+  if exists (select 1 from events where id = p_event_id and creator_id = v_profile) then
+    raise exception 'CANNOT_REMOVE_HOST';
+  end if;
+  delete from event_participants where event_id = p_event_id and profile_id = v_profile
+  returning * into v_participant;
+  if not found then
+    raise exception 'PARTICIPANT_NOT_FOUND';
+  end if;
+  return row_to_json(v_participant);
+end;
+$$;
+
+-- Hosts can cancel only events that have not started. Cascading removes attendance.
+create or replace function cancel_event(p_code text, p_event_id uuid)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_host uuid := _yolink_auth(p_code);
+  v_event events;
+begin
+  select * into v_event from events where id = p_event_id and creator_id = v_host;
+  if not found then
+    raise exception 'NOT_EVENT_HOST';
+  end if;
+  if v_event.starts_at <= now() then
+    raise exception 'EVENT_ALREADY_STARTED';
+  end if;
+  delete from events where id = p_event_id;
+  return row_to_json(v_event);
+end;
+$$;
+
+-- Submit one private report per member/profile pair for staff review.
+create or replace function report_profile(p_code text, p_profile_id uuid, p_reason text)
+returns json
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_reporter uuid := _yolink_auth(p_code);
+  v_report profile_reports;
+begin
+  if v_reporter = p_profile_id then
+    raise exception 'SELF_REPORT';
+  end if;
+  if not exists (select 1 from profiles where id = p_profile_id) then
+    raise exception 'INVALID_CODE';
+  end if;
+  insert into profile_reports (reporter_id, reported_profile_id, reason)
+  values (v_reporter, p_profile_id, trim(p_reason))
+  returning * into v_report;
+  return row_to_json(v_report);
+exception when unique_violation then
+  raise exception 'ALREADY_REPORTED';
+end;
+$$;
+
 -- Staff-only: create a manual match between two members (admin.html).
 create or replace function admin_match(p_admin_pass text, p_user_a uuid, p_user_b uuid)
 returns json
@@ -365,3 +584,5 @@ revoke execute on function _yolink_gen_code() from public, anon;
 alter publication supabase_realtime add table messages;
 alter publication supabase_realtime add table matches;
 alter publication supabase_realtime add table requests;
+alter publication supabase_realtime add table events;
+alter publication supabase_realtime add table event_participants;

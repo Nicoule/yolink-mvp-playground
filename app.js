@@ -42,6 +42,16 @@
     NOT_YOUR_REQUEST: "This request isn't yours to answer.",
     ALREADY_HANDLED: "This request was already answered.",
     NOT_YOUR_MATCH: "You're not part of this conversation.",
+    EVENT_NOT_FOUND: "That event is no longer available.",
+    ALREADY_JOINED: "You're already going to this event.",
+    EVENT_FULL: "This event has reached its participant limit.",
+    NOT_EVENT_HOST: "Only the event host can make that change.",
+    CANNOT_REMOVE_HOST: "The event host can't be removed from their own event.",
+    PARTICIPANT_NOT_FOUND: "That participant is no longer part of this event.",
+    CAPACITY_TOO_LOW: "The maximum can't be below the number of people already going.",
+    EVENT_ALREADY_STARTED: "Only upcoming events can be cancelled.",
+    SELF_REPORT: "You can't report your own profile.",
+    ALREADY_REPORTED: "You've already reported this profile.",
   };
   function friendlyError(err) {
     const msg = err?.message || String(err);
@@ -49,6 +59,16 @@
       if (msg.includes(key)) return ERROR_MESSAGES[key];
     }
     return "Something went wrong. Please try again.";
+  }
+  function eventPublishError(err) {
+    const msg = err?.message || String(err);
+    // This is the most common cause when an Events feature is added to an
+    // already-configured project: the frontend is updated before its one-time
+    // database migration. Keep the message useful without exposing raw SQL.
+    if (/events|event_participants|create_event|permission denied/i.test(msg)) {
+      return "Events needs a quick database update before publishing. Run the Events migration in Supabase, then try again.";
+    }
+    return friendlyError(err);
   }
 
   let toastTimer = null;
@@ -66,6 +86,90 @@
       () => toast(doneMsg || "Copied!"),
       () => toast("Couldn't copy — select it manually.")
     );
+  }
+  async function loadProfileImage(file) {
+    if (!/image\/(jpeg|png|webp)/.test(file.type)) throw new Error("Please choose a JPG, PNG, or WebP image.");
+    if (file.size > 10 * 1024 * 1024) throw new Error("Please choose an image smaller than 10 MB.");
+    const source = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error("We couldn't read that image."));
+      reader.onload = () => resolve(reader.result);
+      reader.readAsDataURL(file);
+    });
+    const image = await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error("We couldn't process that image."));
+      img.onload = () => resolve(img);
+      img.src = source;
+    });
+    return image;
+  }
+  function constrainCrop() {
+    const crop = state.photoCrop;
+    if (!crop) return;
+    const width = crop.baseWidth * crop.zoom, height = crop.baseHeight * crop.zoom;
+    crop.x = Math.max(-(width - 240) / 2, Math.min((width - 240) / 2, crop.x));
+    crop.y = Math.max(-(height - 240) / 2, Math.min((height - 240) / 2, crop.y));
+  }
+  function renderPhotoCrop() {
+    const crop = state.photoCrop;
+    if (!crop) return;
+    constrainCrop();
+    const image = $("photo-crop-image");
+    image.src = crop.image.src;
+    image.style.width = `${crop.baseWidth * crop.zoom}px`;
+    image.style.height = `${crop.baseHeight * crop.zoom}px`;
+    image.style.transform = `translate(-50%, -50%) translate(${crop.x}px, ${crop.y}px)`;
+    $("photo-crop-zoom").value = crop.zoom;
+  }
+  async function selectProfileImage(input, stateKey, statusId) {
+    if (!input.files?.[0]) return;
+    const status = $(statusId);
+    const previousStatus = status.textContent;
+    try {
+      status.textContent = "Preparing photo…";
+      const image = await loadProfileImage(input.files[0]);
+      const scale = 240 / Math.min(image.width, image.height);
+      state.photoCrop = { image, stateKey, statusId, inputId: input.id, previousStatus, original: state[stateKey], baseWidth: image.width * scale, baseHeight: image.height * scale, zoom: 1, x: 0, y: 0 };
+      renderPhotoCrop();
+      $("photo-crop-modal").classList.add("visible");
+      $("photo-crop-modal").setAttribute("aria-hidden", "false");
+    } catch (err) {
+      input.value = "";
+      status.textContent = err.message || "Please try another image.";
+    }
+  }
+  function closePhotoCrop(keepExisting = true) {
+    const crop = state.photoCrop;
+    if (crop && !keepExisting) {
+      state[crop.stateKey] = crop.original;
+      $(crop.inputId).value = "";
+      $(crop.statusId).textContent = crop.previousStatus;
+    }
+    $("photo-crop-modal").classList.remove("visible");
+    $("photo-crop-modal").setAttribute("aria-hidden", "true");
+    state.photoCrop = null;
+  }
+  function useCroppedPhoto() {
+    const crop = state.photoCrop;
+    if (!crop) return;
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 480;
+    const ratio = 2;
+    const width = crop.baseWidth * crop.zoom * ratio;
+    const height = crop.baseHeight * crop.zoom * ratio;
+    const x = (480 - width) / 2 + crop.x * ratio;
+    const y = (480 - height) / 2 + crop.y * ratio;
+    canvas.getContext("2d").drawImage(crop.image, x, y, width, height);
+    state[crop.stateKey] = canvas.toDataURL("image/jpeg", 0.82);
+    $(crop.statusId).textContent = "Photo ready ✓";
+    closePhotoCrop();
+  }
+  function shareEventLink(eventId) {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.searchParams.set("event", eventId);
+    copyText(url.toString(), "Event link copied!");
   }
 
   // ---------- API layer ----------
@@ -88,17 +192,24 @@
       createProfile: (f) => rpc("create_profile", {
         p_name: f.name, p_title: f.title, p_company: f.company, p_industry: f.industry,
         p_years_exp: f.years_exp, p_background: f.background, p_looking_for: f.looking_for,
-        p_avatar_color: f.avatar_color,
+        p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image,
       }),
       login: (code) => rpc("login", { p_code: code }),
       updateProfile: (code, f) => rpc("update_profile", {
         p_code: code, p_name: f.name, p_title: f.title, p_company: f.company,
         p_industry: f.industry, p_years_exp: f.years_exp,
-        p_background: f.background, p_looking_for: f.looking_for,
+        p_background: f.background, p_looking_for: f.looking_for, p_avatar_image: f.avatar_image,
       }),
       sendRequest: (code, toId, kind) => rpc("send_request", { p_code: code, p_to_id: toId, p_kind: kind }),
       respondRequest: (code, reqId, accept) => rpc("respond_request", { p_code: code, p_request_id: reqId, p_accept: accept }),
       sendMessage: (code, matchId, body) => rpc("send_message", { p_code: code, p_match_id: matchId, p_body: body }),
+      createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_industries: event.industries, p_max_participants: event.max_participants }),
+      updateEvent: (code, eventId, event) => rpc("update_event", { p_code: code, p_event_id: eventId, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_industries: event.industries, p_max_participants: event.max_participants }),
+      joinEvent: (code, eventId) => rpc("join_event", { p_code: code, p_event_id: eventId }),
+      removeEventParticipant: (code, eventId, profileId) => rpc("remove_event_participant", { p_code: code, p_event_id: eventId, p_profile_id: profileId }),
+      leaveEvent: (code, eventId) => rpc("leave_event", { p_code: code, p_event_id: eventId }),
+      cancelEvent: (code, eventId) => rpc("cancel_event", { p_code: code, p_event_id: eventId }),
+      reportProfile: (code, profileId, reason) => rpc("report_profile", { p_code: code, p_profile_id: profileId, p_reason: reason }),
 
       async fetchAll(myId) {
         const [profiles, requests, matches] = await Promise.all([
@@ -107,6 +218,14 @@
           sb.from("matches").select("*"),
         ]);
         for (const r of [profiles, requests, matches]) if (r.error) throw r.error;
+
+        // Events are an additive feature. Keep the existing app usable until
+        // the one-time Events migration has been run in Supabase.
+        const [events, participants] = await Promise.all([
+          sb.from("events").select("*").order("starts_at", { ascending: true }),
+          sb.from("event_participants").select("*"),
+        ]);
+        const eventsAvailable = !events.error && !participants.error;
         const myMatches = matches.data.filter((m) => m.user_a === myId || m.user_b === myId);
         let messages = [];
         if (myMatches.length) {
@@ -116,7 +235,8 @@
           if (res.error) throw res.error;
           messages = res.data;
         }
-        return { profiles: profiles.data, requests: requests.data, matches: matches.data, messages };
+        return { profiles: profiles.data, requests: requests.data, matches: matches.data, messages,
+          events: eventsAvailable ? events.data : [], participants: eventsAvailable ? participants.data : [], eventsAvailable };
       },
 
       subscribe(onChange) {
@@ -124,6 +244,8 @@
           .on("postgres_changes", { event: "*", schema: "public", table: "messages" }, onChange)
           .on("postgres_changes", { event: "*", schema: "public", table: "matches" }, onChange)
           .on("postgres_changes", { event: "*", schema: "public", table: "requests" }, onChange)
+          .on("postgres_changes", { event: "*", schema: "public", table: "events" }, onChange)
+          .on("postgres_changes", { event: "*", schema: "public", table: "event_participants" }, onChange)
           .subscribe();
       },
       unsubscribe() {
@@ -147,7 +269,7 @@
     function save(db) { localStorage.setItem(KEY, JSON.stringify(db)); }
 
     function seed() {
-      const db = { profiles: [], secrets: {}, requests: [], matches: [], messages: [], msgSeq: 1 };
+      const db = { profiles: [], secrets: {}, requests: [], matches: [], messages: [], events: [], participants: [], reports: [], msgSeq: 1 };
       const samples = [
         { name: "Ana Torres", title: "Engineering Manager", company: "Northwind", industry: "Technology",
           years_exp: 9, background: "Backend infrastructure and platform teams — I've scaled systems and engineers at two startups.",
@@ -169,7 +291,13 @@
       return db;
     }
 
-    function db() { return load() || seed(); }
+    function db() {
+      const d = load() || seed();
+      d.events ||= [];
+      d.participants ||= [];
+      d.reports ||= [];
+      return d;
+    }
 
     function genCode() {
       const alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -201,7 +329,7 @@
         const d = db();
         const profile = { id: uuid(), name: f.name, title: f.title, company: f.company || null,
           industry: f.industry, years_exp: f.years_exp, background: f.background,
-          looking_for: f.looking_for, avatar_color: f.avatar_color, created_at: new Date().toISOString() };
+          looking_for: f.looking_for, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, created_at: new Date().toISOString() };
         d.profiles.unshift(profile);
         const code = genCode();
         d.secrets[code] = profile.id;
@@ -218,7 +346,7 @@
         const id = auth(d, code);
         const p = d.profiles.find((x) => x.id === id);
         Object.assign(p, { name: f.name, title: f.title, company: f.company || null,
-          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for });
+          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for, avatar_image: f.avatar_image || null });
         save(d);
         return delay(p);
       },
@@ -262,6 +390,87 @@
         save(d);
         return delay(msg);
       },
+      async createEvent(code, event) {
+        const d = db();
+        const creatorId = auth(d, code);
+        const row = { id: uuid(), creator_id: creatorId, title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), industries: event.industries || "", max_participants: event.max_participants, created_at: new Date().toISOString() };
+        d.events.push(row);
+        d.participants.push({ event_id: row.id, profile_id: creatorId, joined_at: new Date().toISOString() });
+        save(d);
+        return delay(row);
+      },
+      async joinEvent(code, eventId) {
+        const d = db();
+        const profileId = auth(d, code);
+        if (!d.events.some((event) => event.id === eventId)) throw new Error("EVENT_NOT_FOUND");
+        if (d.participants.some((row) => row.event_id === eventId && row.profile_id === profileId)) throw new Error("ALREADY_JOINED");
+        const event = d.events.find((item) => item.id === eventId);
+        if (d.participants.filter((row) => row.event_id === eventId).length >= (event.max_participants || 20)) throw new Error("EVENT_FULL");
+        const row = { event_id: eventId, profile_id: profileId, joined_at: new Date().toISOString() };
+        d.participants.push(row);
+        save(d);
+        return delay(row);
+      },
+      async updateEvent(code, eventId, event) {
+        const d = db();
+        const hostId = auth(d, code);
+        const index = d.events.findIndex((item) => item.id === eventId);
+        if (index < 0) throw new Error("EVENT_NOT_FOUND");
+        if (d.events[index].creator_id !== hostId) throw new Error("NOT_EVENT_HOST");
+        if (event.max_participants < d.participants.filter((row) => row.event_id === eventId).length) throw new Error("CAPACITY_TOO_LOW");
+        d.events[index] = { ...d.events[index], title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), industries: event.industries, max_participants: event.max_participants };
+        save(d);
+        return delay(d.events[index]);
+      },
+      async removeEventParticipant(code, eventId, profileId) {
+        const d = db();
+        const hostId = auth(d, code);
+        const event = d.events.find((item) => item.id === eventId);
+        if (!event) throw new Error("EVENT_NOT_FOUND");
+        if (event.creator_id !== hostId) throw new Error("NOT_EVENT_HOST");
+        if (profileId === hostId) throw new Error("CANNOT_REMOVE_HOST");
+        const index = d.participants.findIndex((row) => row.event_id === eventId && row.profile_id === profileId);
+        if (index < 0) throw new Error("PARTICIPANT_NOT_FOUND");
+        const [removed] = d.participants.splice(index, 1);
+        save(d);
+        return delay(removed);
+      },
+      async leaveEvent(code, eventId) {
+        const d = db();
+        const profileId = auth(d, code);
+        const event = d.events.find((item) => item.id === eventId);
+        if (!event) throw new Error("EVENT_NOT_FOUND");
+        if (event.creator_id === profileId) throw new Error("CANNOT_REMOVE_HOST");
+        const index = d.participants.findIndex((row) => row.event_id === eventId && row.profile_id === profileId);
+        if (index < 0) throw new Error("PARTICIPANT_NOT_FOUND");
+        const [left] = d.participants.splice(index, 1);
+        save(d);
+        return delay(left);
+      },
+      async cancelEvent(code, eventId) {
+        const d = db();
+        const hostId = auth(d, code);
+        const index = d.events.findIndex((item) => item.id === eventId);
+        if (index < 0) throw new Error("EVENT_NOT_FOUND");
+        const event = d.events[index];
+        if (event.creator_id !== hostId) throw new Error("NOT_EVENT_HOST");
+        if (new Date(event.starts_at) <= new Date()) throw new Error("EVENT_ALREADY_STARTED");
+        d.events.splice(index, 1);
+        d.participants = d.participants.filter((row) => row.event_id !== eventId);
+        save(d);
+        return delay(event);
+      },
+      async reportProfile(code, profileId, reason) {
+        const d = db();
+        const reporterId = auth(d, code);
+        if (reporterId === profileId) throw new Error("SELF_REPORT");
+        if (!d.profiles.some((profile) => profile.id === profileId)) throw new Error("INVALID_CODE");
+        if (d.reports.some((report) => report.reporter_id === reporterId && report.reported_profile_id === profileId)) throw new Error("ALREADY_REPORTED");
+        const report = { id: uuid(), reporter_id: reporterId, reported_profile_id: profileId, reason: reason.trim(), status: "open", created_at: new Date().toISOString() };
+        d.reports.push(report);
+        save(d);
+        return delay(report);
+      },
       async fetchAll(myId) {
         const d = db();
         const myMatchIds = new Set(d.matches.filter((m) => m.user_a === myId || m.user_b === myId).map((m) => m.id));
@@ -270,6 +479,8 @@
           requests: [...d.requests],
           matches: [...d.matches],
           messages: d.messages.filter((m) => myMatchIds.has(m.match_id)),
+          events: [...d.events],
+          participants: [...d.participants],
         });
       },
       subscribe(onChange) {
@@ -293,6 +504,27 @@
     requests: [],
     matches: [],
     messages: [],
+    events: [],
+    participants: [],
+    eventsAvailable: true,
+    openEventId: null,
+    discoverIndustry: "all",
+    discoverExperience: "all",
+    openDiscoverFilter: null,
+    eventPickerOpen: null,
+    eventCalendarCursor: new Date(),
+    reportProfileId: null,
+    profileEditing: false,
+    myEventsDate: "all",
+    myEventsFilterOpen: false,
+    eventIndustry: "all",
+    eventTime: "upcoming",
+    openEventFilter: null,
+    editingEventId: null,
+    onboardingAvatarImage: null,
+    profileAvatarImage: null,
+    photoCrop: null,
+    photoCropDrag: null,
     openMatchId: null,   // chat currently open
     knownMatchIds: null, // for detecting new matches (null until first load)
     currentScreen: "welcome",
@@ -326,6 +558,7 @@
   const incomingRequests = () => state.requests.filter((r) => r.to_id === state.me?.id && r.status === "pending");
   const outgoingRequests = () => state.requests.filter((r) => r.from_id === state.me?.id && r.status === "pending");
   const messagesFor = (matchId) => state.messages.filter((m) => m.match_id === matchId);
+  const participantsFor = (eventId) => state.participants.filter((p) => p.event_id === eventId);
 
   function unreadCount(matchId) {
     const last = lastReadMap()[matchId];
@@ -335,8 +568,9 @@
   }
 
   // ---------- Router ----------
-  const NAV_SCREENS = ["discover", "requests", "matches", "profile"];
+  const NAV_SCREENS = ["discover", "events", "requests", "matches", "profile"];
   function showScreen(name) {
+    if (name === "profile") state.profileEditing = false;
     state.currentScreen = name;
     document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
     $("screen-" + name).classList.add("active");
@@ -347,18 +581,20 @@
     );
     if (name !== "chat") state.openMatchId = null;
     window.scrollTo(0, 0);
-    const renderers = { discover: renderDiscover, requests: renderRequests, matches: renderMatches, profile: renderProfileScreen };
+    const renderers = { discover: renderDiscover, events: renderEvents, "my-events": renderMyEvents, requests: renderRequests, matches: renderMatches, profile: renderProfileScreen };
     renderers[name]?.();
     updateBadges();
   }
 
   // ---------- Shared render bits ----------
   function avatarHtml(profile, size) {
-    return `<div class="avatar ${size}" style="background:${esc(profile.avatar_color)}">${esc(initials(profile.name))}</div>`;
+    const photo = profile.avatar_image ? `<img src="${esc(profile.avatar_image)}" alt="${esc(profile.name)}">` : esc(initials(profile.name));
+    return `<div class="avatar ${size}" style="background:${esc(profile.avatar_color)}">${photo}</div>`;
   }
 
   function profileCardHtml(p, actionsHtml, bannerHtml) {
     const company = p.company ? ` <span style="opacity:.75">@ ${esc(p.company)}</span>` : "";
+    const industries = String(p.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean);
     return `
       <div class="card">
         ${bannerHtml || ""}
@@ -371,7 +607,7 @@
         </div>
         <div class="pcard-body">
           <div class="chips">
-            <span class="chip">${esc(p.industry)}</span>
+            ${industries.map((industry) => `<span class="chip">${esc(industry)}</span>`).join("")}
             <span class="chip">${esc(String(p.years_exp))} yr${p.years_exp === 1 ? "" : "s"} experience</span>
           </div>
           <div class="prompt">
@@ -402,10 +638,40 @@
       state.requests.filter((r) => r.from_id === state.me.id).map((r) => [r.to_id, r])
     );
 
-    const pool = state.profiles.filter((p) => p.id !== state.me.id && !matchedIds.has(p.id));
+    const allIndustries = [...new Set(state.profiles.flatMap((p) => String(p.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean)))].sort((a, b) => a.localeCompare(b));
+    const experienceOptions = [["all", "All experience"], ["0-2", "0–2 years"], ["3-5", "3–5 years"], ["6-10", "6–10 years"], ["11+", "11+ years"]];
+    const filterHtml = (type, label, selected, options) => {
+      const selectedLabel = options.find(([value]) => value === selected)?.[1] || options[0][1];
+      return `<div class="discover-filter"><label>${esc(label)}</label><button class="discover-filter-trigger" data-filter-toggle="${type}" aria-expanded="${state.openDiscoverFilter === type}"><span>${esc(selectedLabel)}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg></button>${state.openDiscoverFilter === type ? `<div class="discover-filter-menu">${options.map(([value, text]) => `<button data-filter-option="${type}" data-filter-value="${esc(value)}" class="${value === selected ? "selected" : ""}">${esc(text)}</button>`).join("")}</div>` : ""}</div>`;
+    };
+    $("discover-filters").innerHTML = `<div class="discover-filter-bar">${filterHtml("industry", "Industry", state.discoverIndustry, [["all", "All industries"], ...allIndustries.map((industry) => [industry, industry])])}${filterHtml("experience", "Experience", state.discoverExperience, experienceOptions)}</div>`;
+    $("discover-filters").querySelectorAll("[data-filter-toggle]").forEach((button) => button.addEventListener("click", () => {
+      state.openDiscoverFilter = state.openDiscoverFilter === button.dataset.filterToggle ? null : button.dataset.filterToggle;
+      renderDiscover();
+    }));
+    $("discover-filters").querySelectorAll("[data-filter-option]").forEach((button) => button.addEventListener("click", () => {
+      if (button.dataset.filterOption === "industry") state.discoverIndustry = button.dataset.filterValue;
+      else state.discoverExperience = button.dataset.filterValue;
+      state.openDiscoverFilter = null;
+      renderDiscover();
+    }));
+
+    const matchesExperience = (years) => {
+      if (state.discoverExperience === "all") return true;
+      if (state.discoverExperience === "11+") return years >= 11;
+      const [min, max] = state.discoverExperience.split("-").map(Number);
+      return years >= min && years <= max;
+    };
+    const pool = state.profiles.filter((p) => {
+      const industries = String(p.industry || "").split("|").map((industry) => industry.trim());
+      return p.id !== state.me.id && !matchedIds.has(p.id) &&
+        (state.discoverIndustry === "all" || industries.includes(state.discoverIndustry)) && matchesExperience(p.years_exp);
+    });
     if (!pool.length) {
-      $("discover-list").innerHTML = emptyStateHtml("🌱", "The pool is warming up",
-        "No one else here yet — invite a few friends to create profiles.");
+      const filtered = state.discoverIndustry !== "all" || state.discoverExperience !== "all";
+      $("discover-list").innerHTML = filtered
+        ? emptyStateHtml("🔎", "No matching members", "Try widening one of your filters.")
+        : emptyStateHtml("🌱", "The pool is warming up", "No one else here yet — invite a few friends to create profiles.");
       return;
     }
 
@@ -419,7 +685,7 @@
         actions = `
           <div class="pcard-actions">
             <button class="btn" data-request="network" data-to="${esc(p.id)}">🤝 Let's network</button>
-            <button class="btn coffee" data-request="coffee" data-to="${esc(p.id)}">☕ Coffee chat</button>
+            <button class="report-btn" data-report="${esc(p.id)}">Report</button>
           </div>`;
       }
       return profileCardHtml(p, actions);
@@ -428,6 +694,41 @@
     $("discover-list").querySelectorAll("[data-request]").forEach((btn) => {
       btn.addEventListener("click", () => sendRequestClick(btn.dataset.to, btn.dataset.request, btn));
     });
+    $("discover-list").querySelectorAll("[data-report]").forEach((btn) => {
+      btn.addEventListener("click", () => reportProfile(btn.dataset.report));
+    });
+  }
+
+  function reportProfile(profileId) {
+    const profile = profileById(profileId);
+    if (!profile) return;
+    state.reportProfileId = profileId;
+    $("report-profile-name").textContent = profile.name;
+    $("report-reason").value = "";
+    $("report-error").classList.remove("visible");
+    $("report-modal").classList.add("visible");
+    $("report-modal").setAttribute("aria-hidden", "false");
+    $("report-reason").focus();
+  }
+  function closeReportModal() {
+    state.reportProfileId = null;
+    $("report-modal").classList.remove("visible");
+    $("report-modal").setAttribute("aria-hidden", "true");
+  }
+  async function submitReport() {
+    const reason = $("report-reason").value.trim();
+    const error = $("report-error");
+    if (!reason) { error.textContent = "Please briefly describe the issue."; error.classList.add("visible"); return; }
+    const button = $("btn-submit-report");
+    button.disabled = true; error.classList.remove("visible");
+    try {
+      await api.reportProfile(state.code, state.reportProfileId, reason);
+      closeReportModal();
+      toast("Thanks — your report was sent to the Yolink team.");
+    } catch (err) {
+      error.textContent = friendlyError(err);
+      error.classList.add("visible");
+    } finally { button.disabled = false; }
   }
 
   async function sendRequestClick(toId, kind, btn) {
@@ -445,6 +746,281 @@
     } catch (err) {
       toast(friendlyError(err));
       btn.disabled = false;
+    }
+  }
+
+  // ---------- Events ----------
+  function dateInputValue(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  }
+  function timeLabel(value) {
+    if (!value) return "Choose time";
+    const [hours, minutes] = value.split(":").map(Number);
+    return new Date(2000, 0, 1, hours, minutes).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+  function renderEventPickers() {
+    const dateValue = $("event-date").value;
+    const timeValue = $("event-time").value;
+    $("event-date-trigger").textContent = dateValue ? new Date(`${dateValue}T12:00`).toLocaleDateString([], { month: "short", day: "numeric", year: "numeric" }) : "Pick a date";
+    $("event-time-trigger").textContent = timeLabel(timeValue);
+    const dateMenu = $("event-date-menu");
+    const timeMenu = $("event-time-menu");
+    dateMenu.hidden = state.eventPickerOpen !== "date";
+    timeMenu.hidden = state.eventPickerOpen !== "time";
+    if (state.eventPickerOpen === "date") {
+      const cursor = state.eventCalendarCursor;
+      const todayValue = dateInputValue(new Date());
+      const first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
+      const days = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 0).getDate();
+      const blanks = Array.from({ length: first.getDay() }, () => "<span></span>").join("");
+      const dayButtons = Array.from({ length: days }, (_, index) => {
+        const date = new Date(cursor.getFullYear(), cursor.getMonth(), index + 1);
+        const value = dateInputValue(date);
+        const classes = [value === dateValue ? "selected" : "", value === todayValue ? "today" : ""].filter(Boolean).join(" ");
+        return `<button data-event-date="${value}" class="${classes}">${index + 1}</button>`;
+      }).join("");
+      dateMenu.innerHTML = `<div class="calendar-head"><button class="calendar-nav" data-calendar-month="-1" aria-label="Previous month">‹</button><span>${esc(cursor.toLocaleDateString([], { month: "long", year: "numeric" }))}</span><button class="calendar-nav" data-calendar-month="1" aria-label="Next month">›</button></div><div class="calendar-weekdays"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div><div class="calendar-days">${blanks}${dayButtons}</div>`;
+    } else dateMenu.innerHTML = "";
+    if (state.eventPickerOpen === "time") {
+      const times = Array.from({ length: 48 }, (_, index) => `${String(Math.floor(index / 2)).padStart(2, "0")}:${index % 2 ? "30" : "00"}`);
+      timeMenu.innerHTML = times.map((time) => `<button data-event-time="${time}" class="${time === timeValue ? "selected" : ""}">${esc(timeLabel(time))}</button>`).join("");
+    } else timeMenu.innerHTML = "";
+  }
+  function toggleEventPicker(type) {
+    state.eventPickerOpen = state.eventPickerOpen === type ? null : type;
+    if (state.eventPickerOpen === "date" && $("event-date").value) state.eventCalendarCursor = new Date(`${$("event-date").value}T12:00`);
+    renderEventPickers();
+  }
+  function fmtEventTime(iso) {
+    return new Date(iso).toLocaleString([], { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  }
+  function eventDateHtml(iso) {
+    const d = new Date(iso);
+    return `<div class="event-date"><div class="month">${esc(d.toLocaleDateString([], { month: "short" }))}</div><div class="day">${esc(String(d.getDate()))}</div></div>`;
+  }
+  function eventIndustries(event) {
+    return String(event.industries || "").split("|").map((industry) => industry.trim()).filter(Boolean);
+  }
+  function eventCardHtml(event, expanded, membership) {
+    const count = participantsFor(event.id).length;
+    const role = membership ? `<div class="event-membership ${membership === "Hosting" ? "hosting" : ""}">${esc(membership)}</div>` : "";
+    const industries = eventIndustries(event);
+    const tags = industries.length ? `<div class="event-industries">${industries.map((industry) => `<span>${esc(industry)}</span>`).join("")}</div>` : "";
+    return `<div class="card event-card" data-open-event="${esc(event.id)}"><div class="event-top">${eventDateHtml(event.starts_at)}<div class="event-meta"><h2>${esc(event.title)}</h2><div class="when">${esc(fmtEventTime(event.starts_at))}</div><div class="where">📍 ${esc(event.location)}</div>${tags}<div class="going">${count} / ${esc(String(event.max_participants || 20))} going</div>${role}</div></div>${expanded || ""}</div>`;
+  }
+  function eventProfileTagHtml(profile, removableEventId) {
+    const remove = removableEventId ? `<button class="remove-participant" data-remove-participant="${esc(profile.id)}" data-remove-from-event="${esc(removableEventId)}" aria-label="Remove ${esc(profile.name)} from event">×</button>` : "";
+    return `<div class="participant-control"><button class="participant" data-view-profile="${esc(profile.id)}">${avatarHtml(profile, "sm")}<span>${esc(profile.name)}</span></button>${remove}</div>`;
+  }
+  function eventDetailHtml(detail, hostControls = false) {
+    const people = participantsFor(detail.id).map((row) => profileById(row.profile_id)).filter(Boolean);
+    const creator = profileById(detail.creator_id);
+    const joined = people.some((person) => person.id === state.me.id);
+    const isFull = people.length >= (detail.max_participants || 20);
+    const upcoming = new Date(detail.starts_at) > new Date();
+    const attendeeTags = people.map((person) => eventProfileTagHtml(person, hostControls && person.id !== detail.creator_id ? detail.id : null)).join("");
+    const hostActions = hostControls ? `<button class="btn full secondary event-edit-btn" data-edit-event="${esc(detail.id)}">Edit event</button>${upcoming ? `<button class="btn full danger-ghost event-cancel-btn" data-cancel-event="${esc(detail.id)}">Cancel event</button>` : ""}` : "";
+    const attendanceAction = joined && detail.creator_id !== state.me.id
+      ? `<button class="btn full secondary" data-leave-event="${esc(detail.id)}">Quit event</button>`
+      : `<button class="btn full ${joined ? "requested" : ""}" data-join-event="${esc(detail.id)}" ${joined || isFull ? "disabled" : ""}>${joined ? "You're going ✓" : isFull ? "Event is full" : "Join event"}</button>`;
+    return `<div class="event-expanded"><button class="btn ghost event-back" data-close-event>← Close details</button>${detail.description ? `<div class="event-description">${esc(detail.description)}</div>` : ""}${creator ? `<div class="section-label">Event host</div><div class="participant-list">${eventProfileTagHtml(creator)}</div>` : ""}<div class="section-label">Participants · ${people.length} of ${esc(String(detail.max_participants || 20))}</div><div class="participant-list">${attendeeTags || "<span class=\"hint\">No participants yet.</span>"}</div>${hostActions}${attendanceAction}<button class="btn full ghost event-share-btn" data-share-event="${esc(detail.id)}">Copy event link</button></div>`;
+  }
+  function renderEvents() {
+    if (!state.eventsAvailable) {
+      $("btn-show-event-form").hidden = true;
+      $("btn-open-my-events").hidden = true;
+      $("event-create-panel").hidden = true;
+      $("event-filters").innerHTML = "";
+      $("event-detail").innerHTML = "";
+      $("events-list").innerHTML = emptyStateHtml("⚙️", "Events need one last setup step", "The existing networking features are still working. Run the Events migration in Supabase to activate this page.");
+      return;
+    }
+    const form = $("event-create-panel");
+    $("btn-open-my-events").hidden = false;
+    const allIndustries = [...new Set(state.events.flatMap(eventIndustries))].sort((a, b) => a.localeCompare(b));
+    const filterHtml = (type, label, selected, options) => {
+      const selectedLabel = options.find(([value]) => value === selected)?.[1] || options[0][1];
+      return `<div class="discover-filter event-filter"><label>${esc(label)}</label><button class="discover-filter-trigger" data-event-filter-toggle="${type}" aria-expanded="${state.openEventFilter === type}"><span>${esc(selectedLabel)}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg></button>${state.openEventFilter === type ? `<div class="discover-filter-menu">${options.map(([value, text]) => `<button data-event-filter-option="${type}" data-event-filter-value="${esc(value)}" class="${value === selected ? "selected" : ""}">${esc(text)}</button>`).join("")}</div>` : ""}</div>`;
+    };
+    const timeOptions = [["upcoming", "Upcoming"], ["today", "Today"], ["week", "This week"], ["past", "Past"], ["all", "All time"]];
+    $("event-filters").innerHTML = `<div class="discover-filter-bar event-filter-bar">${filterHtml("industry", "Industry", state.eventIndustry, [["all", "All industries"], ...allIndustries.map((industry) => [industry, industry])])}${filterHtml("time", "Time", state.eventTime, timeOptions)}</div>`;
+    $("event-filters").querySelectorAll("[data-event-filter-toggle]").forEach((button) => button.addEventListener("click", () => { state.openEventFilter = state.openEventFilter === button.dataset.eventFilterToggle ? null : button.dataset.eventFilterToggle; renderEvents(); }));
+    $("event-filters").querySelectorAll("[data-event-filter-option]").forEach((button) => button.addEventListener("click", () => { if (button.dataset.eventFilterOption === "industry") state.eventIndustry = button.dataset.eventFilterValue; else state.eventTime = button.dataset.eventFilterValue; state.openEventFilter = null; renderEvents(); }));
+    const detail = state.events.find((event) => event.id === state.openEventId);
+    form.hidden = !form.dataset.open;
+    $("btn-show-event-form").hidden = !!form.dataset.open;
+    $("event-detail").innerHTML = "";
+    const now = new Date();
+    const today = dateInputValue(now);
+    const endOfWeek = new Date(now); endOfWeek.setDate(now.getDate() + 7);
+    const list = state.events.filter((event) => {
+      const start = new Date(event.starts_at);
+      const industryMatch = state.eventIndustry === "all" || eventIndustries(event).includes(state.eventIndustry);
+      const timeMatch = state.eventTime === "all" || (state.eventTime === "upcoming" && start >= now) || (state.eventTime === "today" && dateInputValue(start) === today) || (state.eventTime === "week" && start >= now && start <= endOfWeek) || (state.eventTime === "past" && start < now);
+      return industryMatch && timeMatch;
+    }).sort((a, b) => a.starts_at.localeCompare(b.starts_at));
+    const filtered = state.eventIndustry !== "all" || state.eventTime !== "upcoming";
+    $("events-list").innerHTML = list.length ? list.map((event) => eventCardHtml(event, event.id === detail?.id ? eventDetailHtml(event) : "")).join("") : emptyStateHtml(filtered ? "🔎" : "📅", filtered ? "No matching events" : "No events yet", filtered ? "Try widening your industry or time filter." : "Be the person who gets the first gathering on the calendar.");
+    $("events-list").querySelectorAll("[data-open-event]").forEach((card) => card.addEventListener("click", (ev) => {
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant]")) return;
+      state.openEventId = card.dataset.openEvent; renderEvents();
+    }));
+    $("events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderEvents(); });
+    $("events-list").querySelector("[data-join-event]")?.addEventListener("click", (ev) => joinEventClick(ev.currentTarget.dataset.joinEvent, ev.currentTarget));
+    $("events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderEvents));
+    $("events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => shareEventLink(ev.currentTarget.dataset.shareEvent));
+    $("events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
+  }
+
+  function renderMyEvents() {
+    const mine = state.events.filter((event) => event.creator_id === state.me.id || participantsFor(event.id).some((row) => row.profile_id === state.me.id));
+    const dateOptions = [...new Set(mine.map((event) => dateInputValue(new Date(event.starts_at))))].sort((a, b) => a.localeCompare(b));
+    const options = [["all", "All dates"], ["upcoming", "Upcoming"], ["past", "Past"], ...dateOptions.map((date) => [date, new Date(`${date}T12:00`).toLocaleDateString([], { month: "short", day: "numeric", year: "numeric" })])];
+    const selectedLabel = options.find(([value]) => value === state.myEventsDate)?.[1] || "All dates";
+    $("my-events-filter").innerHTML = `<div class="my-events-filter"><span class="event-control-label">Filter by date</span><button class="discover-filter-trigger" id="btn-my-events-filter" aria-expanded="${state.myEventsFilterOpen}"><span>${esc(selectedLabel)}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg></button>${state.myEventsFilterOpen ? `<div class="discover-filter-menu my-events-filter-menu">${options.map(([value, label]) => `<button data-my-events-date="${esc(value)}" class="${value === state.myEventsDate ? "selected" : ""}">${esc(label)}</button>`).join("")}</div>` : ""}</div>`;
+    $("btn-my-events-filter").addEventListener("click", () => { state.myEventsFilterOpen = !state.myEventsFilterOpen; renderMyEvents(); });
+    $("my-events-filter").querySelectorAll("[data-my-events-date]").forEach((button) => button.addEventListener("click", () => { state.myEventsDate = button.dataset.myEventsDate; state.myEventsFilterOpen = false; renderMyEvents(); }));
+
+    const now = new Date();
+    const matchesFilter = (event) => state.myEventsDate === "all" ||
+      (state.myEventsDate === "upcoming" && new Date(event.starts_at) >= now) ||
+      (state.myEventsDate === "past" && new Date(event.starts_at) < now) ||
+      dateInputValue(new Date(event.starts_at)) === state.myEventsDate;
+    const card = (event) => eventCardHtml(event, event.id === state.openEventId ? eventDetailHtml(event, event.creator_id === state.me.id) : "", event.creator_id === state.me.id ? "Hosting" : "Going");
+    const filtered = mine.filter(matchesFilter);
+    if (!filtered.length) {
+      $("my-events-list").innerHTML = emptyStateHtml("📆", "No events here yet", state.myEventsDate === "all" ? "Events you host or join will be collected here." : "Try a different date filter.");
+    } else if (state.myEventsDate === "all") {
+      const upcoming = filtered.filter((event) => new Date(event.starts_at) >= now).sort((a, b) => a.starts_at.localeCompare(b));
+      const past = filtered.filter((event) => new Date(event.starts_at) < now).sort((a, b) => b.starts_at.localeCompare(a.starts_at));
+      $("my-events-list").innerHTML = `${upcoming.length ? `<div class="section-label my-events-label">Upcoming</div>${upcoming.map(card).join("")}` : ""}${past.length ? `<div class="section-label my-events-label">Past events</div>${past.map(card).join("")}` : ""}`;
+    } else {
+      $("my-events-list").innerHTML = filtered.sort((a, b) => a.starts_at.localeCompare(b.starts_at)).map(card).join("");
+    }
+    $("my-events-list").querySelectorAll("[data-open-event]").forEach((eventCard) => eventCard.addEventListener("click", (ev) => {
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant]")) return;
+      state.openEventId = eventCard.dataset.openEvent; renderMyEvents();
+    }));
+    $("my-events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderMyEvents(); });
+    $("my-events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderMyEvents));
+    $("my-events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => shareEventLink(ev.currentTarget.dataset.shareEvent));
+    $("my-events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
+    $("my-events-list").querySelectorAll("[data-edit-event]").forEach((button) => button.addEventListener("click", () => startEventEdit(button.dataset.editEvent)));
+    $("my-events-list").querySelectorAll("[data-remove-participant]").forEach((button) => button.addEventListener("click", () => removeEventParticipant(button.dataset.removeFromEvent, button.dataset.removeParticipant, button)));
+    $("my-events-list").querySelectorAll("[data-cancel-event]").forEach((button) => button.addEventListener("click", () => cancelEvent(button.dataset.cancelEvent, button)));
+  }
+  function showMemberProfile(profileId) {
+    const profile = profileById(profileId);
+    if (!profile) return;
+    $("member-modal-content").innerHTML = profileCardHtml(profile);
+    $("member-modal").classList.add("visible");
+    $("member-modal").setAttribute("aria-hidden", "false");
+  }
+  function closeMemberProfile() {
+    $("member-modal").classList.remove("visible");
+    $("member-modal").setAttribute("aria-hidden", "true");
+  }
+  function showEventForm() {
+    state.editingEventId = null;
+    $("event-create-panel").querySelector(".section-label").textContent = "New event";
+    $("btn-create-event").textContent = "Publish event";
+    $("event-create-panel").dataset.open = "true";
+    renderEvents();
+    $("event-title").focus();
+  }
+  async function createEventClick() {
+    const error = $("event-error");
+    const title = $("event-title").value.trim();
+    const date = $("event-date").value;
+    const time = $("event-time").value;
+    const location = $("event-location").value.trim();
+    const description = $("event-description").value.trim();
+    const industries = [1, 2].map((number) => $("event-industry-" + number).value.trim()).filter(Boolean);
+    const maxParticipants = parseInt($("event-max-participants").value, 10);
+    if (!title || !date || !time || !location) { error.textContent = "Please add an event name, date, time, and location."; error.classList.add("visible"); return; }
+    if (!industries.length) { error.textContent = "Choose at least one industry for this event."; error.classList.add("visible"); return; }
+    if (Number.isNaN(maxParticipants) || maxParticipants < 1 || maxParticipants > 500) { error.textContent = "Maximum participants should be between 1 and 500."; error.classList.add("visible"); return; }
+    const button = $("btn-create-event"); button.disabled = true; error.classList.remove("visible");
+    try {
+      const eventData = { title, description, starts_at: new Date(`${date}T${time}`).toISOString(), location, industries: industries.join(" | "), max_participants: maxParticipants };
+      const editing = state.editingEventId;
+      const event = editing ? await api.updateEvent(state.code, editing, eventData) : await api.createEvent(state.code, eventData);
+      await refreshAll({ silent: true });
+      state.openEventId = event.id;
+      ["event-title", "event-date", "event-time", "event-location", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+      $("event-max-participants").value = 20;
+      state.eventPickerOpen = null;
+      state.editingEventId = null;
+      renderEventPickers();
+      delete $("event-create-panel").dataset.open;
+      if (editing) { showScreen("my-events"); toast("Event updated ✓"); }
+      else { renderEvents(); toast("Event published 🎉"); }
+    } catch (err) { console.error("Unable to publish event:", err); error.textContent = eventPublishError(err); error.classList.add("visible"); }
+    finally { button.disabled = false; }
+  }
+  async function joinEventClick(eventId, button) {
+    button.disabled = true;
+    try { await api.joinEvent(state.code, eventId); await refreshAll({ silent: true }); renderEvents(); toast("You're going!"); }
+    catch (err) { toast(friendlyError(err)); button.disabled = false; }
+  }
+  async function leaveEventClick(eventId, button, rerender) {
+    button.disabled = true;
+    try {
+      await api.leaveEvent(state.code, eventId);
+      state.openEventId = null;
+      await refreshAll({ silent: true });
+      rerender();
+      toast("You left the event");
+    } catch (err) {
+      toast(friendlyError(err));
+      button.disabled = false;
+    }
+  }
+  function startEventEdit(eventId) {
+    const event = state.events.find((item) => item.id === eventId);
+    if (!event || event.creator_id !== state.me.id) return;
+    state.editingEventId = eventId;
+    const start = new Date(event.starts_at);
+    $("event-title").value = event.title;
+    $("event-date").value = dateInputValue(start);
+    $("event-time").value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
+    $("event-location").value = event.location;
+    const industries = eventIndustries(event);
+    $("event-industry-1").value = industries[0] || "";
+    $("event-industry-2").value = industries[1] || "";
+    $("event-max-participants").value = event.max_participants || 20;
+    $("event-description").value = event.description || "";
+    $("event-create-panel").querySelector(".section-label").textContent = "Edit event";
+    $("btn-create-event").textContent = "Save event";
+    $("event-create-panel").dataset.open = "true";
+    state.eventPickerOpen = null;
+    renderEventPickers();
+    showScreen("events");
+    $("event-title").focus();
+  }
+  async function removeEventParticipant(eventId, profileId, button) {
+    button.disabled = true;
+    try {
+      await api.removeEventParticipant(state.code, eventId, profileId);
+      await refreshAll({ silent: true });
+      renderMyEvents();
+      toast("Participant removed");
+    } catch (err) {
+      toast(friendlyError(err));
+      button.disabled = false;
+    }
+  }
+  async function cancelEvent(eventId, button) {
+    button.disabled = true;
+    try {
+      await api.cancelEvent(state.code, eventId);
+      state.openEventId = null;
+      await refreshAll({ silent: true });
+      renderMyEvents();
+      toast("Event cancelled");
+    } catch (err) {
+      toast(friendlyError(err));
+      button.disabled = false;
     }
   }
 
@@ -555,7 +1131,7 @@
     const p = m && matchPartner(m);
     if (!p) return;
     state.openMatchId = matchId;
-    $("chat-avatar").outerHTML = avatarHtml(p, "sm").replace('class="avatar sm"', 'class="avatar sm" id="chat-avatar"');
+    $("chat-avatar").outerHTML = avatarHtml(p, "sm").replace('class="avatar sm"', 'class="avatar sm chat-profile-trigger" id="chat-avatar" role="button" tabindex="0" aria-label="View profile"');
     $("chat-name").textContent = p.name;
     $("chat-sub").textContent = p.title + (p.company ? " @ " + p.company : "");
     showScreen("chat");
@@ -613,10 +1189,28 @@
     $("pf-name").value = state.me.name;
     $("pf-title").value = state.me.title;
     $("pf-company").value = state.me.company || "";
-    $("pf-industry").value = state.me.industry;
+    const industries = String(state.me.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean);
+    [1, 2, 3].forEach((number, index) => { $("pf-industry-" + number).value = industries[index] || ""; });
     $("pf-years").value = state.me.years_exp;
     $("pf-background").value = state.me.background;
     $("pf-looking").value = state.me.looking_for;
+    $("profile-edit-form").hidden = !state.profileEditing;
+    $("btn-edit-profile").hidden = state.profileEditing;
+  }
+
+  function startProfileEdit() {
+    state.profileEditing = true;
+    state.profileAvatarImage = state.me.avatar_image || null;
+    $("pf-avatar-image").value = "";
+    $("pf-avatar-status").textContent = state.profileAvatarImage ? "Current photo will be kept unless you choose another." : "Choose a new photo to add one.";
+    renderProfileScreen();
+    $("pf-name").focus();
+  }
+
+  function cancelProfileEdit() {
+    state.profileEditing = false;
+    $("pf-error").classList.remove("visible");
+    renderProfileScreen();
   }
 
   async function saveProfile() {
@@ -634,6 +1228,7 @@
       saveSession(state.code, updated);
       const idx = state.profiles.findIndex((p) => p.id === updated.id);
       if (idx >= 0) state.profiles[idx] = updated;
+      state.profileEditing = false;
       renderProfileScreen();
       toast("Profile saved ✓");
     } catch (e) {
@@ -645,15 +1240,18 @@
   function collectProfileFields(prefix) {
     const get = (f) => $(prefix + "-" + f).value.trim();
     const name = get("name"), title = get("title"), company = get("company");
-    const industry = get("industry"), background = get("background"), looking = get("looking");
+    const industries = collectIndustries(prefix), background = get("background"), looking = get("looking");
     const years = parseInt($(prefix + "-years").value, 10);
     if (!name) return { error: "Please enter your name." };
     if (!title) return { error: "Please enter your job title." };
-    if (!industry) return { error: "Please enter your industry." };
+    if (!industries.length) return { error: "Please enter at least one industry." };
     if (Number.isNaN(years) || years < 0 || years > 60) return { error: "Years of experience should be between 0 and 60." };
     if (!background) return { error: "Tell people what your background is in." };
     if (!looking) return { error: "Tell people who you're looking to network with." };
-    return { name, title, company, industry, years_exp: years, background, looking_for: looking };
+    return { name, title, company, industry: industries.join(" | "), years_exp: years, background, looking_for: looking, avatar_image: state.profileAvatarImage };
+  }
+  function collectIndustries(prefix) {
+    return [1, 2, 3].map((number) => $(prefix + "-industry-" + number).value.trim()).filter(Boolean);
   }
 
   // ---------- Onboarding ----------
@@ -677,7 +1275,7 @@
     }
     if (state.obStep === 2) {
       const years = parseInt($("ob-years").value, 10);
-      if (!$("ob-industry").value.trim()) return fail("Please enter your industry.");
+      if (!collectIndustries("ob").length) return fail("Please enter at least one industry.");
       if (Number.isNaN(years) || years < 0 || years > 60) return fail("Years of experience should be between 0 and 60.");
       return showObStep(3);
     }
@@ -692,11 +1290,12 @@
         name: $("ob-name").value.trim(),
         title: $("ob-title").value.trim(),
         company: $("ob-company").value.trim() || null,
-        industry: $("ob-industry").value.trim(),
+        industry: collectIndustries("ob").join(" | "),
         years_exp: parseInt($("ob-years").value, 10),
         background: $("ob-background").value.trim(),
         looking_for: $("ob-looking").value.trim(),
         avatar_color: AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)],
+        avatar_image: state.onboardingAvatarImage,
       };
       const result = await api.createProfile(fields);
       state.me = result.profile;
@@ -771,6 +1370,9 @@
     state.requests = data.requests;
     state.matches = data.matches;
     state.messages = data.messages;
+    state.events = data.events;
+    state.participants = data.participants;
+    state.eventsAvailable = data.eventsAvailable !== false;
 
     // keep my own profile fresh (e.g. edited in another tab)
     const mine = profileById(state.me.id);
@@ -804,7 +1406,7 @@
       renderChatMessages();
       markRead(state.openMatchId);
     } else {
-      const renderers = { discover: renderDiscover, requests: renderRequests, matches: renderMatches };
+      const renderers = { discover: renderDiscover, events: renderEvents, "my-events": renderMyEvents, requests: renderRequests, matches: renderMatches, profile: renderProfileScreen };
       renderers[state.currentScreen]?.();
     }
     updateBadges();
@@ -845,12 +1447,20 @@
   async function enterApp() {
     await refreshAll({ silent: true });
     api.subscribe(scheduleRefresh);
-    showScreen("discover");
+    const sharedEventId = new URLSearchParams(window.location.search).get("event");
+    if (sharedEventId && state.events.some((event) => event.id === sharedEventId)) {
+      state.openEventId = sharedEventId;
+      state.eventTime = "all";
+      showScreen("events");
+    } else {
+      showScreen("discover");
+    }
   }
 
   async function init() {
     // wire events
-    $("btn-start-onboarding").addEventListener("click", () => { showObStep(1); showScreen("onboarding"); });
+    $("btn-start-onboarding").addEventListener("click", () => { state.onboardingAvatarImage = null; $("ob-avatar-image").value = ""; $("ob-avatar-status").textContent = "JPG, PNG, or WebP. Your photo will be resized for Yolink."; showObStep(1); showScreen("onboarding"); });
+    $("ob-avatar-image").addEventListener("change", (event) => selectProfileImage(event.currentTarget, "onboardingAvatarImage", "ob-avatar-status"));
     $("btn-goto-login").addEventListener("click", () => showScreen("login"));
     $("btn-login").addEventListener("click", doLogin);
     $("login-code").addEventListener("keydown", (e) => { if (e.key === "Enter") doLogin(); });
@@ -860,18 +1470,81 @@
     $("btn-copy-code").addEventListener("click", () => copyText(state.code, "Code copied — keep it safe!"));
     $("btn-code-done").addEventListener("click", enterApp);
     $("btn-profile-copy-code").addEventListener("click", () => copyText(state.code, "Code copied — keep it safe!"));
+    $("btn-edit-profile").addEventListener("click", startProfileEdit);
+    $("pf-avatar-image").addEventListener("change", (event) => selectProfileImage(event.currentTarget, "profileAvatarImage", "pf-avatar-status"));
+    $("btn-close-photo-crop").addEventListener("click", () => closePhotoCrop(false));
+    $("btn-cancel-photo-crop").addEventListener("click", () => closePhotoCrop(false));
+    $("btn-use-photo").addEventListener("click", useCroppedPhoto);
+    $("photo-crop-zoom").addEventListener("input", (event) => { if (state.photoCrop) { state.photoCrop.zoom = Number(event.currentTarget.value); renderPhotoCrop(); } });
+    $("photo-crop-frame").addEventListener("pointerdown", (event) => {
+      if (!state.photoCrop) return;
+      state.photoCropDrag = { x: event.clientX, y: event.clientY, cropX: state.photoCrop.x, cropY: state.photoCrop.y };
+      event.currentTarget.setPointerCapture(event.pointerId);
+    });
+    $("photo-crop-frame").addEventListener("pointermove", (event) => {
+      if (!state.photoCropDrag || !state.photoCrop) return;
+      state.photoCrop.x = state.photoCropDrag.cropX + event.clientX - state.photoCropDrag.x;
+      state.photoCrop.y = state.photoCropDrag.cropY + event.clientY - state.photoCropDrag.y;
+      renderPhotoCrop();
+    });
+    $("photo-crop-frame").addEventListener("pointerup", () => { state.photoCropDrag = null; });
+    $("photo-crop-frame").addEventListener("pointercancel", () => { state.photoCropDrag = null; });
     $("btn-save-profile").addEventListener("click", saveProfile);
+    $("btn-cancel-profile-edit").addEventListener("click", cancelProfileEdit);
     $("btn-logout").addEventListener("click", logout);
     $("chat-form").addEventListener("submit", sendChatMessage);
     $("btn-chat-back").addEventListener("click", () => showScreen("matches"));
+    $("btn-chat-report").addEventListener("click", () => {
+      const match = state.matches.find((item) => item.id === state.openMatchId);
+      const partner = match && matchPartner(match);
+      if (partner) reportProfile(partner.id);
+    });
+    $("screen-chat").addEventListener("click", (ev) => {
+      if (!ev.target.closest(".chat-profile-trigger")) return;
+      const match = state.matches.find((item) => item.id === state.openMatchId);
+      const partner = match && matchPartner(match);
+      if (partner) showMemberProfile(partner.id);
+    });
+    $("screen-chat").addEventListener("keydown", (ev) => {
+      if (ev.key !== "Enter" && ev.key !== " ") return;
+      if (!ev.target.closest(".chat-profile-trigger")) return;
+      ev.preventDefault();
+      const match = state.matches.find((item) => item.id === state.openMatchId);
+      const partner = match && matchPartner(match);
+      if (partner) showMemberProfile(partner.id);
+    });
     $("btn-overlay-chat").addEventListener("click", () => { const id = overlayMatchId; hideMatchOverlay(); if (id) openChat(id); });
     $("btn-overlay-close").addEventListener("click", hideMatchOverlay);
+    $("btn-close-report").addEventListener("click", closeReportModal);
+    $("btn-cancel-report").addEventListener("click", closeReportModal);
+    $("btn-submit-report").addEventListener("click", submitReport);
+    $("btn-close-member").addEventListener("click", closeMemberProfile);
+    $("btn-open-requests").addEventListener("click", () => showScreen("requests"));
+    $("btn-requests-back").addEventListener("click", () => showScreen("matches"));
+    $("btn-open-my-events").addEventListener("click", () => showScreen("my-events"));
+    $("btn-my-events-back").addEventListener("click", () => showScreen("events"));
+    $("btn-show-event-form").addEventListener("click", showEventForm);
+    $("btn-create-event").addEventListener("click", createEventClick);
+    $("event-date-trigger").addEventListener("click", () => toggleEventPicker("date"));
+    $("event-time-trigger").addEventListener("click", () => toggleEventPicker("time"));
+    $("event-date-menu").addEventListener("click", (event) => {
+      const monthButton = event.target.closest("[data-calendar-month]");
+      if (monthButton) { state.eventCalendarCursor = new Date(state.eventCalendarCursor.getFullYear(), state.eventCalendarCursor.getMonth() + Number(monthButton.dataset.calendarMonth), 1); renderEventPickers(); return; }
+      const dateButton = event.target.closest("[data-event-date]");
+      if (dateButton) { $("event-date").value = dateButton.dataset.eventDate; state.eventPickerOpen = null; renderEventPickers(); }
+    });
+    $("event-time-menu").addEventListener("click", (event) => {
+      const timeButton = event.target.closest("[data-event-time]");
+      if (timeButton) { $("event-time").value = timeButton.dataset.eventTime; state.eventPickerOpen = null; renderEventPickers(); }
+    });
     document.querySelectorAll(".nav-btn").forEach((btn) =>
       btn.addEventListener("click", () => showScreen(btn.dataset.screen))
     );
     [["ob-background", "ob-background-count"], ["ob-looking", "ob-looking-count"]].forEach(([inputId, countId]) => {
       $(inputId).addEventListener("input", () => { $(countId).textContent = $(inputId).value.length; });
     });
+
+    renderEventPickers();
 
     // resume session if we have one
     const sess = session();

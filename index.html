@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Yolink — Network with intention</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20260720-8">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
 </head>
 <body>
@@ -51,13 +51,22 @@
         <label for="ob-company">Company <span class="hint">(optional)</span></label>
         <input type="text" id="ob-company" maxlength="120" placeholder="Acme Corp">
       </div>
+      <div class="field">
+        <label for="ob-avatar-image">Profile photo <span class="hint">(optional)</span></label>
+        <input type="file" id="ob-avatar-image" accept="image/jpeg,image/png,image/webp">
+        <p class="hint photo-status" id="ob-avatar-status">JPG, PNG, or WebP. Your photo will be resized for Yolink.</p>
+      </div>
     </div>
 
     <div class="ob-step" id="ob-step-2" style="display:none">
       <h1 class="screen-title">Your experience</h1>
       <div class="field">
-        <label for="ob-industry">Industry</label>
-        <input type="text" id="ob-industry" maxlength="80" placeholder="Tech, Healthcare, Finance…" list="industry-options">
+        <label for="ob-industry-1">Industries <span class="hint">(up to 3)</span></label>
+        <div class="industry-inputs">
+          <input type="text" id="ob-industry-1" maxlength="80" placeholder="Primary industry" list="industry-options">
+          <input type="text" id="ob-industry-2" maxlength="80" placeholder="Second industry (optional)" list="industry-options">
+          <input type="text" id="ob-industry-3" maxlength="80" placeholder="Third industry (optional)" list="industry-options">
+        </div>
         <datalist id="industry-options">
           <option>Technology</option><option>Healthcare</option><option>Finance</option>
           <option>Consulting</option><option>Education</option><option>Marketing</option>
@@ -105,19 +114,71 @@
   <section class="screen" id="screen-discover">
     <h1 class="screen-title">Discover</h1>
     <div id="demo-banner-slot"></div>
+    <div id="discover-filters"></div>
     <div id="discover-list"></div>
+  </section>
+
+  <!-- ============ Events ============ -->
+  <section class="screen" id="screen-events">
+    <div class="screen-title-row">
+    <h1 class="screen-title">Events</h1>
+      <button class="btn secondary small" id="btn-open-my-events">My events</button>
+    </div>
+    <p class="screen-sub">Make plans with the Yolink community.</p>
+    <div id="event-filters"></div>
+    <button class="btn full" id="btn-show-event-form">Create an event</button>
+    <div class="card card-pad event-create-panel" id="event-create-panel" hidden>
+      <div class="section-label">New event</div>
+      <div class="field"><label for="event-title">Event name</label><input type="text" id="event-title" maxlength="120" placeholder="Coffee & careers"></div>
+      <div class="field">
+        <label>When</label>
+        <div class="event-date-time">
+          <div class="event-picker-wrap"><span class="event-control-label">Date</span><input type="hidden" id="event-date"><button type="button" class="event-picker-trigger" id="event-date-trigger">Pick a date</button><div class="event-picker-menu event-calendar" id="event-date-menu" hidden></div></div>
+          <div class="event-picker-wrap"><span class="event-control-label">Time</span><input type="hidden" id="event-time"><button type="button" class="event-picker-trigger" id="event-time-trigger">Choose time</button><div class="event-picker-menu event-time-menu" id="event-time-menu" hidden></div></div>
+        </div>
+      </div>
+      <div class="field"><label for="event-location">Location</label><input type="text" id="event-location" maxlength="160" placeholder="Blue Bottle Coffee, Hayes Valley"></div>
+      <div class="field"><label for="event-industry-1">Event industries <span class="hint">(up to 2)</span></label><div class="industry-inputs"><input type="text" id="event-industry-1" maxlength="80" placeholder="e.g. Technology" list="industry-options"><input type="text" id="event-industry-2" maxlength="80" placeholder="Second industry (optional)" list="industry-options"></div></div>
+      <div class="field"><label for="event-max-participants">Maximum participants</label><input type="number" id="event-max-participants" min="1" max="500" value="20" inputmode="numeric"></div>
+      <div class="field"><label for="event-description">What should people know? <span class="hint">(optional)</span></label><textarea id="event-description" maxlength="1000" placeholder="A relaxed hour to meet other people in the pool."></textarea></div>
+      <p class="error-text" id="event-error"></p>
+      <button class="btn full" id="btn-create-event">Publish event</button>
+    </div>
+    <div id="event-detail"></div>
+    <div id="events-list"></div>
+  </section>
+
+  <!-- ============ My Events ============ -->
+  <section class="screen" id="screen-my-events">
+    <div class="page-header">
+      <button class="back-btn" id="btn-my-events-back" aria-label="Back to events">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <h1 class="screen-title">My events</h1>
+    </div>
+    <p class="screen-sub">Everything you’re hosting or attending, past and upcoming.</p>
+    <div id="my-events-filter"></div>
+    <div id="my-events-list"></div>
   </section>
 
   <!-- ============ Requests ============ -->
   <section class="screen" id="screen-requests">
-    <h1 class="screen-title">Requests</h1>
+    <div class="page-header">
+      <button class="back-btn" id="btn-requests-back" aria-label="Back to matches">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <h1 class="screen-title">Requests</h1>
+    </div>
     <div id="requests-incoming"></div>
     <div id="requests-outgoing"></div>
   </section>
 
   <!-- ============ Matches ============ -->
   <section class="screen" id="screen-matches">
-    <h1 class="screen-title">Matches</h1>
+    <div class="screen-title-row">
+      <h1 class="screen-title">Matches</h1>
+      <button class="btn secondary small requests-shortcut" id="btn-open-requests">Requests<span class="badge" id="badge-requests"></span></button>
+    </div>
     <div id="matches-list"></div>
   </section>
 
@@ -132,6 +193,7 @@
         <div class="name" id="chat-name"></div>
         <div class="sub" id="chat-sub"></div>
       </div>
+      <button class="chat-report" id="btn-chat-report">Report</button>
     </div>
     <div id="chat-messages"></div>
     <form class="chat-input-bar" id="chat-form">
@@ -149,17 +211,20 @@
     <div class="code-box" id="profile-code"></div>
     <button class="btn full secondary" id="btn-profile-copy-code">Copy code</button>
 
-    <div class="section-label">Edit profile</div>
-    <div class="card card-pad">
+    <button class="btn full secondary" id="btn-edit-profile">Edit profile</button>
+
+    <div class="card card-pad" id="profile-edit-form" hidden>
       <div class="field"><label for="pf-name">Name</label><input type="text" id="pf-name" maxlength="80"></div>
       <div class="field"><label for="pf-title">Job title</label><input type="text" id="pf-title" maxlength="120"></div>
       <div class="field"><label for="pf-company">Company <span class="hint">(optional)</span></label><input type="text" id="pf-company" maxlength="120"></div>
-      <div class="field"><label for="pf-industry">Industry</label><input type="text" id="pf-industry" maxlength="80" list="industry-options"></div>
+      <div class="field"><label for="pf-avatar-image">Profile photo <span class="hint">(optional)</span></label><input type="file" id="pf-avatar-image" accept="image/jpeg,image/png,image/webp"><p class="hint photo-status" id="pf-avatar-status">Choose a new photo to replace your current one.</p></div>
+      <div class="field"><label for="pf-industry-1">Industries <span class="hint">(up to 3)</span></label><div class="industry-inputs"><input type="text" id="pf-industry-1" maxlength="80" placeholder="Primary industry" list="industry-options"><input type="text" id="pf-industry-2" maxlength="80" placeholder="Second industry (optional)" list="industry-options"><input type="text" id="pf-industry-3" maxlength="80" placeholder="Third industry (optional)" list="industry-options"></div></div>
       <div class="field"><label for="pf-years">Years of experience</label><input type="number" id="pf-years" min="0" max="60" inputmode="numeric"></div>
       <div class="field"><label for="pf-background">My background is in…</label><textarea id="pf-background" maxlength="600"></textarea></div>
       <div class="field"><label for="pf-looking">I'm looking to network with…</label><textarea id="pf-looking" maxlength="600"></textarea></div>
       <p class="error-text" id="pf-error"></p>
       <button class="btn full" id="btn-save-profile">Save changes</button>
+      <button class="btn full ghost" id="btn-cancel-profile-edit">Cancel</button>
     </div>
 
     <div style="height:20px"></div>
@@ -175,10 +240,9 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
       Discover
     </button>
-    <button class="nav-btn" data-screen="requests" aria-label="Requests">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-      Requests
-      <span class="badge" id="badge-requests"></span>
+    <button class="nav-btn" data-screen="events" aria-label="Events">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+      Events
     </button>
     <button class="nav-btn" data-screen="matches" aria-label="Matches">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -200,6 +264,41 @@
     <p id="overlay-text"></p>
     <button class="btn" id="btn-overlay-chat">Say hello</button>
     <button class="btn ghost" id="btn-overlay-close">Keep browsing</button>
+  </div>
+</div>
+
+<!-- ============ Profile report ============ -->
+<div id="report-modal" aria-hidden="true">
+  <div class="report-dialog" role="dialog" aria-modal="true" aria-labelledby="report-title">
+    <button class="modal-close" id="btn-close-report" aria-label="Close">×</button>
+    <h2 id="report-title">Report profile</h2>
+    <p>Tell the Yolink team what happened with <strong id="report-profile-name"></strong>. Your report is only visible to staff.</p>
+    <div class="field"><label for="report-reason">Briefly describe the issue</label><textarea id="report-reason" maxlength="1000" placeholder="What should the team know?"></textarea></div>
+    <p class="error-text" id="report-error"></p>
+    <button class="btn full" id="btn-submit-report">Submit report</button>
+    <button class="btn full ghost" id="btn-cancel-report">Cancel</button>
+  </div>
+</div>
+
+<!-- ============ Member profile preview ============ -->
+<div id="member-modal" aria-hidden="true">
+  <div class="member-dialog" role="dialog" aria-modal="true" aria-label="Member profile">
+    <button class="modal-close" id="btn-close-member" aria-label="Close">×</button>
+    <div id="member-modal-content"></div>
+  </div>
+</div>
+
+<!-- ============ Photo cropper ============ -->
+<div id="photo-crop-modal" aria-hidden="true">
+  <div class="photo-crop-dialog" role="dialog" aria-modal="true" aria-labelledby="photo-crop-title">
+    <button class="modal-close" id="btn-close-photo-crop" aria-label="Close">×</button>
+    <h2 id="photo-crop-title">Adjust your photo</h2>
+    <p>Drag to reposition, then use the slider to zoom.</p>
+    <div class="photo-crop-frame" id="photo-crop-frame"><img id="photo-crop-image" alt="Photo crop preview"></div>
+    <label class="photo-zoom-label" for="photo-crop-zoom">Zoom</label>
+    <input type="range" id="photo-crop-zoom" min="1" max="3" step="0.01" value="1">
+    <button class="btn full" id="btn-use-photo">Use photo</button>
+    <button class="btn full ghost" id="btn-cancel-photo-crop">Cancel</button>
   </div>
 </div>
 

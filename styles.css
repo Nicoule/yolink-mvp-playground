@@ -301,6 +301,8 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--plum); outl
 
 /* ---------- Events ---------- */
 .event-create-panel { margin-top: 14px; }
+#btn-cancel-event-form { margin-top: 8px; }
+.my-events-header .screen-title { flex: 1; }
 #events-list { margin-top: 22px; }
 .event-filter-bar { margin-top: 18px; }
 .event-filter { z-index: 4; }

@@ -35,7 +35,8 @@ create table if not exists profiles (
 
 create table if not exists profile_secrets (
   profile_id  uuid primary key references profiles(id) on delete cascade,
-  secret_code text not null unique
+  secret_code text not null unique,
+  name        text not null
 );
 
 create table if not exists requests (
@@ -223,7 +224,7 @@ begin
   loop
     v_code := _yolink_gen_code();
     begin
-      insert into profile_secrets (profile_id, secret_code) values (v_profile.id, v_code);
+      insert into profile_secrets (profile_id, secret_code, name) values (v_profile.id, v_code, v_profile.name);
       exit;
     exception when unique_violation then
       -- rare code collision: try again
@@ -269,6 +270,7 @@ begin
     avatar_image = p_avatar_image, gender = coalesce(p_gender, 'prefer_not_to_say')
   where id = v_id
   returning * into v_profile;
+  update profile_secrets set name = v_profile.name where profile_id = v_id;
   return row_to_json(v_profile);
 end;
 $$;

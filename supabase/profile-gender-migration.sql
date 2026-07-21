@@ -30,7 +30,7 @@ begin
   loop
     v_code := _yolink_gen_code();
     begin
-      insert into profile_secrets (profile_id, secret_code) values (v_profile.id, v_code);
+      insert into profile_secrets (profile_id, secret_code, name) values (v_profile.id, v_code, v_profile.name);
       exit;
     exception when unique_violation then
     end;

@@ -152,6 +152,7 @@
       <div class="field"><label for="event-description">What should people know? <span class="hint">(optional)</span></label><textarea id="event-description" maxlength="1000" placeholder="A relaxed hour to meet other people in the pool."></textarea></div>
       <p class="error-text" id="event-error"></p>
       <button class="btn full" id="btn-create-event">Publish event</button>
+      <button class="btn secondary full" id="btn-cancel-event-form" type="button">Cancel</button>
     </div>
     <div id="event-detail"></div>
     <div id="events-list"></div>
@@ -159,11 +160,12 @@
 
   <!-- ============ My Events ============ -->
   <section class="screen" id="screen-my-events">
-    <div class="page-header">
+    <div class="page-header my-events-header">
       <button class="back-btn" id="btn-my-events-back" aria-label="Back to events">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
       <h1 class="screen-title">My events</h1>
+      <button class="btn secondary small" id="btn-create-my-event" type="button">Create an event</button>
     </div>
     <p class="screen-sub">Everything you’re hosting or attending, past and upcoming.</p>
     <div id="my-events-filter"></div>

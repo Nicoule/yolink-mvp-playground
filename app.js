@@ -19,10 +19,10 @@
       welcomeBack: "Welcome back", loginHelp: "Enter the secret code you received when you created your profile.", secretCode: "Secret code", logIn: "Log in", back: "Back",
       basics: "First, the basics", yourName: "Your name", jobTitle: "Job title", company: "Company", hideCompany: "Don't show", gender: "Gender", profilePhoto: "Profile photo", cardColor: "Card color", optional: "(optional)", photoHelp: "JPG, PNG, or WebP. Your photo will be resized for Yolink.",
       experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing", shareYolink: "↗ Share Yolink", yolinkLinkCopiedToast: "Yolink's link is copied — share it with your friends 😄",
-      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
+      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
       eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", languageButton: "中文", languageName: "English",
       photoAdjust: "Adjust your photo", photoAdjustHelp: "Drag to reposition, then use the slider to zoom.", choosePhoto: "Choose a photo", zoom: "Zoom", usePhoto: "Use photo",
-      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
+      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
     },
     zh: {
       discover: "发现", events: "活动", matches: "匹配", profile: "个人资料", myProfile: "我的资料",
@@ -30,10 +30,10 @@
       welcomeBack: "欢迎回来", loginHelp: "输入创建个人资料时收到的专属代码。", secretCode: "专属代码", logIn: "登录", back: "返回",
       basics: "先了解一下你", yourName: "姓名", jobTitle: "职位", company: "公司", hideCompany: "不显示", gender: "性别", profilePhoto: "头像", cardColor: "名片颜色", optional: "（可选）", photoHelp: "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。",
       experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览", shareYolink: "↗ 分享 Yolink", yolinkLinkCopiedToast: "已复制 Yolink 的链接，快去分享给好友吧😄",
-      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
+      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
       eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", languageButton: "EN", languageName: "中文",
       photoAdjust: "调整你的照片", photoAdjustHelp: "拖动照片调整位置，再用滑杆缩放。", choosePhoto: "选择照片", zoom: "缩放", usePhoto: "使用此照片",
-      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
+      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
     }
   };
   function t(key, fallback) { return COPY[state.language]?.[key] || fallback || COPY.en[key] || key; }
@@ -223,7 +223,7 @@
       "label[for='ob-name']": "yourName", "label[for='ob-title']": "jobTitle", "label[for='ob-company']": "company", "ob-hide-company-label": "hideCompany", "ob-gender-label": "gender", "label[for='ob-avatar-image']": "profilePhoto", "ob-card-color-label": "cardColor", "ob-avatar-status": "photoHelp",
       "ob-industries-label": "industries", "ob-years-label": "yearsExperience", "label[for='pf-name']": "yourName", "label[for='pf-title']": "jobTitle", "label[for='pf-company']": "company", "pf-hide-company-label": "hideCompany", "pf-gender-label": "gender", "label[for='pf-avatar-image']": "profilePhoto", "pf-card-color-label": "cardColor", "pf-industries-label": "industries", "pf-years-label": "yearsExperience",
       "screen-code h1": "saveCode", "btn-copy-code": "copyCode", "btn-code-done": "startBrowsing",
-      "screen-events h1": "events", "btn-open-my-events": "myEvents", "screen-events .screen-sub": "eventsSub", "btn-show-event-form": "createEvent",
+      "screen-events h1": "events", "btn-open-my-events": "myEvents", "screen-events .screen-sub": "eventsSub", "btn-show-event-form": "createEvent", "btn-create-my-event": "createEvent", "btn-cancel-event-form": "cancel",
       "screen-my-events h1": "myEvents", "screen-requests h1": "requests", "screen-matches h1": "matches", "btn-chat-report": "report", "chat-form button": "send", "request-modal-title": "addRequestNote", "request-modal-help": "requestNoteHelp", "request-message-label": "requestMessage", "btn-submit-request": "sendRequest", "btn-cancel-request": "cancel",
       "btn-profile-copy-code": "copyCode", "btn-edit-profile": "editProfile", "btn-save-profile": "saveChanges", "btn-cancel-profile-edit": "cancel", "btn-logout": "logOut",
       "photo-crop-title": "photoAdjust", "photo-crop-modal .photo-crop-dialog > p": "photoAdjustHelp", "photo-crop-modal .photo-zoom-label": "zoom", "btn-use-photo": "usePhoto", "btn-cancel-photo-crop": "cancel"
@@ -1295,12 +1295,27 @@
     $("member-modal").setAttribute("aria-hidden", "true");
   }
   function showEventForm() {
+    showScreen("events");
     state.editingEventId = null;
-    $("event-create-panel").querySelector(".section-label").textContent = "New event";
-    $("btn-create-event").textContent = "Publish event";
+    ["event-title", "event-date", "event-time", "event-location", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+    $("event-max-participants").value = 20;
+    $("event-error").textContent = "";
+    $("event-error").classList.remove("visible");
+    $("event-create-panel").querySelector(".section-label").textContent = t("newEvent");
+    $("btn-create-event").textContent = t("publishEvent");
     $("event-create-panel").dataset.open = "true";
+    state.eventPickerOpen = null;
+    renderEventPickers();
     renderEvents();
     $("event-title").focus();
+  }
+  function cancelEventForm() {
+    state.editingEventId = null;
+    state.eventPickerOpen = null;
+    $("event-error").textContent = "";
+    $("event-error").classList.remove("visible");
+    delete $("event-create-panel").dataset.open;
+    renderEvents();
   }
   async function createEventClick() {
     const error = $("event-error");
@@ -1366,7 +1381,7 @@
     $("event-industry-2").value = industries[1] || "";
     $("event-max-participants").value = event.max_participants || 20;
     $("event-description").value = event.description || "";
-    $("event-create-panel").querySelector(".section-label").textContent = "Edit event";
+    $("event-create-panel").querySelector(".section-label").textContent = t("editEvent");
     $("btn-create-event").textContent = t("saveEvent");
     $("event-create-panel").dataset.open = "true";
     state.eventPickerOpen = null;
@@ -1426,7 +1441,7 @@
 
     const outgoing = outgoingRequests();
     $("requests-outgoing").innerHTML = !outgoing.length ? "" :
-      `<div class="section-label">Sent by you</div>` +
+      `<div class="section-label">${esc(t("outgoingRequests"))}</div>` +
       outgoing.map((r) => {
         const p = profileById(r.to_id);
         if (!p) return "";
@@ -1437,7 +1452,7 @@
               <div class="name">${esc(p.name)}</div>
               <div class="sub">${r.kind === "coffee" ? "☕ Coffee chat" : t("letsNetwork")} · ${esc(fmtTime(r.created_at))}</div>
             </div>
-            <span class="status-pill">Pending</span>
+            <span class="status-pill">${esc(t("requestPending"))}</span>
           </div>`;
       }).join("");
 
@@ -2001,7 +2016,9 @@
     $("btn-open-my-events").addEventListener("click", () => showScreen("my-events"));
     $("btn-my-events-back").addEventListener("click", () => showScreen("events"));
     $("btn-show-event-form").addEventListener("click", showEventForm);
+    $("btn-create-my-event").addEventListener("click", showEventForm);
     $("btn-create-event").addEventListener("click", createEventClick);
+    $("btn-cancel-event-form").addEventListener("click", cancelEventForm);
     $("btn-refresh-discover").addEventListener("click", refreshDiscoverFromPull);
     // Capture at document level so report buttons keep working even when the
     // discover-list content is refreshed while the app is open.

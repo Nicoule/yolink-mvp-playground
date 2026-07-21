@@ -1,7 +1,16 @@
--- Yolink company visibility migration
+-- Yolink profile secret names migration
 -- Run once in Supabase Dashboard -> SQL Editor.
+-- Adds a convenient display name for staff; secret codes remain protected by RLS.
 
-alter table profiles add column if not exists company_visible boolean not null default true;
+alter table profile_secrets add column if not exists name text;
+
+update profile_secrets secrets
+set name = profiles.name
+from profiles
+where profiles.id = secrets.profile_id
+  and secrets.name is distinct from profiles.name;
+
+alter table profile_secrets alter column name set not null;
 
 create or replace function create_profile(
   p_name text, p_title text, p_company text, p_industry text,

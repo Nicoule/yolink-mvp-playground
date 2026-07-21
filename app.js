@@ -17,35 +17,149 @@
       discover: "Discover", events: "Events", matches: "Matches", profile: "Profile", myProfile: "My profile",
       welcomeTag: "Network with intention. Meet professionals who are looking for someone like you.", createProfile: "Create my profile", haveCode: "I have a secret code",
       welcomeBack: "Welcome back", loginHelp: "Enter the secret code you received when you created your profile.", secretCode: "Secret code", logIn: "Log in", back: "Back",
-      basics: "First, the basics", yourName: "Your name", jobTitle: "Job title", company: "Company", profilePhoto: "Profile photo", optional: "(optional)", photoHelp: "JPG, PNG, or WebP. Your photo will be resized for Yolink.",
-      experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing",
-      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
-      eventsSub: "Make plans with the Yolink community.", languageButton: "中文", languageName: "English",
+      basics: "First, the basics", yourName: "Your name", jobTitle: "Job title", company: "Company", hideCompany: "Don't show", gender: "Gender", profilePhoto: "Profile photo", cardColor: "Card color", optional: "(optional)", photoHelp: "JPG, PNG, or WebP. Your photo will be resized for Yolink.",
+      experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing", shareYolink: "↗ Share Yolink", yolinkLinkCopiedToast: "Yolink's link is copied — share it with your friends 😄",
+      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
+      eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", languageButton: "中文", languageName: "English",
       photoAdjust: "Adjust your photo", photoAdjustHelp: "Drag to reposition, then use the slider to zoom.", choosePhoto: "Choose a photo", zoom: "Zoom", usePhoto: "Use photo",
-      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
+      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
     },
     zh: {
       discover: "发现", events: "活动", matches: "匹配", profile: "个人资料", myProfile: "我的资料",
       welcomeTag: "有目的地拓展人脉，认识正在寻找合适连接的专业人士。", createProfile: "创建我的资料", haveCode: "我有专属代码",
       welcomeBack: "欢迎回来", loginHelp: "输入创建个人资料时收到的专属代码。", secretCode: "专属代码", logIn: "登录", back: "返回",
-      basics: "先了解一下你", yourName: "姓名", jobTitle: "职位", company: "公司", profilePhoto: "头像", optional: "（可选）", photoHelp: "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。",
-      experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览",
-      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
-      eventsSub: "与 Yolink 社群一起制定计划。", languageButton: "EN", languageName: "中文",
+      basics: "先了解一下你", yourName: "姓名", jobTitle: "职位", company: "公司", hideCompany: "不显示", gender: "性别", profilePhoto: "头像", cardColor: "名片颜色", optional: "（可选）", photoHelp: "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。",
+      experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览", shareYolink: "↗ 分享 Yolink", yolinkLinkCopiedToast: "已复制 Yolink 的链接，快去分享给好友吧😄",
+      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
+      eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", languageButton: "EN", languageName: "中文",
       photoAdjust: "调整你的照片", photoAdjustHelp: "拖动照片调整位置，再用滑杆缩放。", choosePhoto: "选择照片", zoom: "缩放", usePhoto: "使用此照片",
-      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
+      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
     }
   };
   function t(key, fallback) { return COPY[state.language]?.[key] || fallback || COPY.en[key] || key; }
-  const INDUSTRY_ZH = { Technology: "科技", Healthcare: "医疗健康", Finance: "金融", Consulting: "咨询", Education: "教育", Marketing: "市场营销", Design: "设计", Legal: "法律", Manufacturing: "制造业", "Real Estate": "房地产", "Media & Entertainment": "媒体与娱乐", Nonprofit: "非营利组织", General: "综合" };
-  const INDUSTRY_OPTIONS = ["Technology", "Healthcare", "Finance", "Consulting", "Education", "Marketing", "Design", "Legal", "Manufacturing", "Real Estate", "Media & Entertainment", "Nonprofit"];
-  function industryLabel(industry) { return state.language === "zh" ? (INDUSTRY_ZH[industry] || industry) : industry; }
+  const INDUSTRY_ZH = { Technology: "科技", Healthcare: "医疗健康", Finance: "金融", Consulting: "咨询", Education: "教育", Marketing: "市场营销", Design: "设计", Legal: "法律", Manufacturing: "制造业", "Real Estate": "房地产", "Media & Entertainment": "媒体与娱乐", Nonprofit: "非营利组织", Other: "其他", General: "综合" };
+  const INDUSTRY_OPTIONS = ["Technology", "Healthcare", "Finance", "Consulting", "Education", "Marketing", "Design", "Legal", "Manufacturing", "Real Estate", "Media & Entertainment", "Nonprofit", "Other"];
+  const YEARS_OPTIONS = [...Array.from({ length: 11 }, (_, value) => value), 11];
+  const GENDER_OPTIONS = [
+    ["woman", "Woman", "女性"], ["man", "Man", "男性"], ["nonbinary", "Non-binary", "非二元性别"], ["prefer_not_to_say", "Prefer not to say", "不愿透露"]
+  ];
+  function genderLabel(value) {
+    const option = GENDER_OPTIONS.find(([key]) => key === value) || GENDER_OPTIONS.at(-1);
+    return state.language === "zh" ? option[2] : option[1];
+  }
+  function renderGenderPickers() {
+    ["ob", "pf"].forEach((prefix) => {
+      const input = $(prefix + "-gender");
+      const trigger = $(prefix + "-gender-trigger");
+      const menu = $(prefix + "-gender-menu");
+      if (!input || !trigger || !menu) return;
+      const open = state.profileGenderPickerOpen === prefix;
+      trigger.textContent = genderLabel(input.value);
+      menu.hidden = !open;
+      menu.innerHTML = open ? GENDER_OPTIONS.map(([value]) => `<button data-gender-picker="${prefix}" data-gender-value="${value}" class="${input.value === value ? "selected" : ""}">${esc(genderLabel(value))}</button>`).join("") : "";
+    });
+  }
+  function renderCardColorPickers() {
+    ["ob", "pf"].forEach((prefix) => {
+      const input = $(prefix + "-card-color");
+      const picker = $(prefix + "-card-color-picker");
+      if (!input || !picker) return;
+      if (!AVATAR_COLORS.includes(input.value)) input.value = AVATAR_COLORS[0];
+      picker.innerHTML = AVATAR_COLORS.map((color, index) => `<button type="button" class="card-color-option ${input.value === color ? "selected" : ""}" data-card-color-picker="${prefix}" data-card-color="${color}" style="--swatch:${color}" aria-label="${esc(state.language === "zh" ? `名片颜色 ${index + 1}` : `Card color ${index + 1}`)}" aria-pressed="${input.value === color}"></button>`).join("");
+    });
+  }
+  function yearsPickerLabel(value) {
+    if (value === "") return t("chooseYears");
+    const years = Number(value);
+    if (years >= 11) return state.language === "zh" ? "10 年以上" : "10+ years";
+    return state.language === "zh" ? `${years} 年` : `${years} year${years === 1 ? "" : "s"}`;
+  }
+  function renderOnboardingExperiencePickers() {
+    [1, 2, 3].forEach((number) => {
+      const input = $("ob-industry-" + number);
+      const trigger = $("ob-industry-" + number + "-trigger");
+      const menu = $("ob-industry-" + number + "-menu");
+      if (!input || !trigger || !menu) return;
+      const open = state.onboardingExperiencePickerOpen === "industry-" + number;
+      const choices = availableIndustryOptions(input.value, [1, 2, 3].filter((item) => item !== number).map((item) => $("ob-industry-" + item).value));
+      trigger.textContent = input.value ? industryLabel(input.value) : t(number === 1 ? "chooseIndustry" : "addIndustry");
+      menu.hidden = !open;
+      menu.innerHTML = open
+        ? choices.map((industry) => `<button data-onboarding-industry="${number}" data-industry-value="${esc(industry)}" class="${normalizeIndustry(input.value) === industry ? "selected" : ""}">${esc(industryLabel(industry))}</button>`).join("") + (number > 1 && input.value ? `<button class="clear-industry" data-onboarding-industry="${number}" data-industry-value="">${esc(t("clearIndustry"))}</button>` : "")
+        : "";
+    });
+    const years = $("ob-years");
+    const yearsTrigger = $("ob-years-trigger");
+    const yearsMenu = $("ob-years-menu");
+    if (!years || !yearsTrigger || !yearsMenu) return;
+    const yearsOpen = state.onboardingExperiencePickerOpen === "years";
+    yearsTrigger.textContent = yearsPickerLabel(years.value);
+    yearsMenu.hidden = !yearsOpen;
+    yearsMenu.innerHTML = yearsOpen
+      ? YEARS_OPTIONS.map((value) => `<button data-onboarding-years="${value}" class="${String(value) === years.value ? "selected" : ""}">${esc(yearsPickerLabel(String(value)))}</button>`).join("")
+      : "";
+  }
+  function renderProfileExperiencePickers() {
+    [1, 2, 3].forEach((number) => {
+      const input = $("pf-industry-" + number);
+      const trigger = $("pf-industry-" + number + "-trigger");
+      const menu = $("pf-industry-" + number + "-menu");
+      if (!input || !trigger || !menu) return;
+      const open = state.profileExperiencePickerOpen === "industry-" + number;
+      const choices = availableIndustryOptions(input.value, [1, 2, 3].filter((item) => item !== number).map((item) => $("pf-industry-" + item).value));
+      trigger.textContent = input.value ? industryLabel(input.value) : t(number === 1 ? "chooseIndustry" : "addIndustry");
+      menu.hidden = !open;
+      menu.innerHTML = open
+        ? choices.map((industry) => `<button data-profile-industry="${number}" data-industry-value="${esc(industry)}" class="${normalizeIndustry(input.value) === industry ? "selected" : ""}">${esc(industryLabel(industry))}</button>`).join("") + (number > 1 && input.value ? `<button class="clear-industry" data-profile-industry="${number}" data-industry-value="">${esc(t("clearIndustry"))}</button>` : "")
+        : "";
+    });
+    const years = $("pf-years");
+    const trigger = $("pf-years-trigger");
+    const menu = $("pf-years-menu");
+    if (!years || !trigger || !menu) return;
+    const open = state.profileExperiencePickerOpen === "years";
+    trigger.textContent = yearsPickerLabel(years.value);
+    menu.hidden = !open;
+    menu.innerHTML = open
+      ? YEARS_OPTIONS.map((value) => `<button data-profile-years="${value}" class="${String(value) === years.value ? "selected" : ""}">${esc(yearsPickerLabel(String(value)))}</button>`).join("")
+      : "";
+  }
+  function normalizeIndustry(industry) {
+    const value = String(industry || "").trim();
+    if (!value) return "";
+    const lower = value.toLocaleLowerCase();
+    return INDUSTRY_OPTIONS.find((option) => option.toLocaleLowerCase() === lower)
+      || Object.entries(INDUSTRY_ZH).find(([, label]) => label === value)?.[0]
+      || value;
+  }
+  function uniqueIndustries(values) {
+    const seen = new Set();
+    return values.map(normalizeIndustry).filter((industry) => {
+      const key = industry.toLocaleLowerCase();
+      if (!industry || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+  function parsedIndustries(value) {
+    return uniqueIndustries(String(value || "").split("|"));
+  }
+  function availableIndustryOptions(currentValue, otherValues = []) {
+    const selectedElsewhere = new Set(uniqueIndustries(otherValues).map((industry) => industry.toLocaleLowerCase()));
+    const current = normalizeIndustry(currentValue);
+    return INDUSTRY_OPTIONS.filter((industry) => industry === current || !selectedElsewhere.has(industry.toLocaleLowerCase()));
+  }
+  function industryLabel(industry) {
+    const normalized = normalizeIndustry(industry);
+    return state.language === "zh" ? (INDUSTRY_ZH[normalized] || normalized) : normalized;
+  }
   function renderIndustryOptions() {
     const list = $("industry-options");
     if (!list) return;
     list.innerHTML = INDUSTRY_OPTIONS.map((industry) => `<option value="${esc(state.language === "zh" ? industryLabel(industry) : industry)}"></option>`).join("");
   }
   function experienceLabel(years) {
+    if (Number(years) >= 11) return state.language === "zh" ? "10 年以上经验" : "10+ years experience";
     return state.language === "zh" ? `${years} 年经验` : `${years} yr${years === 1 ? "" : "s"} experience`;
   }
   const ZH_UI = {
@@ -66,7 +180,7 @@
     "Be the person who gets the first gathering on the calendar.": "成为第一个发起活动的人吧。", "Try widening your industry or time filter.": "试试放宽行业或时间筛选条件。", "Events you host or join will be collected here.": "你主办或参加的活动都会汇总在这里。", "Try a different date filter.": "试试其他日期筛选条件。",
     "No requests yet": "暂无请求", "No matches yet": "暂无匹配", "No messages yet": "暂无消息", "You matched!": "匹配成功！", "Say hello": "打个招呼", "Keep browsing": "继续浏览",
     "No matching members": "没有符合条件的用户", "Try widening one of your filters.": "试试放宽筛选条件。", "The pool is warming up": "社群正在成长", "No one else here yet — invite a few friends to create profiles.": "这里暂时还没有其他人，邀请朋友来创建资料吧。",
-    "All experience": "所有经验", "0–2 years": "0–2 年", "3–5 years": "3–5 年", "6–10 years": "6–10 年", "11+ years": "11 年以上", "Experience": "经验",
+    "All experience": "所有经验", "0–2 years": "0–2 年", "3–5 years": "3–5 年", "6–10 years": "6–10 年", "10+ years": "10 年以上", "Experience": "经验",
     "That code didn't match any profile. Check it and try again.": "这个代码没有对应的个人资料，请检查后重试。", "You already sent them a request — hang tight!": "你已经发送过请求，请耐心等待。", "You're already matched with them.": "你们已经匹配成功。", "That's you!": "这是你自己！", "This request isn't yours to answer.": "这不是需要你处理的请求。", "This request was already answered.": "这个请求已经处理过了。", "You're not part of this conversation.": "你不在这段对话中。", "That event is no longer available.": "该活动已不可用。", "You're already going to this event.": "你已经参加了这个活动。", "This event has reached its participant limit.": "该活动已达到人数上限。", "This event has already ended.": "该活动已经结束。", "Only the event host can make that change.": "只有活动主办方可以进行此操作。", "The event host can't be removed from their own event.": "活动主办方不能移除自己。", "That participant is no longer part of this event.": "该参与者已不在活动中。", "The maximum can't be below the number of people already going.": "人数上限不能低于当前参与人数。", "Only upcoming events can be cancelled.": "只能取消尚未开始的活动。",
     "Report profile": "举报用户", "Tell the Yolink team what happened with": "向 Yolink 团队说明发生了什么", "Briefly describe the issue": "简要说明问题", "What should the team know?": "团队需要了解什么？", "Submit report": "提交举报", "Choose a new photo to replace your current one.": "选择新照片以替换当前头像。", "Current photo will be kept unless you choose another.": "除非选择新照片，否则将保留当前头像。", "Choose a new photo to add one.": "选择一张新照片作为头像。"
   };
@@ -102,15 +216,15 @@
     document.title = state.language === "zh" ? "Yolink — 有目的地拓展人脉" : "Yolink — Network with intention";
     const labels = {
       "nav-discover-label": "discover", "nav-events-label": "events", "nav-matches-label": "matches", "nav-profile-label": "profile",
-      "profile-screen-title": "myProfile", "btn-language-toggle": "languageButton", "btn-start-onboarding": "createProfile", "btn-goto-login": "haveCode", "ob-avatar-upload": "choosePhoto", "pf-avatar-upload": "choosePhoto",
+      "profile-screen-title": "myProfile", "btn-start-onboarding": "createProfile", "btn-goto-login": "haveCode", "ob-avatar-upload": "choosePhoto", "pf-avatar-upload": "choosePhoto",
       "screen-welcome .welcome-tag": "welcomeTag", "label[for='login-code']": "secretCode",
-      "screen-login h1": "welcomeBack", "screen-login .screen-sub": "loginHelp", "btn-login": "logIn", "btn-login-back": "back",
+      "screen-login h1": "welcomeBack", "screen-login .screen-sub": "loginHelp", "btn-login": "logIn", "btn-login-back": "back", "btn-share-yolink": "shareYolink",
       "ob-step-1 h1": "basics", "ob-step-2 h1": "experience", "ob-step-3 h1": "story", "btn-ob-next": "next", "btn-ob-back": "back",
-      "label[for='ob-name']": "yourName", "label[for='ob-title']": "jobTitle", "label[for='ob-company']": "company", "label[for='ob-avatar-image']": "profilePhoto", "ob-avatar-status": "photoHelp",
-      "label[for='ob-industry-1']": "industries", "label[for='ob-years']": "yearsExperience", "label[for='pf-name']": "yourName", "label[for='pf-title']": "jobTitle", "label[for='pf-company']": "company", "label[for='pf-avatar-image']": "profilePhoto", "label[for='pf-industry-1']": "industries", "label[for='pf-years']": "yearsExperience",
+      "label[for='ob-name']": "yourName", "label[for='ob-title']": "jobTitle", "label[for='ob-company']": "company", "ob-hide-company-label": "hideCompany", "ob-gender-label": "gender", "label[for='ob-avatar-image']": "profilePhoto", "ob-card-color-label": "cardColor", "ob-avatar-status": "photoHelp",
+      "ob-industries-label": "industries", "ob-years-label": "yearsExperience", "label[for='pf-name']": "yourName", "label[for='pf-title']": "jobTitle", "label[for='pf-company']": "company", "pf-hide-company-label": "hideCompany", "pf-gender-label": "gender", "label[for='pf-avatar-image']": "profilePhoto", "pf-card-color-label": "cardColor", "pf-industries-label": "industries", "pf-years-label": "yearsExperience",
       "screen-code h1": "saveCode", "btn-copy-code": "copyCode", "btn-code-done": "startBrowsing",
       "screen-events h1": "events", "btn-open-my-events": "myEvents", "screen-events .screen-sub": "eventsSub", "btn-show-event-form": "createEvent",
-      "screen-my-events h1": "myEvents", "screen-requests h1": "requests", "screen-matches h1": "matches", "btn-chat-report": "report", "chat-form button": "send",
+      "screen-my-events h1": "myEvents", "screen-requests h1": "requests", "screen-matches h1": "matches", "btn-chat-report": "report", "chat-form button": "send", "request-modal-title": "addRequestNote", "request-modal-help": "requestNoteHelp", "request-message-label": "requestMessage", "btn-submit-request": "sendRequest", "btn-cancel-request": "cancel",
       "btn-profile-copy-code": "copyCode", "btn-edit-profile": "editProfile", "btn-save-profile": "saveChanges", "btn-cancel-profile-edit": "cancel", "btn-logout": "logOut",
       "photo-crop-title": "photoAdjust", "photo-crop-modal .photo-crop-dialog > p": "photoAdjustHelp", "photo-crop-modal .photo-zoom-label": "zoom", "btn-use-photo": "usePhoto", "btn-cancel-photo-crop": "cancel"
     };
@@ -120,8 +234,22 @@
     }
     const loginCode = $("login-code");
     if (loginCode) loginCode.setAttribute("aria-label", t("secretCode"));
+    const refreshButton = $("btn-refresh-discover");
+    if (refreshButton) {
+      refreshButton.setAttribute("aria-label", t("refresh"));
+      refreshButton.setAttribute("title", t("refresh"));
+    }
+    const codeHelp = $("code-help");
+    if (codeHelp) codeHelp.innerHTML = state.language === "zh"
+      ? "这是返回你个人资料的<strong>唯一</strong>方式，无法通过邮箱找回。请截图或保存到安全的位置。"
+      : "This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe.";
+    document.querySelectorAll("[data-language-toggle]").forEach((button) => { button.textContent = t("languageButton"); });
     document.querySelectorAll(".nav-btn").forEach((button) => button.setAttribute("aria-label", t(button.dataset.screen)));
     renderIndustryOptions();
+    renderGenderPickers();
+    renderCardColorPickers();
+    renderOnboardingExperiencePickers();
+    renderProfileExperiencePickers();
     localizeUi();
   }
 
@@ -146,7 +274,7 @@
     return d.toLocaleDateString([], { month: "short", day: "numeric" });
   }
 
-  const AVATAR_COLORS = ["#3a1b3f", "#7a3b69", "#a4693a", "#2e5d7d", "#2e7d5b", "#8a4b2f", "#4b4e8a", "#815a2b"];
+  const AVATAR_COLORS = ["#3a1b3f", "#7a3b69", "#a4693a", "#2e5d7d", "#2e7d5b", "#8a4b2f", "#4b4e8a", "#815a2b", "#8b3a48"];
 
   const ERROR_MESSAGES = {
     INVALID_CODE: "That code didn't match any profile. Check it and try again.",
@@ -166,14 +294,34 @@
     CAPACITY_TOO_LOW: "The maximum can't be below the number of people already going.",
     EVENT_ALREADY_STARTED: "Only upcoming events can be cancelled.",
     SELF_REPORT: "You can't report your own profile.",
-    ALREADY_REPORTED: "You've already reported this profile.",
+    ALREADY_REPORTED: "You've already reported this user. Our team is reviewing it.",
+  };
+  const ERROR_MESSAGES_ZH = {
+    INVALID_CODE: "这个代码没有对应的个人资料，请检查后重试。",
+    ALREADY_REQUESTED: "你已经发送过连接请求，请耐心等待。",
+    ALREADY_MATCHED: "你们已经匹配成功。",
+    SELF_REQUEST: "不能向自己发起连接。",
+    NOT_YOUR_REQUEST: "这不是需要你处理的请求。",
+    ALREADY_HANDLED: "这个请求已经处理过了。",
+    NOT_YOUR_MATCH: "你不在这段对话中。",
+    EVENT_NOT_FOUND: "该活动已不可用。",
+    ALREADY_JOINED: "你已经参加了这个活动。",
+    EVENT_FULL: "该活动已达到人数上限。",
+    EVENT_ENDED: "该活动已经结束。",
+    NOT_EVENT_HOST: "只有活动主办方可以进行此操作。",
+    CANNOT_REMOVE_HOST: "活动主办方不能移除自己。",
+    PARTICIPANT_NOT_FOUND: "该参与者已不在活动中。",
+    CAPACITY_TOO_LOW: "人数上限不能低于当前参与人数。",
+    EVENT_ALREADY_STARTED: "只能取消尚未开始的活动。",
+    SELF_REPORT: "你不能举报自己的资料。",
+    ALREADY_REPORTED: "您已经举报过该用户，团队正在审核中。",
   };
   function friendlyError(err) {
     const msg = err?.message || String(err);
     for (const key of Object.keys(ERROR_MESSAGES)) {
-      if (msg.includes(key)) return ERROR_MESSAGES[key];
+      if (msg.includes(key)) return state.language === "zh" ? ERROR_MESSAGES_ZH[key] : ERROR_MESSAGES[key];
     }
-    return "Something went wrong. Please try again.";
+    return state.language === "zh" ? "出了点问题，请重试。" : "Something went wrong. Please try again.";
   }
   function eventPublishError(err) {
     const msg = err?.message || String(err);
@@ -181,7 +329,7 @@
     // already-configured project: the frontend is updated before its one-time
     // database migration. Keep the message useful without exposing raw SQL.
     if (/events|event_participants|create_event|permission denied/i.test(msg)) {
-      return "Events needs a quick database update before publishing. Run the Events migration in Supabase, then try again.";
+      return state.language === "zh" ? "发布活动前需要先更新数据库。请在 Supabase 运行活动迁移后重试。" : "Events needs a quick database update before publishing. Run the Events migration in Supabase, then try again.";
     }
     return friendlyError(err);
   }
@@ -197,10 +345,20 @@
   }
 
   function copyText(text, doneMsg) {
-    navigator.clipboard?.writeText(text).then(
-      () => toast(doneMsg || "Copied!"),
-      () => toast("Couldn't copy — select it manually.")
-    );
+    const copied = () => toast(doneMsg || t("copiedToast"));
+    const fallbackCopy = () => {
+      const input = document.createElement("textarea");
+      input.value = text;
+      input.setAttribute("readonly", "");
+      input.style.cssText = "position:fixed;opacity:0;pointer-events:none";
+      document.body.appendChild(input);
+      input.select();
+      const success = document.execCommand("copy");
+      input.remove();
+      if (success) copied(); else toast(t("copyFailedToast"));
+    };
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(copied, fallbackCopy);
+    else fallbackCopy();
   }
   async function loadProfileImage(file) {
     if (!/image\/(jpeg|png|webp)/.test(file.type)) throw new Error("Please choose a JPG, PNG, or WebP image.");
@@ -284,7 +442,7 @@
     const url = new URL(window.location.href);
     url.search = "";
     url.searchParams.set("event", eventId);
-    copyText(url.toString(), "Event link copied!");
+    copyText(url.toString(), t("eventLinkCopiedToast"));
   }
 
   // ---------- API layer ----------
@@ -307,15 +465,15 @@
       createProfile: (f) => rpc("create_profile", {
         p_name: f.name, p_title: f.title, p_company: f.company, p_industry: f.industry,
         p_years_exp: f.years_exp, p_background: f.background, p_looking_for: f.looking_for,
-        p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image,
+        p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender,
       }),
       login: (code) => rpc("login", { p_code: code }),
       updateProfile: (code, f) => rpc("update_profile", {
         p_code: code, p_name: f.name, p_title: f.title, p_company: f.company,
         p_industry: f.industry, p_years_exp: f.years_exp,
-        p_background: f.background, p_looking_for: f.looking_for, p_avatar_image: f.avatar_image,
+        p_background: f.background, p_looking_for: f.looking_for, p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender,
       }),
-      sendRequest: (code, toId, kind) => rpc("send_request", { p_code: code, p_to_id: toId, p_kind: kind }),
+      sendRequest: (code, toId, kind, message) => rpc("send_request", { p_code: code, p_to_id: toId, p_kind: kind, p_message: message }),
       respondRequest: (code, reqId, accept) => rpc("respond_request", { p_code: code, p_request_id: reqId, p_accept: accept }),
       sendMessage: (code, matchId, body) => rpc("send_message", { p_code: code, p_match_id: matchId, p_body: body }),
       createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_industries: event.industries, p_max_participants: event.max_participants }),
@@ -442,8 +600,8 @@
       demo: true,
       async createProfile(f) {
         const d = db();
-        const profile = { id: uuid(), name: f.name, title: f.title, company: f.company || null,
-          industry: f.industry, years_exp: f.years_exp, background: f.background,
+        const profile = { id: uuid(), name: f.name, title: f.title, company: f.company || null, company_visible: f.company_visible,
+          industry: f.industry, years_exp: f.years_exp, background: f.background, gender: f.gender,
           looking_for: f.looking_for, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, created_at: new Date().toISOString() };
         d.profiles.unshift(profile);
         const code = genCode();
@@ -460,12 +618,12 @@
         const d = db();
         const id = auth(d, code);
         const p = d.profiles.find((x) => x.id === id);
-        Object.assign(p, { name: f.name, title: f.title, company: f.company || null,
-          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for, avatar_image: f.avatar_image || null });
+        Object.assign(p, { name: f.name, title: f.title, company: f.company || null, company_visible: f.company_visible,
+          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, gender: f.gender });
         save(d);
         return delay(p);
       },
-      async sendRequest(code, toId, kind) {
+      async sendRequest(code, toId, kind, message) {
         const d = db();
         const from = auth(d, code);
         if (from === toId) throw new Error("SELF_REQUEST");
@@ -479,7 +637,7 @@
           save(d);
           return delay({ matched: true, match_id: matchId });
         }
-        d.requests.push({ id: uuid(), from_id: from, to_id: toId, kind, status: "pending", created_at: new Date().toISOString() });
+        d.requests.push({ id: uuid(), from_id: from, to_id: toId, kind, message: String(message || "").trim() || null, status: "pending", created_at: new Date().toISOString() });
         save(d);
         return delay({ matched: false });
       },
@@ -630,6 +788,8 @@
     eventPickerOpen: null,
     eventCalendarCursor: new Date(),
     reportProfileId: null,
+    requestToId: null,
+    requestKind: null,
     profileEditing: false,
     myEventsDate: "all",
     myEventsFilterOpen: false,
@@ -639,9 +799,12 @@
     editingEventId: null,
     onboardingAvatarImage: null,
     profileAvatarImage: null,
+    profileGenderPickerOpen: null,
+    onboardingExperiencePickerOpen: null,
+    profileExperiencePickerOpen: null,
     photoCrop: null,
     photoCropDrag: null,
-    language: localStorage.getItem(LANGUAGE_KEY) === "zh" ? "zh" : "en",
+    language: localStorage.getItem(LANGUAGE_KEY) === "en" ? "en" : "zh",
     openMatchId: null,   // chat currently open
     knownMatchIds: null, // for detecting new matches (null until first load)
     currentScreen: "welcome",
@@ -709,9 +872,20 @@
     return `<div class="avatar ${size}" style="background:${esc(profile.avatar_color)}">${photo}</div>`;
   }
 
+  function genderIconHtml(gender) {
+    const icons = {
+      woman: ["♀", "woman"],
+      man: ["♂", "man"],
+      nonbinary: ["⚧", "nonbinary"],
+    };
+    const icon = icons[gender];
+    return icon ? `<span class="gender-icon ${icon[1]}" title="${esc(genderLabel(gender))}" aria-label="${esc(genderLabel(gender))}">${icon[0]}</span>` : "";
+  }
+
   function profileCardHtml(p, actionsHtml, bannerHtml) {
-    const company = p.company ? ` <span style="opacity:.75">@ ${esc(p.company)}</span>` : "";
-    const industries = String(p.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean);
+    const company = p.company && p.company_visible !== false ? ` <span style="opacity:.75">@ ${esc(p.company)}</span>` : "";
+    const genderIcon = genderIconHtml(p.gender);
+    const industries = parsedIndustries(p.industry);
     return `
       <div class="card">
         ${bannerHtml || ""}
@@ -719,7 +893,7 @@
           ${avatarHtml(p, "lg")}
           <div style="min-width:0">
             <h2 class="pcard-name">${esc(p.name)}</h2>
-            <p class="pcard-title">${esc(p.title)}${company}</p>
+            <p class="pcard-title">${esc(p.title)}${company}${genderIcon}</p>
           </div>
         </div>
         <div class="pcard-body">
@@ -755,8 +929,8 @@
       state.requests.filter((r) => r.from_id === state.me.id).map((r) => [r.to_id, r])
     );
 
-    const allIndustries = [...new Set(state.profiles.flatMap((p) => String(p.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean)))].sort((a, b) => a.localeCompare(b));
-    const experienceOptions = [["all", "All experience"], ["0-2", "0–2 years"], ["3-5", "3–5 years"], ["6-10", "6–10 years"], ["11+", "11+ years"]];
+    const allIndustries = uniqueIndustries(state.profiles.flatMap((p) => parsedIndustries(p.industry))).sort((a, b) => industryLabel(a).localeCompare(industryLabel(b)));
+    const experienceOptions = [["all", "All experience"], ["0-2", "0–2 years"], ["3-5", "3–5 years"], ["6-10", "6–10 years"], ["11+", "10+ years"]];
     const filterHtml = (type, label, selected, options) => {
       const selectedLabel = options.find(([value]) => value === selected)?.[1] || options[0][1];
       return `<div class="discover-filter"><label>${esc(label)}</label><button class="discover-filter-trigger" data-filter-toggle="${type}" aria-expanded="${state.openDiscoverFilter === type}"><span>${esc(selectedLabel)}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg></button>${state.openDiscoverFilter === type ? `<div class="discover-filter-menu">${options.map(([value, text]) => `<button data-filter-option="${type}" data-filter-value="${esc(value)}" class="${value === selected ? "selected" : ""}">${esc(text)}</button>`).join("")}</div>` : ""}</div>`;
@@ -780,7 +954,7 @@
       return years >= min && years <= max;
     };
     const pool = state.profiles.filter((p) => {
-      const industries = String(p.industry || "").split("|").map((industry) => industry.trim());
+      const industries = parsedIndustries(p.industry);
       return p.id !== state.me.id && !matchedIds.has(p.id) &&
         (state.discoverIndustry === "all" || industries.includes(state.discoverIndustry)) && matchesExperience(p.years_exp);
     });
@@ -802,25 +976,68 @@
         actions = `
           <div class="pcard-actions">
             <button class="btn" data-request="network" data-to="${esc(p.id)}">${t("letsNetwork")}</button>
-            <button class="report-btn" data-report="${esc(p.id)}">Report</button>
+            <button class="report-btn" data-report="${esc(p.id)}" data-report-name="${esc(p.name)}">${t("report")}</button>
           </div>`;
       }
       return profileCardHtml(p, actions);
     }).join("");
 
     $("discover-list").querySelectorAll("[data-request]").forEach((btn) => {
-      btn.addEventListener("click", () => sendRequestClick(btn.dataset.to, btn.dataset.request, btn));
-    });
-    $("discover-list").querySelectorAll("[data-report]").forEach((btn) => {
-      btn.addEventListener("click", () => reportProfile(btn.dataset.report));
+      btn.addEventListener("click", () => openRequestComposer(btn.dataset.to, btn.dataset.request));
     });
   }
 
-  function reportProfile(profileId) {
+  // ---------- Discover pull-to-refresh ----------
+  let discoverPullStartY = null;
+  let discoverPullDistance = 0;
+  let discoverRefreshing = false;
+  const DISCOVER_PULL_THRESHOLD = 72;
+
+  function renderDiscoverPullRefresh({ distance = 0, refreshing = false } = {}) {
+    const indicator = $("discover-pull-refresh");
+    const label = indicator.querySelector(".pull-refresh-label");
+    const active = refreshing || distance > 0;
+    indicator.classList.toggle("visible", active);
+    indicator.classList.toggle("ready", !refreshing && distance >= DISCOVER_PULL_THRESHOLD);
+    indicator.classList.toggle("refreshing", refreshing);
+    indicator.setAttribute("aria-hidden", String(!active));
+    label.textContent = refreshing ? t("refreshing") : distance >= DISCOVER_PULL_THRESHOLD ? t("releaseToRefresh") : t("pullToRefresh");
+  }
+
+  async function refreshDiscoverFromPull() {
+    if (discoverRefreshing) return;
+    discoverRefreshing = true;
+    const refreshButton = $("btn-refresh-discover");
+    refreshButton.disabled = true;
+    refreshButton.classList.add("refreshing");
+    renderDiscoverPullRefresh({ refreshing: true });
+    try {
+      state.openDiscoverFilter = null;
+      await refreshAll({ silent: true });
+      if (state.currentScreen === "discover") renderDiscover();
+      toast(t("discoverRefreshedToast"));
+    } catch (err) {
+      toast(friendlyError(err));
+    } finally {
+      discoverRefreshing = false;
+      refreshButton.disabled = false;
+      refreshButton.classList.remove("refreshing");
+      window.setTimeout(() => renderDiscoverPullRefresh(), 260);
+    }
+  }
+
+  function reportProfile(profileId, profileName = "") {
     const profile = profileById(profileId);
-    if (!profile) return;
+    const name = profile?.name || profileName;
+    if (!profileId || !name) {
+      toast(state.language === "zh" ? "暂时无法打开举报窗口，请重试。" : "Unable to open the report form. Please try again.");
+      return;
+    }
     state.reportProfileId = profileId;
-    $("report-profile-name").textContent = profile.name;
+    $("report-profile-name").textContent = name;
+    $("report-help").innerHTML = state.language === "zh"
+      ? `请向 Yolink 团队说明与 <strong>${esc(name)}</strong> 有关的问题。举报内容仅对工作人员可见。`
+      : `Tell the Yolink team what happened with <strong>${esc(name)}</strong>. Your report is only visible to staff.`;
     $("report-reason").value = "";
     $("report-error").classList.remove("visible");
     $("report-modal").classList.add("visible");
@@ -829,6 +1046,10 @@
   }
   function closeReportModal() {
     state.reportProfileId = null;
+    $("report-reason").value = "";
+    $("report-error").textContent = "";
+    $("report-error").classList.remove("visible");
+    $("btn-submit-report").disabled = false;
     $("report-modal").classList.remove("visible");
     $("report-modal").setAttribute("aria-hidden", "true");
   }
@@ -841,29 +1062,55 @@
     try {
       await api.reportProfile(state.code, state.reportProfileId, reason);
       closeReportModal();
-      toast("Thanks — your report was sent to the Yolink team.");
+      toast(t("reportSentToast"));
     } catch (err) {
+      if ((err?.message || String(err)).includes("ALREADY_REPORTED")) {
+        closeReportModal();
+        toast(t("alreadyReportedToast"));
+        return;
+      }
       error.textContent = friendlyError(err);
       error.classList.add("visible");
     } finally { button.disabled = false; }
   }
 
-  async function sendRequestClick(toId, kind, btn) {
+  function openRequestComposer(toId, kind) {
+    state.requestToId = toId;
+    state.requestKind = kind;
+    $("request-message").value = "";
+    $("request-message-error").classList.remove("visible");
+    $("request-modal").classList.add("visible");
+    $("request-modal").setAttribute("aria-hidden", "false");
+    $("request-message").focus();
+  }
+  function closeRequestComposer() {
+    state.requestToId = null;
+    state.requestKind = null;
+    $("request-modal").classList.remove("visible");
+    $("request-modal").setAttribute("aria-hidden", "true");
+  }
+  async function sendRequestClick() {
+    const toId = state.requestToId;
+    const kind = state.requestKind;
+    if (!toId || !kind) return;
+    const btn = $("btn-submit-request");
+    const message = $("request-message").value.trim();
     btn.disabled = true;
     try {
-      const result = await api.sendRequest(state.code, toId, kind);
+      const result = await api.sendRequest(state.code, toId, kind, message);
+      closeRequestComposer();
       if (result.matched) {
         await refreshAll({ silent: true });
         showMatchOverlay(result.match_id);
       } else {
-        toast(kind === "coffee" ? "Coffee chat requested ☕" : "Request sent 🤝");
+        toast(kind === "coffee" ? t("coffeeRequestedToast") : t("requestSentToast"));
         await refreshAll({ silent: true });
       }
       if (state.currentScreen === "discover") renderDiscover();
     } catch (err) {
-      toast(friendlyError(err));
-      btn.disabled = false;
-    }
+      $("request-message-error").textContent = friendlyError(err);
+      $("request-message-error").classList.add("visible");
+    } finally { btn.disabled = false; }
   }
 
   // ---------- Events ----------
@@ -907,10 +1154,11 @@
       const type = "industry-" + number;
       const trigger = $("event-industry-" + number + "-trigger");
       const menu = $("event-industry-" + number + "-menu");
+      const choices = availableIndustryOptions(value, [1, 2].filter((item) => item !== number).map((item) => $("event-industry-" + item).value));
       trigger.textContent = value ? industryLabel(value) : t(number === 1 ? "chooseIndustry" : "addIndustry");
       menu.hidden = state.eventPickerOpen !== type;
       menu.innerHTML = state.eventPickerOpen === type
-        ? INDUSTRY_OPTIONS.map((industry) => `<button data-event-industry="${number}" data-industry-value="${esc(industry)}" class="${industry === value ? "selected" : ""}">${esc(industryLabel(industry))}</button>`).join("") + (number === 2 && value ? `<button class="clear-industry" data-event-industry="${number}" data-industry-value="">${esc(t("clearIndustry"))}</button>` : "")
+        ? choices.map((industry) => `<button data-event-industry="${number}" data-industry-value="${esc(industry)}" class="${industry === normalizeIndustry(value) ? "selected" : ""}">${esc(industryLabel(industry))}</button>`).join("") + (number === 2 && value ? `<button class="clear-industry" data-event-industry="${number}" data-industry-value="">${esc(t("clearIndustry"))}</button>` : "")
         : "";
     });
   }
@@ -926,9 +1174,7 @@
     const d = new Date(iso);
     return `<div class="event-date"><div class="month">${esc(d.toLocaleDateString([], { month: "short" }))}</div><div class="day">${esc(String(d.getDate()))}</div></div>`;
   }
-  function eventIndustries(event) {
-    return String(event.industries || "").split("|").map((industry) => industry.trim()).filter(Boolean);
-  }
+  function eventIndustries(event) { return parsedIndustries(event.industries); }
   function eventCardHtml(event, expanded, membership) {
     const count = participantsFor(event.id).length;
     const role = membership ? `<div class="event-membership ${membership === "Hosting" ? "hosting" : ""}">${esc(membership)}</div>` : "";
@@ -965,7 +1211,7 @@
     }
     const form = $("event-create-panel");
     $("btn-open-my-events").hidden = false;
-    const allIndustries = [...new Set(state.events.flatMap(eventIndustries))].sort((a, b) => a.localeCompare(b));
+    const allIndustries = uniqueIndustries(state.events.flatMap(eventIndustries)).sort((a, b) => industryLabel(a).localeCompare(industryLabel(b)));
     const filterHtml = (type, label, selected, options) => {
       const selectedLabel = options.find(([value]) => value === selected)?.[1] || options[0][1];
       return `<div class="discover-filter event-filter"><label>${esc(label)}</label><button class="discover-filter-trigger" data-event-filter-toggle="${type}" aria-expanded="${state.openEventFilter === type}"><span>${esc(selectedLabel)}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 4 4 4-4"/></svg></button>${state.openEventFilter === type ? `<div class="discover-filter-menu">${options.map(([value, text]) => `<button data-event-filter-option="${type}" data-event-filter-value="${esc(value)}" class="${value === selected ? "selected" : ""}">${esc(text)}</button>`).join("")}</div>` : ""}</div>`;
@@ -1063,7 +1309,7 @@
     const time = $("event-time").value;
     const location = $("event-location").value.trim();
     const description = $("event-description").value.trim();
-    const industries = [1, 2].map((number) => $("event-industry-" + number).value.trim()).filter(Boolean);
+    const industries = uniqueIndustries([1, 2].map((number) => $("event-industry-" + number).value));
     const maxParticipants = parseInt($("event-max-participants").value, 10);
     if (!title || !date || !time || !location) { error.textContent = t("eventRequiredDetails"); error.classList.add("visible"); return; }
     if (!industries.length) { error.textContent = t("eventIndustryRequired"); error.classList.add("visible"); return; }
@@ -1081,8 +1327,8 @@
       state.editingEventId = null;
       renderEventPickers();
       delete $("event-create-panel").dataset.open;
-      if (editing) { showScreen("my-events"); toast("Event updated ✓"); }
-      else { renderEvents(); toast("Event published 🎉"); }
+      if (editing) { showScreen("my-events"); toast(t("eventUpdatedToast")); }
+      else { renderEvents(); toast(t("eventPublishedToast")); }
     } catch (err) { console.error("Unable to publish event:", err); error.textContent = eventPublishError(err); error.classList.add("visible"); }
     finally { button.disabled = false; }
   }
@@ -1090,7 +1336,7 @@
     const event = state.events.find((item) => item.id === eventId);
     if (event && new Date(event.starts_at) <= new Date()) { toast(t("eventEnded")); return; }
     button.disabled = true;
-    try { await api.joinEvent(state.code, eventId); await refreshAll({ silent: true }); renderEvents(); toast("You're going!"); }
+    try { await api.joinEvent(state.code, eventId); await refreshAll({ silent: true }); renderEvents(); toast(t("joinedEventToast")); }
     catch (err) { toast(friendlyError(err)); button.disabled = false; }
   }
   async function leaveEventClick(eventId, button, rerender) {
@@ -1100,7 +1346,7 @@
       state.openEventId = null;
       await refreshAll({ silent: true });
       rerender();
-      toast("You left the event");
+      toast(t("leftEventToast"));
     } catch (err) {
       toast(friendlyError(err));
       button.disabled = false;
@@ -1121,7 +1367,7 @@
     $("event-max-participants").value = event.max_participants || 20;
     $("event-description").value = event.description || "";
     $("event-create-panel").querySelector(".section-label").textContent = "Edit event";
-    $("btn-create-event").textContent = "Save event";
+    $("btn-create-event").textContent = t("saveEvent");
     $("event-create-panel").dataset.open = "true";
     state.eventPickerOpen = null;
     renderEventPickers();
@@ -1134,7 +1380,7 @@
       await api.removeEventParticipant(state.code, eventId, profileId);
       await refreshAll({ silent: true });
       renderMyEvents();
-      toast("Participant removed");
+      toast(t("participantRemovedToast"));
     } catch (err) {
       toast(friendlyError(err));
       button.disabled = false;
@@ -1147,7 +1393,7 @@
       state.openEventId = null;
       await refreshAll({ silent: true });
       renderMyEvents();
-      toast("Event cancelled");
+      toast(t("eventCancelledToast"));
     } catch (err) {
       toast(friendlyError(err));
       button.disabled = false;
@@ -1157,20 +1403,23 @@
   // ---------- Requests ----------
   function renderRequests() {
     const incoming = incomingRequests();
-    const kindText = (k) => (k === "coffee" ? "wants to grab a coffee with you" : "wants to network with you");
+    const kindText = (k) => k === "coffee"
+      ? (state.language === "zh" ? "想和你喝杯咖啡" : "wants to grab a coffee with you")
+      : t("defaultNetworkRequest");
 
     $("requests-incoming").innerHTML = !incoming.length
-      ? emptyStateHtml("💌", "No requests yet", "When someone wants to connect with you, they'll show up here.")
+      ? emptyStateHtml("💌", "No requests yet", t("noRequestsHelp"))
       : incoming.map((r) => {
           const p = profileById(r.from_id);
           if (!p) return "";
-          const banner = `<div class="req-kind-banner ${r.kind === "coffee" ? "coffee" : ""}">
-              ${r.kind === "coffee" ? "☕" : "🤝"} ${esc(p.name.split(" ")[0])} ${kindText(r.kind)}
-            </div>`;
+          const bannerText = r.message
+            ? `💬 ${esc(r.message)}`
+            : `${r.kind === "coffee" ? "☕" : "🤝"} ${esc(p.name.split(" ")[0])} ${kindText(r.kind)}`;
+          const banner = `<div class="req-kind-banner ${r.kind === "coffee" ? "coffee" : ""}">${bannerText}</div>`;
           const actions = `
             <div class="pcard-actions">
-              <button class="btn" data-respond="accept" data-req="${esc(r.id)}">Accept</button>
-              <button class="btn secondary" data-respond="pass" data-req="${esc(r.id)}">Pass</button>
+              <button class="btn" data-respond="accept" data-req="${esc(r.id)}">${t("accept")}</button>
+              <button class="btn secondary" data-respond="pass" data-req="${esc(r.id)}">${t("pass")}</button>
             </div>`;
           return profileCardHtml(p, actions, banner);
         }).join("");
@@ -1203,7 +1452,7 @@
       const result = await api.respondRequest(state.code, reqId, accept);
       await refreshAll({ silent: true });
       if (result.matched) showMatchOverlay(result.match_id);
-      else toast("Passed — no hard feelings.");
+      else toast(t("requestPassedToast"));
       if (state.currentScreen === "requests") renderRequests();
     } catch (err) {
       toast(friendlyError(err));
@@ -1223,7 +1472,7 @@
 
     if (!list.length) {
       $("matches-list").innerHTML = emptyStateHtml("✨", "No matches yet",
-        "Accept a request or get matched by our team, and your conversations will live here.");
+        t("noMatchesHelp"));
       return;
     }
 
@@ -1235,7 +1484,7 @@
       const unread = unreadCount(m.id);
       const preview = last
         ? `${last.sender_id === state.me.id ? (state.language === "zh" ? "你：" : "You: ") : ""}${esc(last.body)}`
-        : (m.source === "staff" ? "Matched by the Yolink team — say hello!" : "You matched — say hello!");
+        : (m.source === "staff" ? t("matchPreviewStaff") : t("matchPreviewMutual"));
       const right = !last
         ? `<span class="new-tag">NEW</span>`
         : unread > 0 ? `<span class="unread-dot" title="${unread} unread"></span>` : "";
@@ -1263,7 +1512,7 @@
     state.openMatchId = matchId;
     $("chat-avatar").outerHTML = avatarHtml(p, "sm").replace('class="avatar sm"', 'class="avatar sm chat-profile-trigger" id="chat-avatar" role="button" tabindex="0" aria-label="View profile"');
     $("chat-name").textContent = p.name;
-    $("chat-sub").textContent = p.title + (p.company ? " @ " + p.company : "");
+    $("chat-sub").textContent = p.title + (p.company && p.company_visible !== false ? " @ " + p.company : "");
     showScreen("chat");
     renderChatMessages();
     markRead(matchId);
@@ -1323,18 +1572,26 @@
     $("pf-name").value = state.me.name;
     $("pf-title").value = state.me.title;
     $("pf-company").value = state.me.company || "";
-    const industries = String(state.me.industry || "").split("|").map((industry) => industry.trim()).filter(Boolean);
+    $("pf-hide-company").checked = state.me.company_visible === false;
+    $("pf-gender").value = state.me.gender || "prefer_not_to_say";
+    if (!state.profileEditing) $("pf-card-color").value = state.me.avatar_color || AVATAR_COLORS[0];
+    const industries = parsedIndustries(state.me.industry);
     [1, 2, 3].forEach((number, index) => { $("pf-industry-" + number).value = industries[index] || ""; });
     $("pf-years").value = state.me.years_exp;
     $("pf-background").value = state.me.background;
     $("pf-looking").value = state.me.looking_for;
     $("profile-edit-form").hidden = !state.profileEditing;
     $("btn-edit-profile").hidden = state.profileEditing;
+    renderGenderPickers();
+    renderCardColorPickers();
+    renderProfileExperiencePickers();
   }
 
   function startProfileEdit() {
     state.profileEditing = true;
+    state.profileExperiencePickerOpen = null;
     state.profileAvatarImage = state.me.avatar_image || null;
+    $("pf-card-color").value = state.me.avatar_color || AVATAR_COLORS[0];
     $("pf-avatar-image").value = "";
     $("pf-avatar-status").textContent = state.profileAvatarImage ? "Current photo will be kept unless you choose another." : "Choose a new photo to add one.";
     renderProfileScreen();
@@ -1364,7 +1621,7 @@
       if (idx >= 0) state.profiles[idx] = updated;
       state.profileEditing = false;
       renderProfileScreen();
-      toast("Profile saved ✓");
+      toast(t("profileSavedToast"));
     } catch (e) {
       err.textContent = friendlyError(e);
       err.classList.add("visible");
@@ -1382,10 +1639,10 @@
     if (Number.isNaN(years) || years < 0 || years > 60) return { error: "Years of experience should be between 0 and 60." };
     if (!background) return { error: "Tell people what your background is in." };
     if (!looking) return { error: "Tell people who you're looking to network with." };
-    return { name, title, company, industry: industries.join(" | "), years_exp: years, background, looking_for: looking, avatar_image: state.profileAvatarImage };
+    return { name, title, company, company_visible: !$(prefix + "-hide-company").checked, industry: industries.join(" | "), years_exp: years, background, looking_for: looking, avatar_color: $(prefix + "-card-color").value || AVATAR_COLORS[0], avatar_image: state.profileAvatarImage, gender: $(prefix + "-gender").value || "prefer_not_to_say" };
   }
   function collectIndustries(prefix) {
-    return [1, 2, 3].map((number) => $(prefix + "-industry-" + number).value.trim()).filter(Boolean);
+    return uniqueIndustries([1, 2, 3].map((number) => $(prefix + "-industry-" + number).value));
   }
 
   // ---------- Onboarding ----------
@@ -1395,6 +1652,7 @@
     document.querySelectorAll("#ob-dots span").forEach((dot, i) => dot.classList.toggle("done", i < step));
     $("btn-ob-next").textContent = step === 3 ? t("createProfile") : t("next");
     $("ob-error").classList.remove("visible");
+    renderOnboardingExperiencePickers();
   }
 
   async function obNext() {
@@ -1424,12 +1682,14 @@
         name: $("ob-name").value.trim(),
         title: $("ob-title").value.trim(),
         company: $("ob-company").value.trim() || null,
+        company_visible: !$("ob-hide-company").checked,
         industry: collectIndustries("ob").join(" | "),
         years_exp: parseInt($("ob-years").value, 10),
         background: $("ob-background").value.trim(),
         looking_for: $("ob-looking").value.trim(),
-        avatar_color: AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)],
+        avatar_color: $("ob-card-color").value || AVATAR_COLORS[0],
         avatar_image: state.onboardingAvatarImage,
+        gender: $("ob-gender").value || "prefer_not_to_say",
       };
       const result = await api.createProfile(fields);
       state.me = result.profile;
@@ -1531,7 +1791,7 @@
       );
       if (fresh.length) {
         const sender = profileById(fresh.at(-1).sender_id);
-        if (sender) toast(`💬 New message from ${sender.name.split(" ")[0]}`, true);
+        if (sender) toast(`💬 ${t("newMessageFrom")} ${sender.name.split(" ")[0]}`, true);
       }
     }
 
@@ -1567,9 +1827,10 @@
     if (!p) return;
     overlayMatchId = matchId;
     $("overlay-avatars").innerHTML = avatarHtml(state.me, "lg") + avatarHtml(p, "lg");
+    const firstName = p.name.split(" ")[0];
     $("overlay-text").textContent = m.source === "staff"
-      ? `The Yolink team thinks you and ${p.name.split(" ")[0]} should talk.`
-      : `You and ${p.name.split(" ")[0]} both want to connect.`;
+      ? (state.language === "zh" ? `${firstName}，${t("matchOverlayStaff")}` : `The Yolink team thinks you and ${firstName} should talk.`)
+      : (state.language === "zh" ? `你和 ${firstName} ${t("matchOverlayMutual")}` : `You and ${firstName} ${t("matchOverlayMutual")}`);
     $("match-overlay").classList.add("visible");
   }
   function hideMatchOverlay() {
@@ -1593,26 +1854,97 @@
 
   async function init() {
     // wire events
-    $("btn-start-onboarding").addEventListener("click", () => { state.onboardingAvatarImage = null; $("ob-avatar-image").value = ""; $("ob-avatar-status").textContent = "JPG, PNG, or WebP. Your photo will be resized for Yolink."; showObStep(1); showScreen("onboarding"); });
+    $("btn-start-onboarding").addEventListener("click", () => { state.onboardingAvatarImage = null; $("ob-avatar-image").value = ""; $("ob-gender").value = "prefer_not_to_say"; $("ob-hide-company").checked = false; $("ob-card-color").value = AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)]; [1, 2, 3].forEach((number) => { $("ob-industry-" + number).value = ""; }); $("ob-years").value = ""; state.onboardingExperiencePickerOpen = null; $("ob-avatar-status").textContent = "JPG, PNG, or WebP. Your photo will be resized for Yolink."; renderGenderPickers(); renderCardColorPickers(); showObStep(1); showScreen("onboarding"); });
     $("ob-avatar-image").addEventListener("change", (event) => selectProfileImage(event.currentTarget, "onboardingAvatarImage", "ob-avatar-status"));
     $("btn-goto-login").addEventListener("click", () => showScreen("login"));
     $("btn-login").addEventListener("click", doLogin);
     $("login-code").addEventListener("keydown", (e) => { if (e.key === "Enter") doLogin(); });
     $("btn-login-back").addEventListener("click", () => showScreen("welcome"));
+    $("btn-share-yolink").addEventListener("click", () => copyText("https://yolink-mvp-playground.vercel.app/", t("yolinkLinkCopiedToast")));
     $("btn-ob-next").addEventListener("click", obNext);
     $("btn-ob-back").addEventListener("click", obBack);
-    $("btn-copy-code").addEventListener("click", () => copyText(state.code, "Code copied — keep it safe!"));
+    ["ob", "pf"].forEach((prefix) => {
+      $(prefix + "-gender-trigger").addEventListener("click", () => {
+        state.profileGenderPickerOpen = state.profileGenderPickerOpen === prefix ? null : prefix;
+        renderGenderPickers();
+      });
+      $(prefix + "-gender-menu").addEventListener("click", (event) => {
+        const option = event.target.closest("[data-gender-picker]");
+        if (!option) return;
+        $(prefix + "-gender").value = option.dataset.genderValue;
+        state.profileGenderPickerOpen = null;
+        renderGenderPickers();
+      });
+      $(prefix + "-card-color-picker").addEventListener("click", (event) => {
+        const option = event.target.closest("[data-card-color]");
+        if (!option) return;
+        $(prefix + "-card-color").value = option.dataset.cardColor;
+        renderCardColorPickers();
+        if (prefix === "pf" && state.profileEditing) {
+          $("profile-preview").innerHTML = profileCardHtml({ ...state.me, avatar_color: option.dataset.cardColor });
+        }
+      });
+    });
+    [1, 2, 3].forEach((number) => {
+      $("ob-industry-" + number + "-trigger").addEventListener("click", () => {
+        state.onboardingExperiencePickerOpen = state.onboardingExperiencePickerOpen === "industry-" + number ? null : "industry-" + number;
+        renderOnboardingExperiencePickers();
+      });
+      $("ob-industry-" + number + "-menu").addEventListener("click", (event) => {
+        const option = event.target.closest("[data-onboarding-industry]");
+        if (!option) return;
+        $("ob-industry-" + number).value = option.dataset.industryValue;
+        state.onboardingExperiencePickerOpen = null;
+        renderOnboardingExperiencePickers();
+      });
+    });
+    $("ob-years-trigger").addEventListener("click", () => {
+      state.onboardingExperiencePickerOpen = state.onboardingExperiencePickerOpen === "years" ? null : "years";
+      renderOnboardingExperiencePickers();
+    });
+    $("ob-years-menu").addEventListener("click", (event) => {
+      const option = event.target.closest("[data-onboarding-years]");
+      if (!option) return;
+      $("ob-years").value = option.dataset.onboardingYears;
+      state.onboardingExperiencePickerOpen = null;
+      renderOnboardingExperiencePickers();
+    });
+    [1, 2, 3].forEach((number) => {
+      $("pf-industry-" + number + "-trigger").addEventListener("click", () => {
+        state.profileExperiencePickerOpen = state.profileExperiencePickerOpen === "industry-" + number ? null : "industry-" + number;
+        renderProfileExperiencePickers();
+      });
+      $("pf-industry-" + number + "-menu").addEventListener("click", (event) => {
+        const option = event.target.closest("[data-profile-industry]");
+        if (!option) return;
+        $("pf-industry-" + number).value = option.dataset.industryValue;
+        state.profileExperiencePickerOpen = null;
+        renderProfileExperiencePickers();
+      });
+    });
+    $("pf-years-trigger").addEventListener("click", () => {
+      state.profileExperiencePickerOpen = state.profileExperiencePickerOpen === "years" ? null : "years";
+      renderProfileExperiencePickers();
+    });
+    $("pf-years-menu").addEventListener("click", (event) => {
+      const option = event.target.closest("[data-profile-years]");
+      if (!option) return;
+      $("pf-years").value = option.dataset.profileYears;
+      state.profileExperiencePickerOpen = null;
+      renderProfileExperiencePickers();
+    });
+    $("btn-copy-code").addEventListener("click", () => copyText(state.code, t("codeCopiedToast")));
     $("btn-code-done").addEventListener("click", enterApp);
-    $("btn-profile-copy-code").addEventListener("click", () => copyText(state.code, "Code copied — keep it safe!"));
+    $("btn-profile-copy-code").addEventListener("click", () => copyText(state.code, t("codeCopiedToast")));
     $("btn-edit-profile").addEventListener("click", startProfileEdit);
-    $("btn-language-toggle").addEventListener("click", () => {
+    document.querySelectorAll("[data-language-toggle]").forEach((button) => button.addEventListener("click", () => {
       state.language = state.language === "en" ? "zh" : "en";
       localStorage.setItem(LANGUAGE_KEY, state.language);
       const renderers = { discover: renderDiscover, events: renderEvents, "my-events": renderMyEvents, requests: renderRequests, matches: renderMatches, profile: renderProfileScreen };
       renderers[state.currentScreen]?.();
       renderEventPickers();
       applyLanguage();
-    });
+    }));
     $("pf-avatar-image").addEventListener("change", (event) => selectProfileImage(event.currentTarget, "profileAvatarImage", "pf-avatar-status"));
     $("btn-close-photo-crop").addEventListener("click", () => closePhotoCrop(false));
     $("btn-cancel-photo-crop").addEventListener("click", () => closePhotoCrop(false));
@@ -1660,6 +1992,9 @@
     $("btn-close-report").addEventListener("click", closeReportModal);
     $("btn-cancel-report").addEventListener("click", closeReportModal);
     $("btn-submit-report").addEventListener("click", submitReport);
+    $("btn-close-request-modal").addEventListener("click", closeRequestComposer);
+    $("btn-cancel-request").addEventListener("click", closeRequestComposer);
+    $("btn-submit-request").addEventListener("click", sendRequestClick);
     $("btn-close-member").addEventListener("click", closeMemberProfile);
     $("btn-open-requests").addEventListener("click", () => showScreen("requests"));
     $("btn-requests-back").addEventListener("click", () => showScreen("matches"));
@@ -1667,6 +2002,41 @@
     $("btn-my-events-back").addEventListener("click", () => showScreen("events"));
     $("btn-show-event-form").addEventListener("click", showEventForm);
     $("btn-create-event").addEventListener("click", createEventClick);
+    $("btn-refresh-discover").addEventListener("click", refreshDiscoverFromPull);
+    // Capture at document level so report buttons keep working even when the
+    // discover-list content is refreshed while the app is open.
+    document.addEventListener("click", (event) => {
+      const reportButton = event.target.closest?.("[data-report]");
+      if (!reportButton) return;
+      event.preventDefault();
+      reportProfile(reportButton.dataset.report, reportButton.dataset.reportName);
+    }, true);
+    const discoverScreen = $("screen-discover");
+    discoverScreen.addEventListener("touchstart", (event) => {
+      if (state.currentScreen !== "discover" || discoverRefreshing || window.scrollY > 0) return;
+      discoverPullStartY = event.touches[0]?.clientY ?? null;
+      discoverPullDistance = 0;
+    }, { passive: true });
+    discoverScreen.addEventListener("touchmove", (event) => {
+      if (discoverPullStartY === null || discoverRefreshing) return;
+      const distance = Math.max(0, (event.touches[0]?.clientY ?? discoverPullStartY) - discoverPullStartY);
+      if (!distance) return;
+      discoverPullDistance = Math.min(distance, DISCOVER_PULL_THRESHOLD + 32);
+      event.preventDefault();
+      renderDiscoverPullRefresh({ distance: discoverPullDistance });
+    }, { passive: false });
+    discoverScreen.addEventListener("touchend", () => {
+      const shouldRefresh = discoverPullDistance >= DISCOVER_PULL_THRESHOLD;
+      discoverPullStartY = null;
+      discoverPullDistance = 0;
+      if (shouldRefresh) refreshDiscoverFromPull();
+      else renderDiscoverPullRefresh();
+    });
+    discoverScreen.addEventListener("touchcancel", () => {
+      discoverPullStartY = null;
+      discoverPullDistance = 0;
+      renderDiscoverPullRefresh();
+    });
     $("event-date-trigger").addEventListener("click", () => toggleEventPicker("date"));
     $("event-time-trigger").addEventListener("click", () => toggleEventPicker("time"));
     [1, 2].forEach((number) => {

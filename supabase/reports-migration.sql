@@ -33,6 +33,12 @@ begin
   if not exists (select 1 from profiles where id = p_profile_id) then
     raise exception 'INVALID_CODE';
   end if;
+  if exists (
+    select 1 from profile_reports
+    where reporter_id = v_reporter and reported_profile_id = p_profile_id
+  ) then
+    raise exception 'ALREADY_REPORTED';
+  end if;
   insert into profile_reports (reporter_id, reported_profile_id, reason)
   values (v_reporter, p_profile_id, trim(p_reason))
   returning * into v_report;

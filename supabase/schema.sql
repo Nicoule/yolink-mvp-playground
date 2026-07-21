@@ -22,10 +22,12 @@ create table if not exists profiles (
   name         text not null check (char_length(name) between 1 and 80),
   title        text not null check (char_length(title) <= 120),
   company      text check (char_length(company) <= 120),
+  company_visible boolean not null default true,
   industry     text not null check (char_length(industry) between 1 and 240 and array_length(string_to_array(industry, '|'), 1) between 1 and 3),
   years_exp    int  not null check (years_exp between 0 and 60),
   background   text not null check (char_length(background) <= 600),
   looking_for  text not null check (char_length(looking_for) <= 600),
+  gender       text not null default 'prefer_not_to_say' check (gender in ('woman', 'man', 'nonbinary', 'prefer_not_to_say')),
   avatar_color text not null default '#3A1B3F',
   avatar_image text check (avatar_image is null or (char_length(avatar_image) <= 800000 and avatar_image ~ '^data:image/(jpeg|png|webp);base64,')),
   created_at   timestamptz not null default now()
@@ -41,6 +43,7 @@ create table if not exists requests (
   from_id    uuid not null references profiles(id) on delete cascade,
   to_id      uuid not null references profiles(id) on delete cascade,
   kind       text not null check (kind in ('network', 'coffee')),
+  message    text check (message is null or char_length(message) between 1 and 500),
   status     text not null default 'pending' check (status in ('pending', 'accepted', 'passed')),
   created_at timestamptz not null default now(),
   unique (from_id, to_id),
@@ -201,7 +204,7 @@ $$;
 
 create or replace function create_profile(
   p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text, p_avatar_color text, p_avatar_image text
+  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text
 )
 returns json
 language plpgsql
@@ -212,9 +215,9 @@ declare
   v_profile profiles;
   v_code text;
 begin
-  insert into profiles (name, title, company, industry, years_exp, background, looking_for, avatar_color, avatar_image)
-  values (trim(p_name), trim(p_title), nullif(trim(p_company), ''), trim(p_industry),
-          p_years_exp, trim(p_background), trim(p_looking_for), p_avatar_color, p_avatar_image)
+  insert into profiles (name, title, company, company_visible, industry, years_exp, background, looking_for, avatar_color, avatar_image, gender)
+  values (trim(p_name), trim(p_title), nullif(trim(p_company), ''), coalesce(p_company_visible, true), trim(p_industry),
+          p_years_exp, trim(p_background), trim(p_looking_for), p_avatar_color, p_avatar_image, coalesce(p_gender, 'prefer_not_to_say'))
   returning * into v_profile;
 
   loop
@@ -248,7 +251,7 @@ $$;
 
 create or replace function update_profile(
   p_code text, p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text, p_avatar_image text
+  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text
 )
 returns json
 language plpgsql
@@ -261,9 +264,9 @@ declare
 begin
   update profiles set
     name = trim(p_name), title = trim(p_title),
-    company = nullif(trim(p_company), ''), industry = trim(p_industry),
-    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for),
-    avatar_image = p_avatar_image
+    company = nullif(trim(p_company), ''), company_visible = coalesce(p_company_visible, true), industry = trim(p_industry),
+    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for), avatar_color = p_avatar_color,
+    avatar_image = p_avatar_image, gender = coalesce(p_gender, 'prefer_not_to_say')
   where id = v_id
   returning * into v_profile;
   return row_to_json(v_profile);
@@ -273,7 +276,7 @@ $$;
 -- Send a "let's network" / "coffee chat" request.
 -- If the other person already has a pending request to you, it's mutual:
 -- their request is accepted and a match is created immediately.
-create or replace function send_request(p_code text, p_to_id uuid, p_kind text)
+create or replace function send_request(p_code text, p_to_id uuid, p_kind text, p_message text)
 returns json
 language plpgsql
 security definer
@@ -301,7 +304,7 @@ begin
     return json_build_object('matched', true, 'match_id', v_match_id);
   end if;
 
-  insert into requests (from_id, to_id, kind) values (v_from, p_to_id, p_kind);
+  insert into requests (from_id, to_id, kind, message) values (v_from, p_to_id, p_kind, nullif(trim(p_message), ''));
   return json_build_object('matched', false);
 exception when unique_violation then
   raise exception 'ALREADY_REQUESTED';
@@ -532,6 +535,12 @@ begin
   end if;
   if not exists (select 1 from profiles where id = p_profile_id) then
     raise exception 'INVALID_CODE';
+  end if;
+  if exists (
+    select 1 from profile_reports
+    where reporter_id = v_reporter and reported_profile_id = p_profile_id
+  ) then
+    raise exception 'ALREADY_REPORTED';
   end if;
   insert into profile_reports (reporter_id, reported_profile_id, reason)
   values (v_reporter, p_profile_id, trim(p_reason))

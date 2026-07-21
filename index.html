@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Yolink — Network with intention</title>
-<link rel="stylesheet" href="styles.css?v=20260720-8">
+<link rel="stylesheet" href="styles.css?v=20260721-7">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
 </head>
 <body>
@@ -53,7 +53,8 @@
       </div>
       <div class="field">
         <label for="ob-avatar-image">Profile photo <span class="hint">(optional)</span></label>
-        <input type="file" id="ob-avatar-image" accept="image/jpeg,image/png,image/webp">
+        <input class="photo-file-input" type="file" id="ob-avatar-image" accept="image/jpeg,image/png,image/webp">
+        <label class="photo-upload-control" for="ob-avatar-image"><span class="photo-upload-icon">↑</span><span id="ob-avatar-upload">Choose a photo</span></label>
         <p class="hint photo-status" id="ob-avatar-status">JPG, PNG, or WebP. Your photo will be resized for Yolink.</p>
       </div>
     </div>
@@ -129,16 +130,16 @@
     <button class="btn full" id="btn-show-event-form">Create an event</button>
     <div class="card card-pad event-create-panel" id="event-create-panel" hidden>
       <div class="section-label">New event</div>
-      <div class="field"><label for="event-title">Event name</label><input type="text" id="event-title" maxlength="120" placeholder="Coffee & careers"></div>
+      <div class="field"><label for="event-title">Event name <span class="required-mark" aria-hidden="true">*</span></label><input type="text" id="event-title" maxlength="120" placeholder="Coffee & careers"></div>
       <div class="field">
-        <label>When</label>
+        <label>When <span class="required-mark" aria-hidden="true">*</span></label>
         <div class="event-date-time">
           <div class="event-picker-wrap"><span class="event-control-label">Date</span><input type="hidden" id="event-date"><button type="button" class="event-picker-trigger" id="event-date-trigger">Pick a date</button><div class="event-picker-menu event-calendar" id="event-date-menu" hidden></div></div>
           <div class="event-picker-wrap"><span class="event-control-label">Time</span><input type="hidden" id="event-time"><button type="button" class="event-picker-trigger" id="event-time-trigger">Choose time</button><div class="event-picker-menu event-time-menu" id="event-time-menu" hidden></div></div>
         </div>
       </div>
-      <div class="field"><label for="event-location">Location</label><input type="text" id="event-location" maxlength="160" placeholder="Blue Bottle Coffee, Hayes Valley"></div>
-      <div class="field"><label for="event-industry-1">Event industries <span class="hint">(up to 2)</span></label><div class="industry-inputs"><input type="text" id="event-industry-1" maxlength="80" placeholder="e.g. Technology" list="industry-options"><input type="text" id="event-industry-2" maxlength="80" placeholder="Second industry (optional)" list="industry-options"></div></div>
+      <div class="field"><label for="event-location">Location <span class="required-mark" aria-hidden="true">*</span></label><input type="text" id="event-location" maxlength="160"></div>
+      <div class="field"><label>Event industries <span class="required-mark" aria-hidden="true">*</span> <span class="hint">(up to 2)</span></label><div class="industry-inputs event-industry-inputs"><div class="event-picker-wrap"><input type="hidden" id="event-industry-1"><button type="button" class="event-picker-trigger" id="event-industry-1-trigger">Choose an industry</button><div class="event-picker-menu event-industry-menu" id="event-industry-1-menu" hidden></div></div><div class="event-picker-wrap"><input type="hidden" id="event-industry-2"><button type="button" class="event-picker-trigger" id="event-industry-2-trigger">Add another industry (optional)</button><div class="event-picker-menu event-industry-menu" id="event-industry-2-menu" hidden></div></div></div></div>
       <div class="field"><label for="event-max-participants">Maximum participants</label><input type="number" id="event-max-participants" min="1" max="500" value="20" inputmode="numeric"></div>
       <div class="field"><label for="event-description">What should people know? <span class="hint">(optional)</span></label><textarea id="event-description" maxlength="1000" placeholder="A relaxed hour to meet other people in the pool."></textarea></div>
       <p class="error-text" id="event-error"></p>
@@ -204,7 +205,10 @@
 
   <!-- ============ Profile ============ -->
   <section class="screen" id="screen-profile">
-    <h1 class="screen-title">My profile</h1>
+    <div class="screen-title-row">
+      <h1 class="screen-title" id="profile-screen-title">My profile</h1>
+      <button class="btn secondary small" id="btn-language-toggle">中文</button>
+    </div>
     <div id="profile-preview"></div>
 
     <div class="section-label">Your secret code</div>
@@ -217,7 +221,7 @@
       <div class="field"><label for="pf-name">Name</label><input type="text" id="pf-name" maxlength="80"></div>
       <div class="field"><label for="pf-title">Job title</label><input type="text" id="pf-title" maxlength="120"></div>
       <div class="field"><label for="pf-company">Company <span class="hint">(optional)</span></label><input type="text" id="pf-company" maxlength="120"></div>
-      <div class="field"><label for="pf-avatar-image">Profile photo <span class="hint">(optional)</span></label><input type="file" id="pf-avatar-image" accept="image/jpeg,image/png,image/webp"><p class="hint photo-status" id="pf-avatar-status">Choose a new photo to replace your current one.</p></div>
+      <div class="field"><label for="pf-avatar-image">Profile photo <span class="hint">(optional)</span></label><input class="photo-file-input" type="file" id="pf-avatar-image" accept="image/jpeg,image/png,image/webp"><label class="photo-upload-control" for="pf-avatar-image"><span class="photo-upload-icon">↑</span><span id="pf-avatar-upload">Choose a photo</span></label><p class="hint photo-status" id="pf-avatar-status">Choose a new photo to replace your current one.</p></div>
       <div class="field"><label for="pf-industry-1">Industries <span class="hint">(up to 3)</span></label><div class="industry-inputs"><input type="text" id="pf-industry-1" maxlength="80" placeholder="Primary industry" list="industry-options"><input type="text" id="pf-industry-2" maxlength="80" placeholder="Second industry (optional)" list="industry-options"><input type="text" id="pf-industry-3" maxlength="80" placeholder="Third industry (optional)" list="industry-options"></div></div>
       <div class="field"><label for="pf-years">Years of experience</label><input type="number" id="pf-years" min="0" max="60" inputmode="numeric"></div>
       <div class="field"><label for="pf-background">My background is in…</label><textarea id="pf-background" maxlength="600"></textarea></div>
@@ -238,20 +242,20 @@
   <div class="nav-inner">
     <button class="nav-btn" data-screen="discover" aria-label="Discover">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-      Discover
+      <span id="nav-discover-label">Discover</span>
     </button>
     <button class="nav-btn" data-screen="events" aria-label="Events">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-      Events
+      <span id="nav-events-label">Events</span>
     </button>
     <button class="nav-btn" data-screen="matches" aria-label="Matches">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Matches
+      <span id="nav-matches-label">Matches</span>
       <span class="badge" id="badge-matches"></span>
     </button>
     <button class="nav-btn" data-screen="profile" aria-label="Profile">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
-      Profile
+      <span id="nav-profile-label">Profile</span>
     </button>
   </div>
 </nav>

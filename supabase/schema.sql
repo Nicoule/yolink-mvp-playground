@@ -392,10 +392,14 @@ declare
   v_profile uuid := _yolink_auth(p_code);
   v_participant event_participants;
   v_capacity int;
+  v_starts_at timestamptz;
 begin
-  select max_participants into v_capacity from events where id = p_event_id for update;
+  select max_participants, starts_at into v_capacity, v_starts_at from events where id = p_event_id for update;
   if not found then
     raise exception 'EVENT_NOT_FOUND';
+  end if;
+  if v_starts_at <= now() then
+    raise exception 'EVENT_ENDED';
   end if;
   if (select count(*) from event_participants where event_id = p_event_id) >= v_capacity then
     raise exception 'EVENT_FULL';

@@ -274,7 +274,7 @@
     return d.toLocaleDateString([], { month: "short", day: "numeric" });
   }
 
-  const AVATAR_COLORS = ["#3a1b3f", "#7a3b69", "#a4693a", "#2e5d7d", "#2e7d5b", "#8a4b2f", "#4b4e8a", "#815a2b", "#8b3a48"];
+  const AVATAR_COLORS = ["#c77dd4", "#ef7fb8", "#ffab40", "#56b6f0", "#3ecf8e", "#f2905a", "#8b8ff0", "#e6b84d", "#f06b85"];
 
   const ERROR_MESSAGES = {
     INVALID_CODE: "That code didn't match any profile. Check it and try again.",

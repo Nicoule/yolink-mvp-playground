@@ -11,16 +11,16 @@
   --muted: #8a8580;
   --faint: #b5b0aa;
   --border: #eae5df;
-  --plum: #3a1b3f;          /* primary accent */
-  --plum-soft: #f3edf4;
-  --plum-hover: #552a5c;
+  --plum: #f5c518;          /* primary accent */
+  --plum-soft: #fdf3d0;
+  --plum-hover: #e0b30f;
   --coffee: #a4693a;
   --coffee-soft: #f6efe8;
   --success: #2e7d5b;
   --danger: #c0392b;
   --shadow: 0 2px 10px rgba(33, 32, 31, 0.06), 0 8px 30px rgba(33, 32, 31, 0.05);
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --nav-h: 64px;
 }
 
@@ -192,7 +192,7 @@ body {
 .photo-file-input:focus-visible + .photo-upload-control { outline: 2px solid var(--plum); outline-offset: 2px; }
 .photo-upload-icon {
   display: inline-grid; place-items: center; width: 22px; height: 22px;
-  border-radius: 50%; background: var(--plum); color: #fff; font-size: 17px; line-height: 1;
+  border-radius: 50%; background: var(--plum); color: var(--ink); font-size: 17px; line-height: 1;
 }
 .card-color-picker { display: flex; flex-wrap: wrap; gap: 10px; padding: 3px 1px; }
 .card-color-option { width: 31px; height: 31px; padding: 0; border: 2px solid transparent; border-radius: 50%; background: var(--swatch); cursor: pointer; box-shadow: inset 0 0 0 1px rgba(255,255,255,.32); transition: transform .14s ease, box-shadow .14s ease; }
@@ -208,7 +208,7 @@ body {
   font-family: var(--sans);
   padding: 13px 20px; font-size: 15px; font-weight: 600;
   border: none; border-radius: 999px; cursor: pointer;
-  background: var(--plum); color: #fff;
+  background: var(--plum); color: var(--ink);
   transition: background .12s ease, transform .06s ease;
 }
 .btn:hover:not(:disabled) { background: var(--plum-hover); }
@@ -244,9 +244,18 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--plum); outl
 .char-count { font-size: 11.5px; color: var(--faint); text-align: right; margin-top: 3px; }
 
 /* ---------- Onboarding ---------- */
-#screen-welcome { text-align: center; padding-top: 12vh; }
-.welcome-logo { font-family: var(--serif); font-size: 46px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px; }
-.welcome-tag { color: var(--muted); font-size: 16px; max-width: 300px; margin: 0 auto 36px; }
+#screen-welcome {
+  text-align: left; padding-top: 12vh; min-height: 100vh; overflow: hidden;
+  background: linear-gradient(180deg, #fdf3e4 0%, #fbe4d0 45%, #f7d2c4 100%);
+}
+.welcome-logo { font-family: var(--serif); font-size: 90px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px; }
+.welcome-tag { color: var(--muted); font-size: 16px; max-width: 300px; margin: 0 0 40px; }
+.login-skyline {
+  position: absolute; right: -6%; bottom: 0; left: auto; transform: none;
+  width: 58%; max-width: 300px; z-index: 0; pointer-events: none; user-select: none;
+}
+#screen-welcome > *:not(.login-skyline):not(.auth-language-toggle) { position: relative; z-index: 1; }
+#screen-welcome .auth-language-toggle { z-index: 2; }
 
 .step-dots { display: flex; gap: 6px; margin: 4px 0 22px; }
 .step-dots span { width: 26px; height: 4px; border-radius: 2px; background: var(--border); }

@@ -15,30 +15,37 @@
   const COPY = {
     en: {
       discover: "Discover", events: "Events", matches: "Matches", profile: "Profile", myProfile: "My profile",
-      welcomeTag: "Network with intention. Meet professionals who are looking for someone like you.", createProfile: "Create my profile", haveCode: "I have a secret code",
+      welcomeTag: "Network with intention. Meet professionals who are looking for someone like you.", createProfile: "Create my profile", browseFirst: "Browse first", haveCode: "I have a secret code, log in",
       welcomeBack: "Welcome back", loginHelp: "Enter the secret code you received when you created your profile.", secretCode: "Secret code", logIn: "Log in", back: "Back",
       basics: "First, the basics", yourName: "Your name", jobTitle: "Job title", company: "Company", hideCompany: "Don't show", gender: "Gender", profilePhoto: "Profile photo", cardColor: "Card color", optional: "(optional)", photoHelp: "JPG, PNG, or WebP. Your photo will be resized for Yolink.",
-      experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing", shareYolink: "↗ Share Yolink", yolinkLinkCopiedToast: "Yolink's link is copied — share it with your friends 😄",
-      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
-      eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", languageButton: "中文", languageName: "English",
+      experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", personalityTags: "A little more about you", personalityTagsHelp: "(pick up to 3)", personalityTagsLimit: "Choose up to 3 tags.", customTag: "Your own tag", customTagPlaceholder: "e.g. Weekend hiker", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing", shareYolink: "↗ Share Yolink", yolinkLinkCopiedToast: "Yolink's link is copied — share it with your friends 😄",
+      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", completeProfileTitle: "Ready to connect?", completeProfileHelp: "Create your profile to send connection requests, join events, and create your own events.", completeProfile: "Complete my profile", keepBrowsing: "Keep browsing", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
+      eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", eventsRefreshedToast: "Events are up to date.", languageButton: "中文", languageName: "English",
       photoAdjust: "Adjust your photo", photoAdjustHelp: "Drag to reposition, then use the slider to zoom.", choosePhoto: "Choose a photo", zoom: "Zoom", usePhoto: "Use photo",
-      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
+      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", onlineEvent: "Online event", onlineEventLink: "Online event link", joinOnlineEvent: "Open online event link", onlineEventUrlRequired: "Please enter a valid online event link.", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", nameRequired: "Please enter your name.", titleRequired: "Please enter your job title.", industryRequired: "Please enter at least one industry.", yearsRequired: "Please choose your years of experience.", backgroundRequired: "Tell people what your background is in.", lookingForRequired: "Tell people who you're looking to network with.", reportReasonRequired: "Please briefly describe the issue.", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
     },
     zh: {
       discover: "发现", events: "活动", matches: "匹配", profile: "个人资料", myProfile: "我的资料",
-      welcomeTag: "有目的地拓展人脉，认识正在寻找合适连接的专业人士。", createProfile: "创建我的资料", haveCode: "我有专属代码",
+      welcomeTag: "有目的地拓展人脉，认识正在寻找合适连接的专业人士。", createProfile: "创建我的资料", browseFirst: "先逛逛", haveCode: "我有专属代码，去登录",
       welcomeBack: "欢迎回来", loginHelp: "输入创建个人资料时收到的专属代码。", secretCode: "专属代码", logIn: "登录", back: "返回",
       basics: "先了解一下你", yourName: "姓名", jobTitle: "职位", company: "公司", hideCompany: "不显示", gender: "性别", profilePhoto: "头像", cardColor: "名片颜色", optional: "（可选）", photoHelp: "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。",
-      experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览", shareYolink: "↗ 分享 Yolink", yolinkLinkCopiedToast: "已复制 Yolink 的链接，快去分享给好友吧😄",
-      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
-      eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", languageButton: "EN", languageName: "中文",
+      experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", personalityTags: "再介绍一下你自己", personalityTagsHelp: "（最多选择 3 个）", personalityTagsLimit: "最多选择 3 个标签。", customTag: "我的自定义标签", customTagPlaceholder: "例如：周末徒步爱好者", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览", shareYolink: "↗ 分享 Yolink", yolinkLinkCopiedToast: "已复制 Yolink 的链接，快去分享给好友吧😄",
+      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", completeProfileTitle: "完善资料后即可行动", completeProfileHelp: "创建个人资料后，即可发起连接、参加活动和创建自己的活动。", completeProfile: "去完善资料", keepBrowsing: "继续浏览", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
+      eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", eventsRefreshedToast: "活动页已更新。", languageButton: "EN", languageName: "中文",
       photoAdjust: "调整你的照片", photoAdjustHelp: "拖动照片调整位置，再用滑杆缩放。", choosePhoto: "选择照片", zoom: "缩放", usePhoto: "使用此照片",
-      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
+      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", onlineEvent: "线上活动", onlineEventLink: "线上活动链接", joinOnlineEvent: "打开线上活动链接", onlineEventUrlRequired: "请输入有效的线上活动链接。", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", nameRequired: "请填写姓名。", titleRequired: "请填写职位。", industryRequired: "请至少选择一个行业。", yearsRequired: "请选择工作年限。", backgroundRequired: "请介绍一下你的背景。", lookingForRequired: "请说明你希望结识什么样的人。", reportReasonRequired: "请简要说明举报原因。", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
     }
   };
   function t(key, fallback) { return COPY[state.language]?.[key] || fallback || COPY.en[key] || key; }
   const INDUSTRY_ZH = { Technology: "科技", Healthcare: "医疗健康", Finance: "金融", Consulting: "咨询", Education: "教育", Marketing: "市场营销", Design: "设计", Legal: "法律", Manufacturing: "制造业", "Real Estate": "房地产", "Media & Entertainment": "媒体与娱乐", Nonprofit: "非营利组织", Other: "其他", General: "综合" };
   const INDUSTRY_OPTIONS = ["Technology", "Healthcare", "Finance", "Consulting", "Education", "Marketing", "Design", "Legal", "Manufacturing", "Real Estate", "Media & Entertainment", "Nonprofit", "Other"];
+  const PERSONALITY_TAGS = [
+    ["coffee", "☕ Coffee lover", "☕ 咖啡爱好者"], ["city", "✈️ Exploring cities", "✈️ 城市探索中"],
+    ["sharing", "🎤 Loves sharing ideas", "🎤 乐于分享经验"], ["ideas", "💡 Full of ideas", "💡 点子很多"],
+    ["exploring", "🌱 Exploring new directions", "🌱 正在转型 / 探索新方向"], ["friends", "🤝 Meeting new people", "🤝 认识新朋友"],
+    ["learning", "📚 Lifelong learner", "📚 终身学习者"], ["creative", "🎨 Creates beyond work", "🎨 工作之外也爱创作"],
+    ["innovation", "🚀 Into startups & innovation", "🚀 创业与创新关注者"], ["culture", "🌍 Cross-cultural connector", "🌍 喜欢跨文化交流"]
+  ];
   const YEARS_OPTIONS = [...Array.from({ length: 11 }, (_, value) => value), 11];
   const GENDER_OPTIONS = [
     ["woman", "Woman", "女性"], ["man", "Man", "男性"], ["nonbinary", "Non-binary", "非二元性别"], ["prefer_not_to_say", "Prefer not to say", "不愿透露"]
@@ -46,6 +53,29 @@
   function genderLabel(value) {
     const option = GENDER_OPTIONS.find(([key]) => key === value) || GENDER_OPTIONS.at(-1);
     return state.language === "zh" ? option[2] : option[1];
+  }
+  function personalityTagLabel(value) {
+    const option = PERSONALITY_TAGS.find(([key]) => key === value);
+    return option ? (state.language === "zh" ? option[2] : option[1]) : "";
+  }
+  function parsedPersonalityTags(value) {
+    const allowed = new Set(PERSONALITY_TAGS.map(([key]) => key));
+    return [...new Set(String(value || "").split("|").map((tag) => tag.trim()).filter((tag) => allowed.has(tag)))].slice(0, 3);
+  }
+  function renderPersonalityTagPicker(prefix) {
+    const input = $(prefix + "-personality-tags");
+    const picker = $(prefix + "-personality-tag-picker");
+    if (!input || !picker) return;
+    const selected = parsedPersonalityTags(input.value);
+    input.value = selected.join(" | ");
+    picker.innerHTML = PERSONALITY_TAGS.map(([key]) => `<button type="button" class="personality-tag-option ${selected.includes(key) ? "selected" : ""}" data-personality-tag="${esc(key)}" aria-pressed="${selected.includes(key)}">${esc(personalityTagLabel(key))}</button>`).join("");
+    picker.querySelectorAll("[data-personality-tag]").forEach((button) => button.addEventListener("click", () => {
+      const tag = button.dataset.personalityTag;
+      const next = selected.includes(tag) ? selected.filter((item) => item !== tag) : selected.length < 3 ? [...selected, tag] : null;
+      if (!next) { toast(t("personalityTagsLimit")); return; }
+      input.value = next.join(" | ");
+      renderPersonalityTagPicker(prefix);
+    }));
   }
   function renderGenderPickers() {
     ["ob", "pf"].forEach((prefix) => {
@@ -216,7 +246,7 @@
     document.title = state.language === "zh" ? "Yolink — 有目的地拓展人脉" : "Yolink — Network with intention";
     const labels = {
       "nav-discover-label": "discover", "nav-events-label": "events", "nav-matches-label": "matches", "nav-profile-label": "profile",
-      "profile-screen-title": "myProfile", "btn-start-onboarding": "createProfile", "btn-goto-login": "haveCode", "ob-avatar-upload": "choosePhoto", "pf-avatar-upload": "choosePhoto",
+      "profile-screen-title": "myProfile", "btn-start-onboarding": "createProfile", "btn-browse-first": "browseFirst", "btn-ob-browse": "browseFirst", "btn-goto-login": "haveCode", "ob-avatar-upload": "choosePhoto", "pf-avatar-upload": "choosePhoto",
       "screen-welcome .welcome-tag": "welcomeTag", "label[for='login-code']": "secretCode",
       "screen-login h1": "welcomeBack", "screen-login .screen-sub": "loginHelp", "btn-login": "logIn", "btn-login-back": "back", "btn-share-yolink": "shareYolink",
       "ob-step-1 h1": "basics", "ob-step-2 h1": "experience", "ob-step-3 h1": "story", "btn-ob-next": "next", "btn-ob-back": "back",
@@ -224,7 +254,7 @@
       "ob-industries-label": "industries", "ob-years-label": "yearsExperience", "label[for='pf-name']": "yourName", "label[for='pf-title']": "jobTitle", "label[for='pf-company']": "company", "pf-hide-company-label": "hideCompany", "pf-gender-label": "gender", "label[for='pf-avatar-image']": "profilePhoto", "pf-card-color-label": "cardColor", "pf-industries-label": "industries", "pf-years-label": "yearsExperience",
       "screen-code h1": "saveCode", "btn-copy-code": "copyCode", "btn-code-done": "startBrowsing",
       "screen-events h1": "events", "btn-open-my-events": "myEvents", "screen-events .screen-sub": "eventsSub", "btn-show-event-form": "createEvent", "btn-create-my-event": "createEvent", "btn-cancel-event-form": "cancel",
-      "screen-my-events h1": "myEvents", "screen-requests h1": "requests", "screen-matches h1": "matches", "btn-chat-report": "report", "chat-form button": "send", "request-modal-title": "addRequestNote", "request-modal-help": "requestNoteHelp", "request-message-label": "requestMessage", "btn-submit-request": "sendRequest", "btn-cancel-request": "cancel",
+      "screen-my-events h1": "myEvents", "screen-requests h1": "requests", "screen-matches h1": "matches", "btn-chat-report": "report", "chat-form button": "send", "request-modal-title": "addRequestNote", "request-modal-help": "requestNoteHelp", "request-message-label": "requestMessage", "btn-submit-request": "sendRequest", "btn-cancel-request": "cancel", "profile-gate-title": "completeProfileTitle", "profile-gate-help": "completeProfileHelp", "btn-complete-profile": "completeProfile", "btn-keep-browsing": "keepBrowsing",
       "btn-profile-copy-code": "copyCode", "btn-edit-profile": "editProfile", "btn-save-profile": "saveChanges", "btn-cancel-profile-edit": "cancel", "btn-logout": "logOut",
       "photo-crop-title": "photoAdjust", "photo-crop-modal .photo-crop-dialog > p": "photoAdjustHelp", "photo-crop-modal .photo-zoom-label": "zoom", "btn-use-photo": "usePhoto", "btn-cancel-photo-crop": "cancel"
     };
@@ -232,6 +262,17 @@
       const element = target.includes(" ") || target.includes(".") || target.includes("[") ? document.querySelector("#" + target) || document.querySelector(target) : $(target);
       if (element) element.textContent = t(key);
     }
+    if ($("event-online-label")) $("event-online-label").textContent = t("onlineEvent");
+    if ($("event-online-url-label")) $("event-online-url-label").innerHTML = `${esc(t("onlineEventLink"))} <span class="required-mark" aria-hidden="true">*</span>`;
+    ["ob", "pf"].forEach((prefix) => {
+      const label = $(prefix + "-personality-tags-label");
+      if (label) label.innerHTML = `${esc(t("personalityTags"))} <span class="hint">${esc(t("personalityTagsHelp"))}</span>`;
+      const customLabel = $(prefix + "-custom-tag-label");
+      if (customLabel) customLabel.innerHTML = `${esc(t("customTag"))} <span class="hint">${esc(t("optional"))}</span>`;
+      const customInput = $(prefix + "-custom-tag");
+      if (customInput) customInput.placeholder = t("customTagPlaceholder");
+      renderPersonalityTagPicker(prefix);
+    });
     const loginCode = $("login-code");
     if (loginCode) loginCode.setAttribute("aria-label", t("secretCode"));
     const refreshButton = $("btn-refresh-discover");
@@ -241,8 +282,8 @@
     }
     const codeHelp = $("code-help");
     if (codeHelp) codeHelp.innerHTML = state.language === "zh"
-      ? "这是返回你个人资料的<strong>唯一</strong>方式，无法通过邮箱找回。请截图或保存到安全的位置。"
-      : "This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe.";
+      ? "这是返回你个人资料的<strong>唯一</strong>方式，无法通过邮箱找回。请截图或保存到安全的位置；之后登录后，也可在「我的资料」页面查看。"
+      : "This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe. You can also find it later in My profile.";
     document.querySelectorAll("[data-language-toggle]").forEach((button) => { button.textContent = t("languageButton"); });
     document.querySelectorAll(".nav-btn").forEach((button) => button.setAttribute("aria-label", t(button.dataset.screen)));
     renderIndustryOptions();
@@ -465,19 +506,19 @@
       createProfile: (f) => rpc("create_profile", {
         p_name: f.name, p_title: f.title, p_company: f.company, p_industry: f.industry,
         p_years_exp: f.years_exp, p_background: f.background, p_looking_for: f.looking_for,
-        p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender,
+        p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender, p_personality_tags: f.personality_tags, p_custom_tag: f.custom_tag,
       }),
       login: (code) => rpc("login", { p_code: code }),
       updateProfile: (code, f) => rpc("update_profile", {
         p_code: code, p_name: f.name, p_title: f.title, p_company: f.company,
         p_industry: f.industry, p_years_exp: f.years_exp,
-        p_background: f.background, p_looking_for: f.looking_for, p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender,
+        p_background: f.background, p_looking_for: f.looking_for, p_company_visible: f.company_visible, p_avatar_color: f.avatar_color, p_avatar_image: f.avatar_image, p_gender: f.gender, p_personality_tags: f.personality_tags, p_custom_tag: f.custom_tag,
       }),
       sendRequest: (code, toId, kind, message) => rpc("send_request", { p_code: code, p_to_id: toId, p_kind: kind, p_message: message }),
       respondRequest: (code, reqId, accept) => rpc("respond_request", { p_code: code, p_request_id: reqId, p_accept: accept }),
       sendMessage: (code, matchId, body) => rpc("send_message", { p_code: code, p_match_id: matchId, p_body: body }),
-      createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_industries: event.industries, p_max_participants: event.max_participants }),
-      updateEvent: (code, eventId, event) => rpc("update_event", { p_code: code, p_event_id: eventId, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_industries: event.industries, p_max_participants: event.max_participants }),
+      createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_industries: event.industries, p_max_participants: event.max_participants }),
+      updateEvent: (code, eventId, event) => rpc("update_event", { p_code: code, p_event_id: eventId, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_industries: event.industries, p_max_participants: event.max_participants }),
       joinEvent: (code, eventId) => rpc("join_event", { p_code: code, p_event_id: eventId }),
       removeEventParticipant: (code, eventId, profileId) => rpc("remove_event_participant", { p_code: code, p_event_id: eventId, p_profile_id: profileId }),
       leaveEvent: (code, eventId) => rpc("leave_event", { p_code: code, p_event_id: eventId }),
@@ -602,7 +643,7 @@
         const d = db();
         const profile = { id: uuid(), name: f.name, title: f.title, company: f.company || null, company_visible: f.company_visible,
           industry: f.industry, years_exp: f.years_exp, background: f.background, gender: f.gender,
-          looking_for: f.looking_for, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, created_at: new Date().toISOString() };
+          looking_for: f.looking_for, personality_tags: f.personality_tags || "", custom_tag: f.custom_tag || null, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, created_at: new Date().toISOString() };
         d.profiles.unshift(profile);
         const code = genCode();
         d.secrets[code] = profile.id;
@@ -619,7 +660,7 @@
         const id = auth(d, code);
         const p = d.profiles.find((x) => x.id === id);
         Object.assign(p, { name: f.name, title: f.title, company: f.company || null, company_visible: f.company_visible,
-          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, gender: f.gender });
+          industry: f.industry, years_exp: f.years_exp, background: f.background, looking_for: f.looking_for, personality_tags: f.personality_tags || "", custom_tag: f.custom_tag || null, avatar_color: f.avatar_color, avatar_image: f.avatar_image || null, gender: f.gender });
         save(d);
         return delay(p);
       },
@@ -666,7 +707,7 @@
       async createEvent(code, event) {
         const d = db();
         const creatorId = auth(d, code);
-        const row = { id: uuid(), creator_id: creatorId, title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), industries: event.industries || "", max_participants: event.max_participants, created_at: new Date().toISOString() };
+        const row = { id: uuid(), creator_id: creatorId, title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, industries: event.industries || "", max_participants: event.max_participants, created_at: new Date().toISOString() };
         d.events.push(row);
         d.participants.push({ event_id: row.id, profile_id: creatorId, joined_at: new Date().toISOString() });
         save(d);
@@ -692,7 +733,7 @@
         if (index < 0) throw new Error("EVENT_NOT_FOUND");
         if (d.events[index].creator_id !== hostId) throw new Error("NOT_EVENT_HOST");
         if (event.max_participants < d.participants.filter((row) => row.event_id === eventId).length) throw new Error("CAPACITY_TOO_LOW");
-        d.events[index] = { ...d.events[index], title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), industries: event.industries, max_participants: event.max_participants };
+        d.events[index] = { ...d.events[index], title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, industries: event.industries, max_participants: event.max_participants };
         save(d);
         return delay(d.events[index]);
       },
@@ -886,6 +927,7 @@
     const company = p.company && p.company_visible !== false ? ` <span style="opacity:.75">@ ${esc(p.company)}</span>` : "";
     const genderIcon = genderIconHtml(p.gender);
     const industries = parsedIndustries(p.industry);
+    const personalityTags = parsedPersonalityTags(p.personality_tags);
     return `
       <div class="card">
         ${bannerHtml || ""}
@@ -901,6 +943,7 @@
             ${industries.map((industry) => `<span class="chip">${esc(industryLabel(industry))}</span>`).join("")}
             <span class="chip">${esc(experienceLabel(p.years_exp))}</span>
           </div>
+          ${personalityTags.length || p.custom_tag ? `<div class="personality-tags">${personalityTags.map((tag) => `<span class="personality-tag">${esc(personalityTagLabel(tag))}</span>`).join("")}${p.custom_tag ? `<span class="personality-tag">${esc(p.custom_tag)}</span>` : ""}</div>` : ""}
           <div class="prompt">
             <div class="prompt-label">My background is in…</div>
             <div class="prompt-answer">${esc(p.background)}</div>
@@ -926,7 +969,7 @@
 
     const matchedIds = new Set(myMatches().flatMap((m) => [m.user_a, m.user_b]));
     const myOutgoing = new Map(
-      state.requests.filter((r) => r.from_id === state.me.id).map((r) => [r.to_id, r])
+      state.me ? state.requests.filter((r) => r.from_id === state.me.id).map((r) => [r.to_id, r]) : []
     );
 
     const allIndustries = uniqueIndustries(state.profiles.flatMap((p) => parsedIndustries(p.industry))).sort((a, b) => industryLabel(a).localeCompare(industryLabel(b)));
@@ -955,7 +998,7 @@
     };
     const pool = state.profiles.filter((p) => {
       const industries = parsedIndustries(p.industry);
-      return p.id !== state.me.id && !matchedIds.has(p.id) &&
+      return (!state.me || p.id !== state.me.id) && !matchedIds.has(p.id) &&
         (state.discoverIndustry === "all" || industries.includes(state.discoverIndustry)) && matchesExperience(p.years_exp);
     });
     if (!pool.length) {
@@ -1026,7 +1069,40 @@
     }
   }
 
+  // ---------- Events pull-to-refresh ----------
+  let eventsPullStartY = null;
+  let eventsPullDistance = 0;
+  let eventsRefreshing = false;
+
+  function renderEventsPullRefresh({ distance = 0, refreshing = false } = {}) {
+    const indicator = $("events-pull-refresh");
+    const label = indicator.querySelector(".pull-refresh-label");
+    const active = refreshing || distance > 0;
+    indicator.classList.toggle("visible", active);
+    indicator.classList.toggle("ready", !refreshing && distance >= DISCOVER_PULL_THRESHOLD);
+    indicator.classList.toggle("refreshing", refreshing);
+    indicator.setAttribute("aria-hidden", String(!active));
+    label.textContent = refreshing ? t("refreshing") : distance >= DISCOVER_PULL_THRESHOLD ? t("releaseToRefresh") : t("pullToRefresh");
+  }
+
+  async function refreshEventsFromPull() {
+    if (eventsRefreshing) return;
+    eventsRefreshing = true;
+    renderEventsPullRefresh({ refreshing: true });
+    try {
+      await refreshAll({ silent: true });
+      if (state.currentScreen === "events") renderEvents();
+      toast(t("eventsRefreshedToast"));
+    } catch (err) {
+      toast(friendlyError(err));
+    } finally {
+      eventsRefreshing = false;
+      window.setTimeout(() => renderEventsPullRefresh(), 260);
+    }
+  }
+
   function reportProfile(profileId, profileName = "") {
+    if (!state.me) { showProfileGate(); return; }
     const profile = profileById(profileId);
     const name = profile?.name || profileName;
     if (!profileId || !name) {
@@ -1056,7 +1132,7 @@
   async function submitReport() {
     const reason = $("report-reason").value.trim();
     const error = $("report-error");
-    if (!reason) { error.textContent = "Please briefly describe the issue."; error.classList.add("visible"); return; }
+    if (!reason) { error.textContent = t("reportReasonRequired"); error.classList.add("visible"); return; }
     const button = $("btn-submit-report");
     button.disabled = true; error.classList.remove("visible");
     try {
@@ -1075,6 +1151,7 @@
   }
 
   function openRequestComposer(toId, kind) {
+    if (!state.me) { showProfileGate(); return; }
     state.requestToId = toId;
     state.requestKind = kind;
     $("request-message").value = "";
@@ -1175,12 +1252,20 @@
     return `<div class="event-date"><div class="month">${esc(d.toLocaleDateString([], { month: "short" }))}</div><div class="day">${esc(String(d.getDate()))}</div></div>`;
   }
   function eventIndustries(event) { return parsedIndustries(event.industries); }
+  function onlineEventUrl(event) {
+    try {
+      const url = new URL(event.online_url || "");
+      return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+    } catch { return ""; }
+  }
   function eventCardHtml(event, expanded, membership) {
     const count = participantsFor(event.id).length;
     const role = membership ? `<div class="event-membership ${membership === "Hosting" ? "hosting" : ""}">${esc(membership)}</div>` : "";
     const industries = eventIndustries(event);
     const tags = industries.length ? `<div class="event-industries">${industries.map((industry) => `<span>${esc(industryLabel(industry))}</span>`).join("")}</div>` : "";
-    return `<div class="card event-card" data-open-event="${esc(event.id)}"><div class="event-top">${eventDateHtml(event.starts_at)}<div class="event-meta"><h2>${esc(event.title)}</h2><div class="when">${esc(fmtEventTime(event.starts_at))}</div><div class="where">📍 ${esc(event.location)}</div>${tags}<div class="going">${count} / ${esc(String(event.max_participants || 20))} going</div>${role}</div></div>${expanded || ""}</div>`;
+    const onlineUrl = onlineEventUrl(event);
+    const venue = onlineUrl ? `💻 ${esc(t("onlineEvent"))}` : `📍 ${esc(event.location)}`;
+    return `<div class="card event-card" data-open-event="${esc(event.id)}"><div class="event-top">${eventDateHtml(event.starts_at)}<div class="event-meta"><h2>${esc(event.title)}</h2><div class="when">${esc(fmtEventTime(event.starts_at))}</div><div class="where">${venue}</div>${tags}<div class="going">${count} / ${esc(String(event.max_participants || 20))} going</div>${role}</div></div>${expanded || ""}</div>`;
   }
   function eventProfileTagHtml(profile, removableEventId) {
     const remove = removableEventId ? `<button class="remove-participant" data-remove-participant="${esc(profile.id)}" data-remove-from-event="${esc(removableEventId)}" aria-label="Remove ${esc(profile.name)} from event">×</button>` : "";
@@ -1189,15 +1274,18 @@
   function eventDetailHtml(detail, hostControls = false) {
     const people = participantsFor(detail.id).map((row) => profileById(row.profile_id)).filter(Boolean);
     const creator = profileById(detail.creator_id);
-    const joined = people.some((person) => person.id === state.me.id);
+    const myId = state.me?.id;
+    const joined = !!myId && people.some((person) => person.id === myId);
     const isFull = people.length >= (detail.max_participants || 20);
     const upcoming = new Date(detail.starts_at) > new Date();
     const attendeeTags = people.map((person) => eventProfileTagHtml(person, hostControls && person.id !== detail.creator_id ? detail.id : null)).join("");
     const hostActions = hostControls ? `<button class="btn full secondary event-edit-btn" data-edit-event="${esc(detail.id)}">${esc(t("editEvent"))}</button>${upcoming ? `<button class="btn full danger-ghost event-cancel-btn" data-cancel-event="${esc(detail.id)}">${esc(t("cancelEvent"))}</button>` : ""}` : "";
-    const attendanceAction = joined && detail.creator_id !== state.me.id
+    const attendanceAction = joined && detail.creator_id !== myId
       ? `<button class="btn full secondary" data-leave-event="${esc(detail.id)}">${esc(t("quitEvent"))}</button>`
       : `<button class="btn full ${joined ? "requested" : ""}" data-join-event="${esc(detail.id)}" ${joined || isFull || !upcoming ? "disabled" : ""}>${joined ? "You're going ✓" : !upcoming ? t("eventEnded") : isFull ? t("eventFull") : t("joinEvent")}</button>`;
-    return `<div class="event-expanded"><button class="btn ghost event-back" data-close-event>← Close details</button>${detail.description ? `<div class="event-description">${esc(detail.description)}</div>` : ""}${creator ? `<div class="section-label">Event host</div><div class="participant-list">${eventProfileTagHtml(creator)}</div>` : ""}<div class="section-label">Participants · ${people.length} of ${esc(String(detail.max_participants || 20))}</div><div class="participant-list">${attendeeTags || "<span class=\"hint\">No participants yet.</span>"}</div>${hostActions}${attendanceAction}<button class="btn full ghost event-share-btn" data-share-event="${esc(detail.id)}">${esc(t("copyEventLink"))}</button></div>`;
+    const onlineUrl = onlineEventUrl(detail);
+    const onlineLink = onlineUrl ? `<a class="btn full secondary event-online-link" href="${esc(onlineUrl)}" target="_blank" rel="noopener noreferrer">${esc(t("joinOnlineEvent"))}</a>` : "";
+    return `<div class="event-expanded"><button class="btn ghost event-back" data-close-event>← Close details</button>${detail.description ? `<div class="event-description">${esc(detail.description)}</div>` : ""}${onlineLink}${creator ? `<div class="section-label">Event host</div><div class="participant-list">${eventProfileTagHtml(creator)}</div>` : ""}<div class="section-label">Participants · ${people.length} of ${esc(String(detail.max_participants || 20))}</div><div class="participant-list">${attendeeTags || "<span class=\"hint\">No participants yet.</span>"}</div>${hostActions}${attendanceAction}<button class="btn full ghost event-share-btn" data-share-event="${esc(detail.id)}">${esc(t("copyEventLink"))}</button></div>`;
   }
   function renderEvents() {
     if (!state.eventsAvailable) {
@@ -1236,7 +1324,7 @@
     const filtered = state.eventIndustry !== "all" || state.eventTime !== "upcoming";
     $("events-list").innerHTML = list.length ? list.map((event) => eventCardHtml(event, event.id === detail?.id ? eventDetailHtml(event) : "")).join("") : emptyStateHtml(filtered ? "🔎" : "📅", filtered ? "No matching events" : "No events yet", filtered ? "Try widening your industry or time filter." : "Be the person who gets the first gathering on the calendar.");
     $("events-list").querySelectorAll("[data-open-event]").forEach((card) => card.addEventListener("click", (ev) => {
-      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant]")) return;
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link")) return;
       state.openEventId = card.dataset.openEvent; renderEvents();
     }));
     $("events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderEvents(); });
@@ -1272,7 +1360,7 @@
       $("my-events-list").innerHTML = filtered.sort((a, b) => a.starts_at.localeCompare(b.starts_at)).map(card).join("");
     }
     $("my-events-list").querySelectorAll("[data-open-event]").forEach((eventCard) => eventCard.addEventListener("click", (ev) => {
-      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant]")) return;
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link")) return;
       state.openEventId = eventCard.dataset.openEvent; renderMyEvents();
     }));
     $("my-events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderMyEvents(); });
@@ -1295,9 +1383,11 @@
     $("member-modal").setAttribute("aria-hidden", "true");
   }
   function showEventForm() {
+    if (!state.me) { showProfileGate(); return; }
     showScreen("events");
     state.editingEventId = null;
-    ["event-title", "event-date", "event-time", "event-location", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+    ["event-title", "event-date", "event-time", "event-location", "event-online-url", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+    $("event-online").checked = false;
     $("event-max-participants").value = 20;
     $("event-error").textContent = "";
     $("event-error").classList.remove("visible");
@@ -1305,9 +1395,20 @@
     $("btn-create-event").textContent = t("publishEvent");
     $("event-create-panel").dataset.open = "true";
     state.eventPickerOpen = null;
+    syncEventOnlineFields();
     renderEventPickers();
     renderEvents();
     $("event-title").focus();
+  }
+  function syncEventOnlineFields() {
+    const online = $("event-online").checked;
+    $("event-online-url-field").hidden = !online;
+    $("event-online-url").required = online;
+    $("event-location-required").hidden = online;
+  }
+  function validOnlineUrl(value) {
+    try { const url = new URL(value); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; }
+    catch { return ""; }
   }
   function cancelEventForm() {
     state.editingEventId = null;
@@ -1318,25 +1419,29 @@
     renderEvents();
   }
   async function createEventClick() {
+    if (!state.me) { showProfileGate(); return; }
     const error = $("event-error");
     const title = $("event-title").value.trim();
     const date = $("event-date").value;
     const time = $("event-time").value;
     const location = $("event-location").value.trim();
+    const onlineUrl = $("event-online").checked ? validOnlineUrl($("event-online-url").value.trim()) : "";
     const description = $("event-description").value.trim();
     const industries = uniqueIndustries([1, 2].map((number) => $("event-industry-" + number).value));
     const maxParticipants = parseInt($("event-max-participants").value, 10);
-    if (!title || !date || !time || !location) { error.textContent = t("eventRequiredDetails"); error.classList.add("visible"); return; }
+    if ($("event-online").checked && !onlineUrl) { error.textContent = t("onlineEventUrlRequired"); error.classList.add("visible"); return; }
+    if (!title || !date || !time || (!location && !onlineUrl)) { error.textContent = t("eventRequiredDetails"); error.classList.add("visible"); return; }
     if (!industries.length) { error.textContent = t("eventIndustryRequired"); error.classList.add("visible"); return; }
     if (Number.isNaN(maxParticipants) || maxParticipants < 1 || maxParticipants > 500) { error.textContent = t("eventCapacityInvalid"); error.classList.add("visible"); return; }
     const button = $("btn-create-event"); button.disabled = true; error.classList.remove("visible");
     try {
-      const eventData = { title, description, starts_at: new Date(`${date}T${time}`).toISOString(), location, industries: industries.join(" | "), max_participants: maxParticipants };
+      const eventData = { title, description, starts_at: new Date(`${date}T${time}`).toISOString(), location: location || "Online", online_url: onlineUrl || null, industries: industries.join(" | "), max_participants: maxParticipants };
       const editing = state.editingEventId;
       const event = editing ? await api.updateEvent(state.code, editing, eventData) : await api.createEvent(state.code, eventData);
       await refreshAll({ silent: true });
       state.openEventId = event.id;
-      ["event-title", "event-date", "event-time", "event-location", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+      ["event-title", "event-date", "event-time", "event-location", "event-online-url", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+      $("event-online").checked = false;
       $("event-max-participants").value = 20;
       state.eventPickerOpen = null;
       state.editingEventId = null;
@@ -1348,6 +1453,7 @@
     finally { button.disabled = false; }
   }
   async function joinEventClick(eventId, button) {
+    if (!state.me) { showProfileGate(); return; }
     const event = state.events.find((item) => item.id === eventId);
     if (event && new Date(event.starts_at) <= new Date()) { toast(t("eventEnded")); return; }
     button.disabled = true;
@@ -1375,7 +1481,9 @@
     $("event-title").value = event.title;
     $("event-date").value = dateInputValue(start);
     $("event-time").value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
-    $("event-location").value = event.location;
+    $("event-location").value = onlineEventUrl(event) && event.location === "Online" ? "" : event.location;
+    $("event-online").checked = !!onlineEventUrl(event);
+    $("event-online-url").value = onlineEventUrl(event);
     const industries = eventIndustries(event);
     $("event-industry-1").value = industries[0] || "";
     $("event-industry-2").value = industries[1] || "";
@@ -1385,6 +1493,7 @@
     $("btn-create-event").textContent = t("saveEvent");
     $("event-create-panel").dataset.open = "true";
     state.eventPickerOpen = null;
+    syncEventOnlineFields();
     renderEventPickers();
     showScreen("events");
     $("event-title").focus();
@@ -1595,11 +1704,14 @@
     $("pf-years").value = state.me.years_exp;
     $("pf-background").value = state.me.background;
     $("pf-looking").value = state.me.looking_for;
+    $("pf-personality-tags").value = state.me.personality_tags || "";
+    $("pf-custom-tag").value = state.me.custom_tag || "";
     $("profile-edit-form").hidden = !state.profileEditing;
     $("btn-edit-profile").hidden = state.profileEditing;
     renderGenderPickers();
     renderCardColorPickers();
     renderProfileExperiencePickers();
+    renderPersonalityTagPicker("pf");
   }
 
   function startProfileEdit() {
@@ -1648,19 +1760,55 @@
     const name = get("name"), title = get("title"), company = get("company");
     const industries = collectIndustries(prefix), background = get("background"), looking = get("looking");
     const years = parseInt($(prefix + "-years").value, 10);
-    if (!name) return { error: "Please enter your name." };
-    if (!title) return { error: "Please enter your job title." };
-    if (!industries.length) return { error: "Please enter at least one industry." };
-    if (Number.isNaN(years) || years < 0 || years > 60) return { error: "Years of experience should be between 0 and 60." };
-    if (!background) return { error: "Tell people what your background is in." };
-    if (!looking) return { error: "Tell people who you're looking to network with." };
-    return { name, title, company, company_visible: !$(prefix + "-hide-company").checked, industry: industries.join(" | "), years_exp: years, background, looking_for: looking, avatar_color: $(prefix + "-card-color").value || AVATAR_COLORS[0], avatar_image: state.profileAvatarImage, gender: $(prefix + "-gender").value || "prefer_not_to_say" };
+    if (!name) return { error: t("nameRequired") };
+    if (!title) return { error: t("titleRequired") };
+    if (!industries.length) return { error: t("industryRequired") };
+    if (Number.isNaN(years) || years < 0 || years > 60) return { error: t("yearsRequired") };
+    if (!background) return { error: t("backgroundRequired") };
+    if (!looking) return { error: t("lookingForRequired") };
+    return { name, title, company, company_visible: !$(prefix + "-hide-company").checked, industry: industries.join(" | "), years_exp: years, background, looking_for: looking, personality_tags: parsedPersonalityTags($(prefix + "-personality-tags").value).join(" | "), custom_tag: $(prefix + "-custom-tag").value.trim(), avatar_color: $(prefix + "-card-color").value || AVATAR_COLORS[0], avatar_image: state.profileAvatarImage, gender: $(prefix + "-gender").value || "prefer_not_to_say" };
   }
   function collectIndustries(prefix) {
     return uniqueIndustries([1, 2, 3].map((number) => $(prefix + "-industry-" + number).value));
   }
 
   // ---------- Onboarding ----------
+  function startOnboarding() {
+    state.onboardingAvatarImage = null;
+    $("ob-avatar-image").value = "";
+    $("ob-gender").value = "prefer_not_to_say";
+    $("ob-hide-company").checked = false;
+    $("ob-card-color").value = AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)];
+    [1, 2, 3].forEach((number) => { $("ob-industry-" + number).value = ""; });
+    $("ob-years").value = "";
+    $("ob-name").value = "";
+    $("ob-title").value = "";
+    $("ob-company").value = "";
+    $("ob-background").value = "";
+    $("ob-looking").value = "";
+    $("ob-personality-tags").value = "";
+    $("ob-custom-tag").value = "";
+    $("ob-background-count").textContent = "0";
+    $("ob-looking-count").textContent = "0";
+    state.onboardingExperiencePickerOpen = null;
+    $("ob-avatar-status").textContent = state.language === "zh" ? "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。" : "JPG, PNG, or WebP. Your photo will be resized for Yolink.";
+    renderGenderPickers();
+    renderCardColorPickers();
+    renderPersonalityTagPicker("ob");
+    showObStep(1);
+    showScreen("onboarding");
+  }
+
+  function showProfileGate() {
+    $("profile-gate-modal").classList.add("visible");
+    $("profile-gate-modal").setAttribute("aria-hidden", "false");
+    $("btn-complete-profile").focus();
+  }
+  function closeProfileGate() {
+    $("profile-gate-modal").classList.remove("visible");
+    $("profile-gate-modal").setAttribute("aria-hidden", "true");
+  }
+
   function showObStep(step) {
     state.obStep = step;
     [1, 2, 3].forEach((i) => { $("ob-step-" + i).style.display = i === step ? "" : "none"; });
@@ -1676,19 +1824,19 @@
     const fail = (msg) => { err.textContent = msg; err.classList.add("visible"); };
 
     if (state.obStep === 1) {
-      if (!$("ob-name").value.trim()) return fail("Please enter your name.");
-      if (!$("ob-title").value.trim()) return fail("Please enter your job title.");
+      if (!$("ob-name").value.trim()) return fail(t("nameRequired"));
+      if (!$("ob-title").value.trim()) return fail(t("titleRequired"));
       return showObStep(2);
     }
     if (state.obStep === 2) {
       const years = parseInt($("ob-years").value, 10);
-      if (!collectIndustries("ob").length) return fail("Please enter at least one industry.");
-      if (Number.isNaN(years) || years < 0 || years > 60) return fail("Years of experience should be between 0 and 60.");
+      if (!collectIndustries("ob").length) return fail(t("industryRequired"));
+      if (Number.isNaN(years) || years < 0 || years > 60) return fail(t("yearsRequired"));
       return showObStep(3);
     }
     // step 3 -> create
-    if (!$("ob-background").value.trim()) return fail("Tell people what your background is in.");
-    if (!$("ob-looking").value.trim()) return fail("Tell people who you're looking to network with.");
+    if (!$("ob-background").value.trim()) return fail(t("backgroundRequired"));
+    if (!$("ob-looking").value.trim()) return fail(t("lookingForRequired"));
 
     const btn = $("btn-ob-next");
     btn.disabled = true;
@@ -1702,6 +1850,8 @@
         years_exp: parseInt($("ob-years").value, 10),
         background: $("ob-background").value.trim(),
         looking_for: $("ob-looking").value.trim(),
+        personality_tags: parsedPersonalityTags($("ob-personality-tags").value).join(" | "),
+        custom_tag: $("ob-custom-tag").value.trim(),
         avatar_color: $("ob-card-color").value || AVATAR_COLORS[0],
         avatar_image: state.onboardingAvatarImage,
         gender: $("ob-gender").value || "prefer_not_to_say",
@@ -1764,10 +1914,9 @@
   }
 
   async function refreshAll(opts = {}) {
-    if (!state.me) return;
     let data;
     try {
-      data = await api.fetchAll(state.me.id);
+      data = await api.fetchAll(state.me?.id);
     } catch (e) {
       console.error("refresh failed", e);
       return;
@@ -1784,12 +1933,14 @@
     state.eventsAvailable = data.eventsAvailable !== false;
 
     // keep my own profile fresh (e.g. edited in another tab)
-    const mine = profileById(state.me.id);
-    if (mine) state.me = mine;
+    if (state.me) {
+      const mine = profileById(state.me.id);
+      if (mine) state.me = mine;
+    }
 
     // detect brand-new matches involving me (skip on first load)
     const currentIds = new Set(myMatches().map((m) => m.id));
-    if (prevMatchIds && !opts.silent) {
+    if (state.me && prevMatchIds && !opts.silent) {
       for (const m of myMatches()) {
         if (!prevMatchIds.has(m.id)) {
           showMatchOverlay(m.id);
@@ -1800,7 +1951,7 @@
     state.knownMatchIds = currentIds;
 
     // notify on new incoming messages when not looking at that chat
-    if (!opts.silent && state.messages.length > prevMsgCount) {
+    if (state.me && !opts.silent && state.messages.length > prevMsgCount) {
       const fresh = state.messages.slice(prevMsgCount).filter(
         (m) => m.sender_id !== state.me.id && m.match_id !== state.openMatchId
       );
@@ -1867,9 +2018,19 @@
     }
   }
 
+  async function enterGuestBrowse() {
+    state.me = null;
+    state.code = null;
+    state.knownMatchIds = null;
+    await refreshAll({ silent: true });
+    showScreen("discover");
+  }
+
   async function init() {
     // wire events
-    $("btn-start-onboarding").addEventListener("click", () => { state.onboardingAvatarImage = null; $("ob-avatar-image").value = ""; $("ob-gender").value = "prefer_not_to_say"; $("ob-hide-company").checked = false; $("ob-card-color").value = AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)]; [1, 2, 3].forEach((number) => { $("ob-industry-" + number).value = ""; }); $("ob-years").value = ""; state.onboardingExperiencePickerOpen = null; $("ob-avatar-status").textContent = "JPG, PNG, or WebP. Your photo will be resized for Yolink."; renderGenderPickers(); renderCardColorPickers(); showObStep(1); showScreen("onboarding"); });
+    $("btn-start-onboarding").addEventListener("click", startOnboarding);
+    $("btn-browse-first").addEventListener("click", enterGuestBrowse);
+    $("btn-ob-browse").addEventListener("click", enterGuestBrowse);
     $("ob-avatar-image").addEventListener("change", (event) => selectProfileImage(event.currentTarget, "onboardingAvatarImage", "ob-avatar-status"));
     $("btn-goto-login").addEventListener("click", () => showScreen("login"));
     $("btn-login").addEventListener("click", doLogin);
@@ -2010,15 +2171,19 @@
     $("btn-close-request-modal").addEventListener("click", closeRequestComposer);
     $("btn-cancel-request").addEventListener("click", closeRequestComposer);
     $("btn-submit-request").addEventListener("click", sendRequestClick);
+    $("btn-close-profile-gate").addEventListener("click", closeProfileGate);
+    $("btn-keep-browsing").addEventListener("click", closeProfileGate);
+    $("btn-complete-profile").addEventListener("click", () => { closeProfileGate(); startOnboarding(); });
     $("btn-close-member").addEventListener("click", closeMemberProfile);
     $("btn-open-requests").addEventListener("click", () => showScreen("requests"));
     $("btn-requests-back").addEventListener("click", () => showScreen("matches"));
-    $("btn-open-my-events").addEventListener("click", () => showScreen("my-events"));
+    $("btn-open-my-events").addEventListener("click", () => { if (!state.me) showProfileGate(); else showScreen("my-events"); });
     $("btn-my-events-back").addEventListener("click", () => showScreen("events"));
     $("btn-show-event-form").addEventListener("click", showEventForm);
     $("btn-create-my-event").addEventListener("click", showEventForm);
     $("btn-create-event").addEventListener("click", createEventClick);
     $("btn-cancel-event-form").addEventListener("click", cancelEventForm);
+    $("event-online").addEventListener("change", syncEventOnlineFields);
     $("btn-refresh-discover").addEventListener("click", refreshDiscoverFromPull);
     // Capture at document level so report buttons keep working even when the
     // discover-list content is refreshed while the app is open.
@@ -2054,6 +2219,32 @@
       discoverPullDistance = 0;
       renderDiscoverPullRefresh();
     });
+    const eventsScreen = $("screen-events");
+    eventsScreen.addEventListener("touchstart", (event) => {
+      if (state.currentScreen !== "events" || eventsRefreshing || window.scrollY > 0) return;
+      eventsPullStartY = event.touches[0]?.clientY ?? null;
+      eventsPullDistance = 0;
+    }, { passive: true });
+    eventsScreen.addEventListener("touchmove", (event) => {
+      if (eventsPullStartY === null || eventsRefreshing) return;
+      const distance = Math.max(0, (event.touches[0]?.clientY ?? eventsPullStartY) - eventsPullStartY);
+      if (!distance) return;
+      eventsPullDistance = Math.min(distance, DISCOVER_PULL_THRESHOLD + 32);
+      event.preventDefault();
+      renderEventsPullRefresh({ distance: eventsPullDistance });
+    }, { passive: false });
+    eventsScreen.addEventListener("touchend", () => {
+      const shouldRefresh = eventsPullDistance >= DISCOVER_PULL_THRESHOLD;
+      eventsPullStartY = null;
+      eventsPullDistance = 0;
+      if (shouldRefresh) refreshEventsFromPull();
+      else renderEventsPullRefresh();
+    });
+    eventsScreen.addEventListener("touchcancel", () => {
+      eventsPullStartY = null;
+      eventsPullDistance = 0;
+      renderEventsPullRefresh();
+    });
     $("event-date-trigger").addEventListener("click", () => toggleEventPicker("date"));
     $("event-time-trigger").addEventListener("click", () => toggleEventPicker("time"));
     [1, 2].forEach((number) => {
@@ -2077,7 +2268,14 @@
       if (timeButton) { $("event-time").value = timeButton.dataset.eventTime; state.eventPickerOpen = null; renderEventPickers(); }
     });
     document.querySelectorAll(".nav-btn").forEach((btn) =>
-      btn.addEventListener("click", () => showScreen(btn.dataset.screen))
+      btn.addEventListener("click", () => {
+        if (!state.me && !["discover", "events"].includes(btn.dataset.screen)) {
+          if (btn.dataset.screen === "profile") startOnboarding();
+          else showProfileGate();
+          return;
+        }
+        showScreen(btn.dataset.screen);
+      })
     );
     [["ob-background", "ob-background-count"], ["ob-looking", "ob-looking-count"]].forEach(([inputId, countId]) => {
       $(inputId).addEventListener("input", () => { $(countId).textContent = $(inputId).value.length; });

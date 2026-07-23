@@ -19,9 +19,11 @@
     <button class="btn secondary small auth-language-toggle" type="button" data-language-toggle>EN</button>
     <h1 class="welcome-logo brand">Yolink<span class="dot">.</span></h1>
     <p class="welcome-tag">Network with intention. Meet professionals who are looking for someone like you.</p>
-    <button class="btn full" id="btn-start-onboarding">Create my profile</button>
-    <div style="height:10px"></div>
-    <button class="btn full ghost" id="btn-goto-login">I have a secret code</button>
+    <div class="welcome-actions">
+      <button class="btn full" id="btn-start-onboarding">Create my profile</button>
+      <button class="btn full ghost" id="btn-browse-first">Browse first</button>
+      <button class="btn full ghost" id="btn-goto-login">I have a secret code, log in</button>
+    </div>
   </section>
 
   <!-- ============ Login ============ -->
@@ -104,18 +106,21 @@
         <textarea id="ob-looking" maxlength="600"></textarea>
         <div class="char-count"><span id="ob-looking-count">0</span>/600</div>
       </div>
+      <div class="field"><label id="ob-personality-tags-label">A little more about you <span class="hint">(pick up to 3)</span></label><input type="hidden" id="ob-personality-tags"><div class="personality-tag-picker" id="ob-personality-tag-picker"></div></div>
+      <div class="field"><label for="ob-custom-tag" id="ob-custom-tag-label">Your own tag <span class="hint">(optional)</span></label><input type="text" id="ob-custom-tag" maxlength="40"></div>
     </div>
 
     <p class="error-text" id="ob-error"></p>
     <button class="btn full" id="btn-ob-next">Next</button>
     <div style="height:10px"></div>
     <button class="btn full ghost" id="btn-ob-back">Back</button>
+    <button class="btn full ghost" id="btn-ob-browse">Browse first</button>
   </section>
 
   <!-- ============ Secret code reveal ============ -->
   <section class="screen" id="screen-code">
     <h1 class="screen-title">Save your secret code</h1>
-    <p class="screen-sub" id="code-help">This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe.</p>
+    <p class="screen-sub" id="code-help">This code is the <strong>only</strong> way to get back into your profile — there's no email recovery. Screenshot it or save it somewhere safe. You can also find it later in My profile.</p>
     <div class="code-box" id="code-display">YO-XXXX-XXXX</div>
     <button class="btn full secondary" id="btn-copy-code">Copy code</button>
     <div style="height:10px"></div>
@@ -133,6 +138,7 @@
 
   <!-- ============ Events ============ -->
   <section class="screen" id="screen-events">
+    <div id="events-pull-refresh" aria-live="polite" aria-hidden="true"><span class="pull-refresh-icon">↓</span><span class="pull-refresh-label"></span></div>
     <div class="screen-title-row">
     <h1 class="screen-title">Events</h1>
       <button class="btn secondary small" id="btn-open-my-events">My events</button>
@@ -150,7 +156,8 @@
           <div class="event-picker-wrap"><span class="event-control-label">Time</span><input type="hidden" id="event-time"><button type="button" class="event-picker-trigger" id="event-time-trigger">Choose time</button><div class="event-picker-menu event-time-menu" id="event-time-menu" hidden></div></div>
         </div>
       </div>
-      <div class="field"><label for="event-location">Location <span class="required-mark" aria-hidden="true">*</span></label><input type="text" id="event-location" maxlength="160"></div>
+      <div class="field"><label for="event-location">Location <span class="required-mark" id="event-location-required" aria-hidden="true">*</span></label><input type="text" id="event-location" maxlength="160"></div>
+      <div class="field event-online-field"><label class="check-label"><input type="checkbox" id="event-online"><span id="event-online-label">Online event</span></label><div id="event-online-url-field" hidden><label for="event-online-url" id="event-online-url-label">Online event link <span class="required-mark" aria-hidden="true">*</span></label><input type="url" id="event-online-url" maxlength="500" placeholder="https://..."></div></div>
       <div class="field"><label>Event industries <span class="required-mark" aria-hidden="true">*</span> <span class="hint">(up to 2)</span></label><div class="industry-inputs event-industry-inputs"><div class="event-picker-wrap"><input type="hidden" id="event-industry-1"><button type="button" class="event-picker-trigger" id="event-industry-1-trigger">Choose an industry</button><div class="event-picker-menu event-industry-menu" id="event-industry-1-menu" hidden></div></div><div class="event-picker-wrap"><input type="hidden" id="event-industry-2"><button type="button" class="event-picker-trigger" id="event-industry-2-trigger">Add another industry (optional)</button><div class="event-picker-menu event-industry-menu" id="event-industry-2-menu" hidden></div></div></div></div>
       <div class="field"><label for="event-max-participants">Maximum participants</label><input type="number" id="event-max-participants" min="1" max="500" value="20" inputmode="numeric"></div>
       <div class="field"><label for="event-description">What should people know? <span class="hint">(optional)</span></label><textarea id="event-description" maxlength="1000" placeholder="A relaxed hour to meet other people in the pool."></textarea></div>
@@ -242,6 +249,8 @@
       <div class="field"><label id="pf-years-label">Years of experience</label><div class="event-picker-wrap profile-years-picker"><input type="hidden" id="pf-years"><button type="button" class="event-picker-trigger" id="pf-years-trigger">Choose years of experience</button><div class="event-picker-menu profile-years-menu" id="pf-years-menu" hidden></div></div></div>
       <div class="field"><label for="pf-background">My background is in…</label><textarea id="pf-background" maxlength="600"></textarea></div>
       <div class="field"><label for="pf-looking">I'm looking to network with…</label><textarea id="pf-looking" maxlength="600"></textarea></div>
+      <div class="field"><label id="pf-personality-tags-label">A little more about you <span class="hint">(pick up to 3)</span></label><input type="hidden" id="pf-personality-tags"><div class="personality-tag-picker" id="pf-personality-tag-picker"></div></div>
+      <div class="field"><label for="pf-custom-tag" id="pf-custom-tag-label">Your own tag <span class="hint">(optional)</span></label><input type="text" id="pf-custom-tag" maxlength="40"></div>
       <p class="error-text" id="pf-error"></p>
       <button class="btn full" id="btn-save-profile">Save changes</button>
       <button class="btn full ghost" id="btn-cancel-profile-edit">Cancel</button>
@@ -310,6 +319,17 @@
     <p class="error-text" id="request-message-error"></p>
     <button class="btn full" id="btn-submit-request">Send request</button>
     <button class="btn full ghost" id="btn-cancel-request">Cancel</button>
+  </div>
+</div>
+
+<!-- ============ Profile completion prompt ============ -->
+<div id="profile-gate-modal" aria-hidden="true">
+  <div class="report-dialog" role="dialog" aria-modal="true" aria-labelledby="profile-gate-title">
+    <button class="modal-close" id="btn-close-profile-gate" aria-label="Close">×</button>
+    <h2 id="profile-gate-title">Ready to connect?</h2>
+    <p id="profile-gate-help">Create your profile to send connection requests, join events, and create your own events.</p>
+    <button class="btn full" id="btn-complete-profile">Complete my profile</button>
+    <button class="btn full ghost" id="btn-keep-browsing">Keep browsing</button>
   </div>
 </div>
 

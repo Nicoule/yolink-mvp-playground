@@ -27,6 +27,8 @@ create table if not exists profiles (
   years_exp    int  not null check (years_exp between 0 and 60),
   background   text not null check (char_length(background) <= 600),
   looking_for  text not null check (char_length(looking_for) <= 600),
+  personality_tags text not null default '' check (char_length(personality_tags) <= 160 and array_length(string_to_array(personality_tags, '|'), 1) <= 3),
+  custom_tag   text check (char_length(custom_tag) <= 40),
   gender       text not null default 'prefer_not_to_say' check (gender in ('woman', 'man', 'nonbinary', 'prefer_not_to_say')),
   avatar_color text not null default '#3A1B3F',
   avatar_image text check (avatar_image is null or (char_length(avatar_image) <= 800000 and avatar_image ~ '^data:image/(jpeg|png|webp);base64,')),
@@ -76,6 +78,7 @@ create table if not exists events (
   description text check (char_length(description) <= 1000),
   starts_at   timestamptz not null,
   location    text not null check (char_length(location) between 1 and 160),
+  online_url  text check (online_url is null or online_url ~* '^https?://'),
   industries  text not null check (char_length(industries) between 1 and 161 and array_length(string_to_array(industries, '|'), 1) between 1 and 2),
   max_participants int not null default 20 check (max_participants between 1 and 500),
   created_at  timestamptz not null default now()
@@ -205,7 +208,7 @@ $$;
 
 create or replace function create_profile(
   p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text
+  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text, p_personality_tags text, p_custom_tag text
 )
 returns json
 language plpgsql
@@ -216,9 +219,9 @@ declare
   v_profile profiles;
   v_code text;
 begin
-  insert into profiles (name, title, company, company_visible, industry, years_exp, background, looking_for, avatar_color, avatar_image, gender)
+  insert into profiles (name, title, company, company_visible, industry, years_exp, background, looking_for, personality_tags, custom_tag, avatar_color, avatar_image, gender)
   values (trim(p_name), trim(p_title), nullif(trim(p_company), ''), coalesce(p_company_visible, true), trim(p_industry),
-          p_years_exp, trim(p_background), trim(p_looking_for), p_avatar_color, p_avatar_image, coalesce(p_gender, 'prefer_not_to_say'))
+          p_years_exp, trim(p_background), trim(p_looking_for), coalesce(trim(p_personality_tags), ''), nullif(trim(p_custom_tag), ''), p_avatar_color, p_avatar_image, coalesce(p_gender, 'prefer_not_to_say'))
   returning * into v_profile;
 
   loop
@@ -252,7 +255,7 @@ $$;
 
 create or replace function update_profile(
   p_code text, p_name text, p_title text, p_company text, p_industry text,
-  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text
+  p_years_exp int, p_background text, p_looking_for text, p_company_visible boolean, p_avatar_color text, p_avatar_image text, p_gender text, p_personality_tags text, p_custom_tag text
 )
 returns json
 language plpgsql
@@ -266,7 +269,7 @@ begin
   update profiles set
     name = trim(p_name), title = trim(p_title),
     company = nullif(trim(p_company), ''), company_visible = coalesce(p_company_visible, true), industry = trim(p_industry),
-    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for), avatar_color = p_avatar_color,
+    years_exp = p_years_exp, background = trim(p_background), looking_for = trim(p_looking_for), personality_tags = coalesce(trim(p_personality_tags), ''), custom_tag = nullif(trim(p_custom_tag), ''), avatar_color = p_avatar_color,
     avatar_image = p_avatar_image, gender = coalesce(p_gender, 'prefer_not_to_say')
   where id = v_id
   returning * into v_profile;
@@ -367,7 +370,7 @@ $$;
 
 -- Create an event and automatically join its creator.
 create or replace function create_event(
-  p_code text, p_title text, p_description text, p_starts_at timestamptz, p_location text, p_industries text, p_max_participants int
+  p_code text, p_title text, p_description text, p_starts_at timestamptz, p_location text, p_online_url text, p_industries text, p_max_participants int
 )
 returns json
 language plpgsql
@@ -378,8 +381,8 @@ declare
   v_creator uuid := _yolink_auth(p_code);
   v_event events;
 begin
-  insert into events (creator_id, title, description, starts_at, location, industries, max_participants)
-  values (v_creator, trim(p_title), nullif(trim(p_description), ''), p_starts_at, trim(p_location), trim(p_industries), p_max_participants)
+  insert into events (creator_id, title, description, starts_at, location, online_url, industries, max_participants)
+  values (v_creator, trim(p_title), nullif(trim(p_description), ''), p_starts_at, trim(p_location), nullif(trim(p_online_url), ''), trim(p_industries), p_max_participants)
   returning * into v_event;
   insert into event_participants (event_id, profile_id) values (v_event.id, v_creator);
   return row_to_json(v_event);
@@ -420,7 +423,7 @@ $$;
 -- The host can edit their event but cannot reduce capacity below attendees.
 create or replace function update_event(
   p_code text, p_event_id uuid, p_title text, p_description text, p_starts_at timestamptz,
-  p_location text, p_industries text, p_max_participants int
+  p_location text, p_online_url text, p_industries text, p_max_participants int
 )
 returns json
 language plpgsql
@@ -438,7 +441,7 @@ begin
     raise exception 'CAPACITY_TOO_LOW';
   end if;
   update events set title = trim(p_title), description = nullif(trim(p_description), ''),
-    starts_at = p_starts_at, location = trim(p_location), industries = trim(p_industries),
+    starts_at = p_starts_at, location = trim(p_location), online_url = nullif(trim(p_online_url), ''), industries = trim(p_industries),
     max_participants = p_max_participants
   where id = p_event_id
   returning * into v_event;

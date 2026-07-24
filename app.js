@@ -19,10 +19,10 @@
       welcomeBack: "Welcome back", loginHelp: "Enter the secret code you received when you created your profile.", secretCode: "Secret code", logIn: "Log in", back: "Back",
       basics: "First, the basics", yourName: "Your name", jobTitle: "Job title", company: "Company", hideCompany: "Don't show", gender: "Gender", profilePhoto: "Profile photo", cardColor: "Card color", optional: "(optional)", photoHelp: "JPG, PNG, or WebP. Your photo will be resized for Yolink.",
       experience: "Your experience", industries: "Industries", yearsExperience: "Years of experience", story: "Now, your story", personalityTags: "A little more about you", personalityTagsHelp: "(pick up to 3)", personalityTagsLimit: "Choose up to 3 tags.", customTag: "Your own tag", customTagPlaceholder: "e.g. Weekend hiker", next: "Next", saveCode: "Save your secret code", copyCode: "Copy code", startBrowsing: "I saved it — start browsing", shareYolink: "↗ Share Yolink", yolinkLinkCopiedToast: "Yolink's link is copied — share it with your friends 😄",
-      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", completeProfileTitle: "Ready to connect?", completeProfileHelp: "Create your profile to send connection requests, join events, and create your own events.", completeProfile: "Complete my profile", keepBrowsing: "Keep browsing", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
+      myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", completeProfileTitle: "Ready to connect?", completeProfileHelp: "Create your profile to send connection requests, join events, and create your own events.", completeProfile: "Complete my profile", keepBrowsing: "Keep browsing", officialAccount: "Official account", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
       eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", eventsRefreshedToast: "Events are up to date.", languageButton: "中文", languageName: "English",
       photoAdjust: "Adjust your photo", photoAdjustHelp: "Drag to reposition, then use the slider to zoom.", choosePhoto: "Choose a photo", zoom: "Zoom", usePhoto: "Use photo",
-      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", onlineEvent: "Online event", onlineEventLink: "Online event link", joinOnlineEvent: "Open online event link", onlineEventUrlRequired: "Please enter a valid online event link.", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", nameRequired: "Please enter your name.", titleRequired: "Please enter your job title.", industryRequired: "Please enter at least one industry.", yearsRequired: "Please choose your years of experience.", backgroundRequired: "Tell people what your background is in.", lookingForRequired: "Tell people who you're looking to network with.", reportReasonRequired: "Please briefly describe the issue.", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
+      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventVisibility: "Who can see this event?", visibilityPublic: "Everyone can see", visibilityConnectToJoin: "Connect to join", visibilityConnectionsOnly: "Connections only", visibilityUnlisted: "Share link only", visibilityPublicHelp: "Anyone can discover and join this event.", visibilityConnectToJoinHelp: "Anyone can see it, but only your connections can join.", visibilityConnectionsOnlyHelp: "Only people connected with you can discover and join.", visibilityUnlistedHelp: "Only people with the event link can view and join.", connectToJoin: "Connect with the host to join", onlineEvent: "Online event", onlineEventLink: "Online event link", joinOnlineEvent: "Open online event link", onlineEventUrlRequired: "Please enter a valid online event link.", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", nameRequired: "Please enter your name.", titleRequired: "Please enter your job title.", industryRequired: "Please enter at least one industry.", yearsRequired: "Please choose your years of experience.", backgroundRequired: "Tell people what your background is in.", lookingForRequired: "Tell people who you're looking to network with.", reportReasonRequired: "Please briefly describe the issue.", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
     },
     zh: {
       discover: "发现", events: "活动", matches: "匹配", profile: "个人资料", myProfile: "我的资料",
@@ -30,12 +30,24 @@
       welcomeBack: "欢迎回来", loginHelp: "输入创建个人资料时收到的专属代码。", secretCode: "专属代码", logIn: "登录", back: "返回",
       basics: "先了解一下你", yourName: "姓名", jobTitle: "职位", company: "公司", hideCompany: "不显示", gender: "性别", profilePhoto: "头像", cardColor: "名片颜色", optional: "（可选）", photoHelp: "支持 JPG、PNG 或 WebP。Yolink 会自动压缩照片。",
       experience: "你的经验", industries: "行业", yearsExperience: "工作年限", story: "介绍一下你自己", personalityTags: "再介绍一下你自己", personalityTagsHelp: "（最多选择 3 个）", personalityTagsLimit: "最多选择 3 个标签。", customTag: "我的自定义标签", customTagPlaceholder: "例如：周末徒步爱好者", next: "下一步", saveCode: "保存你的专属代码", copyCode: "复制代码", startBrowsing: "我已保存，开始浏览", shareYolink: "↗ 分享 Yolink", yolinkLinkCopiedToast: "已复制 Yolink 的链接，快去分享给好友吧😄",
-      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", completeProfileTitle: "完善资料后即可行动", completeProfileHelp: "创建个人资料后，即可发起连接、参加活动和创建自己的活动。", completeProfile: "去完善资料", keepBrowsing: "继续浏览", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
+      myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", completeProfileTitle: "完善资料后即可行动", completeProfileHelp: "创建个人资料后，即可发起连接、参加活动和创建自己的活动。", completeProfile: "去完善资料", keepBrowsing: "继续浏览", officialAccount: "官方", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
       eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", eventsRefreshedToast: "活动页已更新。", languageButton: "EN", languageName: "中文",
       photoAdjust: "调整你的照片", photoAdjustHelp: "拖动照片调整位置，再用滑杆缩放。", choosePhoto: "选择照片", zoom: "缩放", usePhoto: "使用此照片",
-      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", onlineEvent: "线上活动", onlineEventLink: "线上活动链接", joinOnlineEvent: "打开线上活动链接", onlineEventUrlRequired: "请输入有效的线上活动链接。", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", nameRequired: "请填写姓名。", titleRequired: "请填写职位。", industryRequired: "请至少选择一个行业。", yearsRequired: "请选择工作年限。", backgroundRequired: "请介绍一下你的背景。", lookingForRequired: "请说明你希望结识什么样的人。", reportReasonRequired: "请简要说明举报原因。", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
+      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventVisibility: "活动可见范围", visibilityPublic: "所有人可见", visibilityConnectToJoin: "连接后可参与", visibilityConnectionsOnly: "仅联系人可见", visibilityUnlisted: "仅分享邀请", visibilityPublicHelp: "所有用户都可以发现并参加此活动。", visibilityConnectToJoinHelp: "所有用户都能看到，但只有与你成功连接的用户可以参加。", visibilityConnectionsOnlyHelp: "只有与你成功连接的用户可以发现并参加。", visibilityUnlistedHelp: "只有获得活动分享链接的用户可以查看和参加。", connectToJoin: "先与主办人连接后再参加", onlineEvent: "线上活动", onlineEventLink: "线上活动链接", joinOnlineEvent: "打开线上活动链接", onlineEventUrlRequired: "请输入有效的线上活动链接。", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", nameRequired: "请填写姓名。", titleRequired: "请填写职位。", industryRequired: "请至少选择一个行业。", yearsRequired: "请选择工作年限。", backgroundRequired: "请介绍一下你的背景。", lookingForRequired: "请说明你希望结识什么样的人。", reportReasonRequired: "请简要说明举报原因。", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
     }
   };
+  Object.assign(COPY.en, {
+    shareEvent: "Share event", sendToChat: "Send to a conversation", chooseConversation: "Choose a match", copyLink: "Copy link",
+    eventInvite: "Event invitation", eventInviteSent: "Event invitation sent", noMatchesToShare: "Match with someone first to send an event invitation.",
+    eventNoLongerAvailable: "This event is no longer available", eventInviteMessage: "I wanted to share this event with you — come take a look!",
+    locationSearchHelp: "Start typing to search for a place.", locationSearching: "Searching places…", locationNoResults: "No matching places found. You can still enter a location manually."
+  });
+  Object.assign(COPY.zh, {
+    shareEvent: "分享活动", sendToChat: "发送到聊天", chooseConversation: "选择一位匹配对象", copyLink: "复制链接",
+    eventInvite: "活动邀请", eventInviteSent: "活动邀请已发送", noMatchesToShare: "先与其他用户建立连接，即可向对方发送活动邀请。",
+    eventNoLongerAvailable: "该活动已不可用", eventInviteMessage: "我想和你分享这个活动，快来看看吧！",
+    locationSearchHelp: "输入地点名称或地址，即可搜索并选择地点。", locationSearching: "正在搜索地点…", locationNoResults: "未找到匹配地点，你仍可手动填写地点。"
+  });
   function t(key, fallback) { return COPY[state.language]?.[key] || fallback || COPY.en[key] || key; }
   const INDUSTRY_ZH = { Technology: "科技", Healthcare: "医疗健康", Finance: "金融", Consulting: "咨询", Education: "教育", Marketing: "市场营销", Design: "设计", Legal: "法律", Manufacturing: "制造业", "Real Estate": "房地产", "Media & Entertainment": "媒体与娱乐", Nonprofit: "非营利组织", Other: "其他", General: "综合" };
   const INDUSTRY_OPTIONS = ["Technology", "Healthcare", "Finance", "Consulting", "Education", "Marketing", "Design", "Legal", "Manufacturing", "Real Estate", "Media & Entertainment", "Nonprofit", "Other"];
@@ -264,6 +276,13 @@
     }
     if ($("event-online-label")) $("event-online-label").textContent = t("onlineEvent");
     if ($("event-online-url-label")) $("event-online-url-label").innerHTML = `${esc(t("onlineEventLink"))} <span class="required-mark" aria-hidden="true">*</span>`;
+    if ($("event-visibility-label")) $("event-visibility-label").textContent = t("eventVisibility");
+    if ($("event-location-help")) $("event-location-help").textContent = t("locationSearchHelp");
+    if ($("event-share-title")) $("event-share-title").textContent = t("shareEvent");
+    if ($("event-share-help")) $("event-share-help").textContent = state.language === "zh" ? "将活动以邀请卡片发送到聊天，或复制活动链接。" : "Send this event as an invitation card, or copy its link.";
+    if ($("btn-send-event-invite")) $("btn-send-event-invite").textContent = t("sendToChat");
+    if ($("btn-copy-event-link")) $("btn-copy-event-link").textContent = t("copyLink");
+    if ($("btn-cancel-event-share")) $("btn-cancel-event-share").textContent = t("cancel");
     ["ob", "pf"].forEach((prefix) => {
       const label = $(prefix + "-personality-tags-label");
       if (label) label.innerHTML = `${esc(t("personalityTags"))} <span class="hint">${esc(t("personalityTagsHelp"))}</span>`;
@@ -329,6 +348,8 @@
     ALREADY_JOINED: "You're already going to this event.",
     EVENT_FULL: "This event has reached its participant limit.",
     EVENT_ENDED: "This event has already ended.",
+    EVENT_CONNECTION_REQUIRED: "Connect with the event host before joining.",
+    EVENT_NOT_VISIBLE: "You don't have access to share this event.",
     NOT_EVENT_HOST: "Only the event host can make that change.",
     CANNOT_REMOVE_HOST: "The event host can't be removed from their own event.",
     PARTICIPANT_NOT_FOUND: "That participant is no longer part of this event.",
@@ -349,6 +370,8 @@
     ALREADY_JOINED: "你已经参加了这个活动。",
     EVENT_FULL: "该活动已达到人数上限。",
     EVENT_ENDED: "该活动已经结束。",
+    EVENT_CONNECTION_REQUIRED: "请先与活动主办人建立连接后再参加。",
+    EVENT_NOT_VISIBLE: "你暂时没有权限分享此活动。",
     NOT_EVENT_HOST: "只有活动主办方可以进行此操作。",
     CANNOT_REMOVE_HOST: "活动主办方不能移除自己。",
     PARTICIPANT_NOT_FOUND: "该参与者已不在活动中。",
@@ -479,11 +502,57 @@
     $(crop.statusId).textContent = "Photo ready ✓";
     closePhotoCrop();
   }
-  function shareEventLink(eventId) {
+  function copyEventLink(eventId) {
     const url = new URL(window.location.href);
     url.search = "";
     url.searchParams.set("event", eventId);
     copyText(url.toString(), t("eventLinkCopiedToast"));
+  }
+  function eventShareMatches() {
+    return myMatches().map((match) => ({ match, profile: matchPartner(match) }))
+      .filter(({ profile }) => profile && !profile.is_system_account);
+  }
+  function renderEventShareModal() {
+    const event = state.events.find((item) => item.id === state.eventShareId);
+    if (!event) return closeEventShare();
+    $("event-share-preview").innerHTML = `<strong>${esc(event.title)}</strong><span>${esc(fmtEventTime(event.starts_at))} · ${esc(onlineEventUrl(event) ? t("onlineEvent") : event.location)}</span>`;
+    const choices = eventShareMatches();
+    $("event-share-list").innerHTML = choices.length
+      ? `<div class="section-label">${esc(t("chooseConversation"))}</div>${choices.map(({ match, profile }) => `<button class="event-share-recipient ${state.eventShareMatchId === match.id ? "selected" : ""}" data-event-share-match="${esc(match.id)}">${avatarHtml(profile, "sm")}<span class="recipient-name">${esc(profile.name)}</span></button>`).join("")}`
+      : `<p class="event-share-empty">${esc(t("noMatchesToShare"))}</p>`;
+    $("btn-send-event-invite").disabled = !state.eventShareMatchId;
+    $("event-share-list").querySelectorAll("[data-event-share-match]").forEach((button) => button.addEventListener("click", () => {
+      state.eventShareMatchId = button.dataset.eventShareMatch;
+      renderEventShareModal();
+    }));
+  }
+  function openEventShare(eventId) {
+    if (!state.me) { showProfileGate(); return; }
+    state.eventShareId = eventId;
+    state.eventShareMatchId = null;
+    renderEventShareModal();
+    $("event-share-modal").classList.add("visible");
+    $("event-share-modal").setAttribute("aria-hidden", "false");
+  }
+  function closeEventShare() {
+    state.eventShareId = null;
+    state.eventShareMatchId = null;
+    $("event-share-modal").classList.remove("visible");
+    $("event-share-modal").setAttribute("aria-hidden", "true");
+  }
+  async function sendEventInviteClick() {
+    if (!state.eventShareId || !state.eventShareMatchId) return;
+    const button = $("btn-send-event-invite");
+    button.disabled = true;
+    try {
+      const message = await api.sendEventInvite(state.code, state.eventShareMatchId, state.eventShareId);
+      state.messages.push(message);
+      closeEventShare();
+      toast(t("eventInviteSent"));
+    } catch (error) {
+      button.disabled = false;
+      toast(friendlyError(error));
+    }
   }
 
   // ---------- API layer ----------
@@ -517,8 +586,9 @@
       sendRequest: (code, toId, kind, message) => rpc("send_request", { p_code: code, p_to_id: toId, p_kind: kind, p_message: message }),
       respondRequest: (code, reqId, accept) => rpc("respond_request", { p_code: code, p_request_id: reqId, p_accept: accept }),
       sendMessage: (code, matchId, body) => rpc("send_message", { p_code: code, p_match_id: matchId, p_body: body }),
-      createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_industries: event.industries, p_max_participants: event.max_participants }),
-      updateEvent: (code, eventId, event) => rpc("update_event", { p_code: code, p_event_id: eventId, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_industries: event.industries, p_max_participants: event.max_participants }),
+      sendEventInvite: (code, matchId, eventId) => rpc("send_event_invite", { p_code: code, p_match_id: matchId, p_event_id: eventId }),
+      createEvent: (code, event) => rpc("create_event", { p_code: code, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_visibility: event.visibility, p_industries: event.industries, p_max_participants: event.max_participants }),
+      updateEvent: (code, eventId, event) => rpc("update_event", { p_code: code, p_event_id: eventId, p_title: event.title, p_description: event.description, p_starts_at: event.starts_at, p_location: event.location, p_online_url: event.online_url, p_visibility: event.visibility, p_industries: event.industries, p_max_participants: event.max_participants }),
       joinEvent: (code, eventId) => rpc("join_event", { p_code: code, p_event_id: eventId }),
       removeEventParticipant: (code, eventId, profileId) => rpc("remove_event_participant", { p_code: code, p_event_id: eventId, p_profile_id: profileId }),
       leaveEvent: (code, eventId) => rpc("leave_event", { p_code: code, p_event_id: eventId }),
@@ -535,11 +605,18 @@
 
         // Events are an additive feature. Keep the existing app usable until
         // the one-time Events migration has been run in Supabase.
-        const [events, participants] = await Promise.all([
-          sb.from("events").select("*").order("starts_at", { ascending: true }),
-          sb.from("event_participants").select("*"),
-        ]);
-        const eventsAvailable = !events.error && !participants.error;
+        const sharedEventId = new URLSearchParams(window.location.search).get("event");
+        let visibleEvents;
+        try {
+          visibleEvents = await rpc("fetch_visible_events", { p_code: state.code || null, p_shared_event_id: sharedEventId || null });
+        } catch (error) {
+          visibleEvents = { error };
+        }
+        const eventsAvailable = !visibleEvents.error;
+        let invitedEvents = { events: [], participants: [] };
+        if (eventsAvailable && state.code) {
+          try { invitedEvents = await rpc("fetch_invited_events", { p_code: state.code }); } catch (_) { invitedEvents = { events: [], participants: [] }; }
+        }
         const myMatches = matches.data.filter((m) => m.user_a === myId || m.user_b === myId);
         let messages = [];
         if (myMatches.length) {
@@ -549,8 +626,10 @@
           if (res.error) throw res.error;
           messages = res.data;
         }
+        const allEvents = [...(visibleEvents.events || []), ...(invitedEvents.events || [])].filter((event, index, list) => list.findIndex((item) => item.id === event.id) === index);
+        const allParticipants = [...(visibleEvents.participants || []), ...(invitedEvents.participants || [])].filter((row, index, list) => list.findIndex((item) => item.event_id === row.event_id && item.profile_id === row.profile_id) === index);
         return { profiles: profiles.data, requests: requests.data, matches: matches.data, messages,
-          events: eventsAvailable ? events.data : [], participants: eventsAvailable ? participants.data : [], eventsAvailable };
+          events: eventsAvailable ? allEvents : [], participants: eventsAvailable ? allParticipants : [], eventsAvailable };
       },
 
       subscribe(onChange) {
@@ -610,6 +689,8 @@
       d.events ||= [];
       d.participants ||= [];
       d.reports ||= [];
+      d.msgSeq ||= 1;
+      if (ensureDemoBot(d)) save(d);
       return d;
     }
 
@@ -635,6 +716,29 @@
       return m.id;
     }
 
+    function ensureDemoBot(d) {
+      let changed = false;
+      let bot = d.profiles.find((profile) => profile.is_system_account);
+      if (!bot) {
+        bot = {
+          id: uuid(), name: "Yolink Bot", title: "Yolink 官方助手", company: "Yolink", company_visible: true,
+          industry: "General", years_exp: 0, background: "我是 Yolink 的官方助手，帮助你了解社区、活动和连接功能。",
+          looking_for: "随时欢迎你来聊聊。", avatar_color: "#e6b84d", gender: "prefer_not_to_say",
+          is_system_account: true, created_at: new Date().toISOString()
+        };
+        d.profiles.unshift(bot);
+        changed = true;
+      }
+      d.profiles.filter((profile) => profile.id !== bot.id && !profile.is_system_account).forEach((profile) => {
+        const matchId = makeMatch(d, profile.id, bot.id, "staff");
+        if (!d.messages.some((message) => message.match_id === matchId && message.sender_id === bot.id && message.body === "欢迎来到 Yolink！需要帮助可以随时问我。")) {
+          d.messages.push({ id: d.msgSeq++, match_id: matchId, sender_id: bot.id, body: "欢迎来到 Yolink！需要帮助可以随时问我。", created_at: new Date().toISOString() });
+          changed = true;
+        }
+      });
+      return changed;
+    }
+
     const delay = (v) => new Promise((res) => setTimeout(() => res(v), 120));
 
     return {
@@ -647,6 +751,7 @@
         d.profiles.unshift(profile);
         const code = genCode();
         d.secrets[code] = profile.id;
+        ensureDemoBot(d);
         save(d);
         return delay({ profile, secret_code: code });
       },
@@ -704,10 +809,22 @@
         save(d);
         return delay(msg);
       },
+      async sendEventInvite(code, matchId, eventId) {
+        const d = db();
+        const me = auth(d, code);
+        const match = d.matches.find((item) => item.id === matchId);
+        const event = d.events.find((item) => item.id === eventId);
+        if (!match || (match.user_a !== me && match.user_b !== me)) throw new Error("NOT_YOUR_MATCH");
+        if (!event) throw new Error("EVENT_NOT_FOUND");
+        const msg = { id: d.msgSeq++, match_id: matchId, sender_id: me, body: "", event_id: eventId, created_at: new Date().toISOString() };
+        d.messages.push(msg);
+        save(d);
+        return delay(msg);
+      },
       async createEvent(code, event) {
         const d = db();
         const creatorId = auth(d, code);
-        const row = { id: uuid(), creator_id: creatorId, title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, industries: event.industries || "", max_participants: event.max_participants, created_at: new Date().toISOString() };
+        const row = { id: uuid(), creator_id: creatorId, title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, visibility: event.visibility || "public", industries: event.industries || "", max_participants: event.max_participants, created_at: new Date().toISOString() };
         d.events.push(row);
         d.participants.push({ event_id: row.id, profile_id: creatorId, joined_at: new Date().toISOString() });
         save(d);
@@ -720,6 +837,7 @@
         if (d.participants.some((row) => row.event_id === eventId && row.profile_id === profileId)) throw new Error("ALREADY_JOINED");
         const event = d.events.find((item) => item.id === eventId);
         if (new Date(event.starts_at) <= new Date()) throw new Error("EVENT_ENDED");
+        if (["connection_required", "connections_only"].includes(event.visibility) && event.creator_id !== profileId && !d.matches.some((match) => (match.user_a === profileId && match.user_b === event.creator_id) || (match.user_b === profileId && match.user_a === event.creator_id))) throw new Error("EVENT_CONNECTION_REQUIRED");
         if (d.participants.filter((row) => row.event_id === eventId).length >= (event.max_participants || 20)) throw new Error("EVENT_FULL");
         const row = { event_id: eventId, profile_id: profileId, joined_at: new Date().toISOString() };
         d.participants.push(row);
@@ -733,7 +851,7 @@
         if (index < 0) throw new Error("EVENT_NOT_FOUND");
         if (d.events[index].creator_id !== hostId) throw new Error("NOT_EVENT_HOST");
         if (event.max_participants < d.participants.filter((row) => row.event_id === eventId).length) throw new Error("CAPACITY_TOO_LOW");
-        d.events[index] = { ...d.events[index], title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, industries: event.industries, max_participants: event.max_participants };
+        d.events[index] = { ...d.events[index], title: event.title.trim(), description: event.description.trim() || null, starts_at: event.starts_at, location: event.location.trim(), online_url: event.online_url || null, visibility: event.visibility || "public", industries: event.industries, max_participants: event.max_participants };
         save(d);
         return delay(d.events[index]);
       },
@@ -789,13 +907,21 @@
       async fetchAll(myId) {
         const d = db();
         const myMatchIds = new Set(d.matches.filter((m) => m.user_a === myId || m.user_b === myId).map((m) => m.id));
+        const sharedEventId = new URLSearchParams(window.location.search).get("event");
+        const connectedWithHost = (event) => !!myId && (event.creator_id === myId || d.matches.some((match) => (match.user_a === myId && match.user_b === event.creator_id) || (match.user_b === myId && match.user_a === event.creator_id)));
+        const visibleEvents = d.events.filter((event) => {
+          const visibility = event.visibility || "public";
+          if (visibility === "connections_only") return connectedWithHost(event);
+          if (visibility === "unlisted") return event.id === sharedEventId || event.creator_id === myId || d.participants.some((row) => row.event_id === event.id && row.profile_id === myId);
+          return true;
+        });
         return delay({
           profiles: [...d.profiles],
           requests: [...d.requests],
           matches: [...d.matches],
           messages: d.messages.filter((m) => myMatchIds.has(m.match_id)),
-          events: [...d.events],
-          participants: [...d.participants],
+          events: visibleEvents,
+          participants: d.participants.filter((row) => visibleEvents.some((event) => event.id === row.event_id)),
         });
       },
       subscribe(onChange) {
@@ -823,11 +949,16 @@
     participants: [],
     eventsAvailable: true,
     openEventId: null,
+    eventDirectDetail: false,
+    eventShareId: null,
+    eventShareMatchId: null,
     discoverIndustry: "all",
     discoverExperience: "all",
     openDiscoverFilter: null,
     eventPickerOpen: null,
     eventCalendarCursor: new Date(),
+    locationSearchTimer: null,
+    locationSearchRequest: 0,
     reportProfileId: null,
     requestToId: null,
     requestKind: null,
@@ -892,6 +1023,7 @@
   const NAV_SCREENS = ["discover", "events", "requests", "matches", "profile"];
   function showScreen(name) {
     if (name === "profile") state.profileEditing = false;
+    if (name !== "events") state.eventDirectDetail = false;
     state.currentScreen = name;
     document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
     $("screen-" + name).classList.add("active");
@@ -934,7 +1066,7 @@
         <div class="pcard-head" style="background:linear-gradient(135deg, ${esc(p.avatar_color)}, ${esc(p.avatar_color)}cc)">
           ${avatarHtml(p, "lg")}
           <div style="min-width:0">
-            <h2 class="pcard-name">${esc(p.name)}</h2>
+            <h2 class="pcard-name">${esc(p.name)}${p.is_system_account ? ` <span class="official-badge">${esc(t("officialAccount"))}</span>` : ""}</h2>
             <p class="pcard-title">${esc(p.title)}${company}${genderIcon}</p>
           </div>
         </div>
@@ -998,7 +1130,7 @@
     };
     const pool = state.profiles.filter((p) => {
       const industries = parsedIndustries(p.industry);
-      return (!state.me || p.id !== state.me.id) && !matchedIds.has(p.id) &&
+      return !p.is_system_account && (!state.me || p.id !== state.me.id) && !matchedIds.has(p.id) &&
         (state.discoverIndustry === "all" || industries.includes(state.discoverIndustry)) && matchesExperience(p.years_exp);
     });
     if (!pool.length) {
@@ -1191,6 +1323,18 @@
   }
 
   // ---------- Events ----------
+  const EVENT_VISIBILITY_OPTIONS = ["public", "connection_required", "connections_only", "unlisted"];
+  function eventVisibility(event) { return EVENT_VISIBILITY_OPTIONS.includes(event.visibility) ? event.visibility : "public"; }
+  function eventVisibilityLabel(value) {
+    return t({ public: "visibilityPublic", connection_required: "visibilityConnectToJoin", connections_only: "visibilityConnectionsOnly", unlisted: "visibilityUnlisted" }[value] || "visibilityPublic");
+  }
+  function eventVisibilityHelp(value) {
+    return t({ public: "visibilityPublicHelp", connection_required: "visibilityConnectToJoinHelp", connections_only: "visibilityConnectionsOnlyHelp", unlisted: "visibilityUnlistedHelp" }[value] || "visibilityPublicHelp");
+  }
+  function connectedWithHost(event) {
+    if (!state.me || event.creator_id === state.me.id) return true;
+    return state.matches.some((match) => (match.user_a === state.me.id && match.user_b === event.creator_id) || (match.user_b === state.me.id && match.user_a === event.creator_id));
+  }
   function dateInputValue(date) {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
   }
@@ -1226,6 +1370,15 @@
       const times = Array.from({ length: 48 }, (_, index) => `${String(Math.floor(index / 2)).padStart(2, "0")}:${index % 2 ? "30" : "00"}`);
       timeMenu.innerHTML = times.map((time) => `<button data-event-time="${time}" class="${time === timeValue ? "selected" : ""}">${esc(timeLabel(time))}</button>`).join("");
     } else timeMenu.innerHTML = "";
+    const visibility = eventVisibility({ visibility: $("event-visibility").value });
+    $("event-visibility").value = visibility;
+    $("event-visibility-trigger").textContent = eventVisibilityLabel(visibility);
+    $("event-visibility-help").textContent = eventVisibilityHelp(visibility);
+    const visibilityMenu = $("event-visibility-menu");
+    visibilityMenu.hidden = state.eventPickerOpen !== "visibility";
+    visibilityMenu.innerHTML = state.eventPickerOpen === "visibility"
+      ? EVENT_VISIBILITY_OPTIONS.map((value) => `<button data-event-visibility="${value}" class="${value === visibility ? "selected" : ""}">${esc(eventVisibilityLabel(value))}</button>`).join("")
+      : "";
     [1, 2].forEach((number) => {
       const value = $("event-industry-" + number).value;
       const type = "industry-" + number;
@@ -1262,7 +1415,8 @@
     const count = participantsFor(event.id).length;
     const role = membership ? `<div class="event-membership ${membership === "Hosting" ? "hosting" : ""}">${esc(membership)}</div>` : "";
     const industries = eventIndustries(event);
-    const tags = industries.length ? `<div class="event-industries">${industries.map((industry) => `<span>${esc(industryLabel(industry))}</span>`).join("")}</div>` : "";
+    const visibility = eventVisibility(event);
+    const tags = industries.length || visibility !== "public" ? `<div class="event-industries">${industries.map((industry) => `<span>${esc(industryLabel(industry))}</span>`).join("")}${visibility !== "public" ? `<span class="event-visibility-tag">${esc(eventVisibilityLabel(visibility))}</span>` : ""}</div>` : "";
     const onlineUrl = onlineEventUrl(event);
     const venue = onlineUrl ? `💻 ${esc(t("onlineEvent"))}` : `📍 ${esc(event.location)}`;
     return `<div class="card event-card" data-open-event="${esc(event.id)}"><div class="event-top">${eventDateHtml(event.starts_at)}<div class="event-meta"><h2>${esc(event.title)}</h2><div class="when">${esc(fmtEventTime(event.starts_at))}</div><div class="where">${venue}</div>${tags}<div class="going">${count} / ${esc(String(event.max_participants || 20))} going</div>${role}</div></div>${expanded || ""}</div>`;
@@ -1278,14 +1432,15 @@
     const joined = !!myId && people.some((person) => person.id === myId);
     const isFull = people.length >= (detail.max_participants || 20);
     const upcoming = new Date(detail.starts_at) > new Date();
+    const needsConnection = ["connection_required", "connections_only"].includes(eventVisibility(detail)) && !connectedWithHost(detail);
     const attendeeTags = people.map((person) => eventProfileTagHtml(person, hostControls && person.id !== detail.creator_id ? detail.id : null)).join("");
     const hostActions = hostControls ? `<button class="btn full secondary event-edit-btn" data-edit-event="${esc(detail.id)}">${esc(t("editEvent"))}</button>${upcoming ? `<button class="btn full danger-ghost event-cancel-btn" data-cancel-event="${esc(detail.id)}">${esc(t("cancelEvent"))}</button>` : ""}` : "";
     const attendanceAction = joined && detail.creator_id !== myId
       ? `<button class="btn full secondary" data-leave-event="${esc(detail.id)}">${esc(t("quitEvent"))}</button>`
-      : `<button class="btn full ${joined ? "requested" : ""}" data-join-event="${esc(detail.id)}" ${joined || isFull || !upcoming ? "disabled" : ""}>${joined ? "You're going ✓" : !upcoming ? t("eventEnded") : isFull ? t("eventFull") : t("joinEvent")}</button>`;
+      : `<button class="btn full ${joined ? "requested" : ""}" data-join-event="${esc(detail.id)}" ${joined || isFull || !upcoming || needsConnection ? "disabled" : ""}>${joined ? "You're going ✓" : !upcoming ? t("eventEnded") : isFull ? t("eventFull") : needsConnection ? t("connectToJoin") : t("joinEvent")}</button>`;
     const onlineUrl = onlineEventUrl(detail);
     const onlineLink = onlineUrl ? `<a class="btn full secondary event-online-link" href="${esc(onlineUrl)}" target="_blank" rel="noopener noreferrer">${esc(t("joinOnlineEvent"))}</a>` : "";
-    return `<div class="event-expanded"><button class="btn ghost event-back" data-close-event>← Close details</button>${detail.description ? `<div class="event-description">${esc(detail.description)}</div>` : ""}${onlineLink}${creator ? `<div class="section-label">Event host</div><div class="participant-list">${eventProfileTagHtml(creator)}</div>` : ""}<div class="section-label">Participants · ${people.length} of ${esc(String(detail.max_participants || 20))}</div><div class="participant-list">${attendeeTags || "<span class=\"hint\">No participants yet.</span>"}</div>${hostActions}${attendanceAction}<button class="btn full ghost event-share-btn" data-share-event="${esc(detail.id)}">${esc(t("copyEventLink"))}</button></div>`;
+    return `<div class="event-expanded"><button class="btn ghost event-back" data-close-event>← Close details</button>${detail.description ? `<div class="event-description">${esc(detail.description)}</div>` : ""}${onlineLink}${creator ? `<div class="section-label">Event host</div><div class="participant-list">${eventProfileTagHtml(creator)}</div>` : ""}<div class="section-label">Participants · ${people.length} of ${esc(String(detail.max_participants || 20))}</div><div class="participant-list">${attendeeTags || "<span class=\"hint\">No participants yet.</span>"}</div>${hostActions}${attendanceAction}<button class="btn full ghost event-share-btn" data-share-event="${esc(detail.id)}">${esc(t("shareEvent"))}</button></div>`;
   }
   function renderEvents() {
     if (!state.eventsAvailable) {
@@ -1299,6 +1454,21 @@
     }
     const form = $("event-create-panel");
     $("btn-open-my-events").hidden = false;
+    const detail = state.events.find((event) => event.id === state.openEventId);
+    if (state.eventDirectDetail && detail) {
+      form.hidden = true;
+      $("btn-show-event-form").hidden = true;
+      $("event-filters").innerHTML = "";
+      $("events-list").innerHTML = "";
+      $("event-detail").innerHTML = `<div class="event-direct-detail">${eventCardHtml(detail, eventDetailHtml(detail))}</div>`;
+      const root = $("event-detail");
+      root.querySelector("[data-close-event]")?.addEventListener("click", () => { state.eventDirectDetail = false; state.openEventId = null; renderEvents(); });
+      root.querySelector("[data-join-event]")?.addEventListener("click", (event) => joinEventClick(event.currentTarget.dataset.joinEvent, event.currentTarget));
+      root.querySelector("[data-leave-event]")?.addEventListener("click", (event) => leaveEventClick(event.currentTarget.dataset.leaveEvent, event.currentTarget, renderEvents));
+      root.querySelector("[data-share-event]")?.addEventListener("click", (event) => openEventShare(event.currentTarget.dataset.shareEvent));
+      root.querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
+      return;
+    }
     const allIndustries = uniqueIndustries(state.events.flatMap(eventIndustries)).sort((a, b) => industryLabel(a).localeCompare(industryLabel(b)));
     const filterHtml = (type, label, selected, options) => {
       const selectedLabel = options.find(([value]) => value === selected)?.[1] || options[0][1];
@@ -1308,7 +1478,6 @@
     $("event-filters").innerHTML = `<div class="discover-filter-bar event-filter-bar">${filterHtml("industry", "Industry", state.eventIndustry, [["all", "All industries"], ...allIndustries.map((industry) => [industry, industryLabel(industry)])])}${filterHtml("time", "Time", state.eventTime, timeOptions)}</div>`;
     $("event-filters").querySelectorAll("[data-event-filter-toggle]").forEach((button) => button.addEventListener("click", () => { state.openEventFilter = state.openEventFilter === button.dataset.eventFilterToggle ? null : button.dataset.eventFilterToggle; renderEvents(); }));
     $("event-filters").querySelectorAll("[data-event-filter-option]").forEach((button) => button.addEventListener("click", () => { if (button.dataset.eventFilterOption === "industry") state.eventIndustry = button.dataset.eventFilterValue; else state.eventTime = button.dataset.eventFilterValue; state.openEventFilter = null; renderEvents(); }));
-    const detail = state.events.find((event) => event.id === state.openEventId);
     form.hidden = !form.dataset.open;
     $("btn-show-event-form").hidden = !!form.dataset.open;
     $("event-detail").innerHTML = "";
@@ -1325,12 +1494,12 @@
     $("events-list").innerHTML = list.length ? list.map((event) => eventCardHtml(event, event.id === detail?.id ? eventDetailHtml(event) : "")).join("") : emptyStateHtml(filtered ? "🔎" : "📅", filtered ? "No matching events" : "No events yet", filtered ? "Try widening your industry or time filter." : "Be the person who gets the first gathering on the calendar.");
     $("events-list").querySelectorAll("[data-open-event]").forEach((card) => card.addEventListener("click", (ev) => {
       if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link")) return;
-      state.openEventId = card.dataset.openEvent; renderEvents();
+      state.eventDirectDetail = false; state.openEventId = card.dataset.openEvent; renderEvents();
     }));
     $("events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderEvents(); });
     $("events-list").querySelector("[data-join-event]")?.addEventListener("click", (ev) => joinEventClick(ev.currentTarget.dataset.joinEvent, ev.currentTarget));
     $("events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderEvents));
-    $("events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => shareEventLink(ev.currentTarget.dataset.shareEvent));
+    $("events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => openEventShare(ev.currentTarget.dataset.shareEvent));
     $("events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
   }
 
@@ -1365,7 +1534,7 @@
     }));
     $("my-events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderMyEvents(); });
     $("my-events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderMyEvents));
-    $("my-events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => shareEventLink(ev.currentTarget.dataset.shareEvent));
+    $("my-events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => openEventShare(ev.currentTarget.dataset.shareEvent));
     $("my-events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
     $("my-events-list").querySelectorAll("[data-edit-event]").forEach((button) => button.addEventListener("click", () => startEventEdit(button.dataset.editEvent)));
     $("my-events-list").querySelectorAll("[data-remove-participant]").forEach((button) => button.addEventListener("click", () => removeEventParticipant(button.dataset.removeFromEvent, button.dataset.removeParticipant, button)));
@@ -1387,9 +1556,11 @@
     showScreen("events");
     state.editingEventId = null;
     ["event-title", "event-date", "event-time", "event-location", "event-online-url", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
+    $("event-visibility").value = "public";
     $("event-online").checked = false;
     $("event-max-participants").value = 20;
     $("event-error").textContent = "";
+    hideLocationSuggestions();
     $("event-error").classList.remove("visible");
     $("event-create-panel").querySelector(".section-label").textContent = t("newEvent");
     $("btn-create-event").textContent = t("publishEvent");
@@ -1405,6 +1576,48 @@
     $("event-online-url-field").hidden = !online;
     $("event-online-url").required = online;
     $("event-location-required").hidden = online;
+    if (online) hideLocationSuggestions();
+  }
+  function hideLocationSuggestions() {
+    const results = $("event-location-results");
+    results.hidden = true;
+    results.innerHTML = "";
+  }
+  function renderLocationSuggestions(places, empty = false) {
+    const results = $("event-location-results");
+    if (!places.length && !empty) return hideLocationSuggestions();
+    results.hidden = false;
+    results.innerHTML = places.length
+      ? places.map((place, index) => `<button type="button" class="event-location-option" data-location-option="${index}"><strong>${esc(place.name)}</strong><span>${esc(place.address || place.city || "")}</span></button>`).join("")
+      : `<div class="event-location-option"><span>${esc(t("locationNoResults"))}</span></div>`;
+    results.querySelectorAll("[data-location-option]").forEach((button) => button.addEventListener("click", () => {
+      const place = places[Number(button.dataset.locationOption)];
+      if (!place) return;
+      const detail = [place.address, place.city].filter((value, index, list) => value && list.indexOf(value) === index).join(" · ");
+      $("event-location").value = detail ? `${place.name} · ${detail}` : place.name;
+      hideLocationSuggestions();
+    }));
+  }
+  function searchEventLocation() {
+    if ($("event-online").checked) return;
+    const query = $("event-location").value.trim();
+    clearTimeout(state.locationSearchTimer);
+    if (query.length < 2) return hideLocationSuggestions();
+    const request = ++state.locationSearchRequest;
+    state.locationSearchTimer = setTimeout(async () => {
+      const results = $("event-location-results");
+      results.hidden = false;
+      results.innerHTML = `<div class="event-location-option"><span>${esc(t("locationSearching"))}</span></div>`;
+      try {
+        const response = await fetch(`/api/amap-place-search?q=${encodeURIComponent(query)}`);
+        if (!response.ok) throw new Error("PLACE_SEARCH_UNAVAILABLE");
+        const data = await response.json();
+        if (request !== state.locationSearchRequest) return;
+        renderLocationSuggestions(Array.isArray(data.places) ? data.places : [], true);
+      } catch (_) {
+        if (request === state.locationSearchRequest) hideLocationSuggestions();
+      }
+    }, 280);
   }
   function validOnlineUrl(value) {
     try { const url = new URL(value); return ["http:", "https:"].includes(url.protocol) ? url.href : ""; }
@@ -1435,13 +1648,15 @@
     if (Number.isNaN(maxParticipants) || maxParticipants < 1 || maxParticipants > 500) { error.textContent = t("eventCapacityInvalid"); error.classList.add("visible"); return; }
     const button = $("btn-create-event"); button.disabled = true; error.classList.remove("visible");
     try {
-      const eventData = { title, description, starts_at: new Date(`${date}T${time}`).toISOString(), location: location || "Online", online_url: onlineUrl || null, industries: industries.join(" | "), max_participants: maxParticipants };
+      const eventData = { title, description, starts_at: new Date(`${date}T${time}`).toISOString(), location: location || "Online", online_url: onlineUrl || null, visibility: eventVisibility({ visibility: $("event-visibility").value }), industries: industries.join(" | "), max_participants: maxParticipants };
       const editing = state.editingEventId;
       const event = editing ? await api.updateEvent(state.code, editing, eventData) : await api.createEvent(state.code, eventData);
       await refreshAll({ silent: true });
       state.openEventId = event.id;
       ["event-title", "event-date", "event-time", "event-location", "event-online-url", "event-industry-1", "event-industry-2", "event-description"].forEach((id) => { $(id).value = ""; });
       $("event-online").checked = false;
+      hideLocationSuggestions();
+      $("event-visibility").value = "public";
       $("event-max-participants").value = 20;
       state.eventPickerOpen = null;
       state.editingEventId = null;
@@ -1482,8 +1697,10 @@
     $("event-date").value = dateInputValue(start);
     $("event-time").value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
     $("event-location").value = onlineEventUrl(event) && event.location === "Online" ? "" : event.location;
+    hideLocationSuggestions();
     $("event-online").checked = !!onlineEventUrl(event);
     $("event-online-url").value = onlineEventUrl(event);
+    $("event-visibility").value = eventVisibility(event);
     const industries = eventIndustries(event);
     $("event-industry-1").value = industries[0] || "";
     $("event-industry-2").value = industries[1] || "";
@@ -1607,7 +1824,7 @@
       const last = msgs.at(-1);
       const unread = unreadCount(m.id);
       const preview = last
-        ? `${last.sender_id === state.me.id ? (state.language === "zh" ? "你：" : "You: ") : ""}${esc(last.body)}`
+        ? `${last.sender_id === state.me.id ? (state.language === "zh" ? "你：" : "You: ") : ""}${esc(last.event_id ? t("eventInvite") : last.body)}`
         : (m.source === "staff" ? t("matchPreviewStaff") : t("matchPreviewMutual"));
       const right = !last
         ? `<span class="new-tag">NEW</span>`
@@ -1616,7 +1833,7 @@
         <div class="match-row" data-open="${esc(m.id)}">
           ${avatarHtml(p, "md")}
           <div class="meta">
-            <div class="name">${esc(p.name)}</div>
+            <div class="name">${esc(p.name)}${p.is_system_account ? ` <span class="official-badge">${esc(t("officialAccount"))}</span>` : ""}</div>
             <div class="preview">${preview}</div>
           </div>
           ${right}
@@ -1635,8 +1852,9 @@
     if (!p) return;
     state.openMatchId = matchId;
     $("chat-avatar").outerHTML = avatarHtml(p, "sm").replace('class="avatar sm"', 'class="avatar sm chat-profile-trigger" id="chat-avatar" role="button" tabindex="0" aria-label="View profile"');
-    $("chat-name").textContent = p.name;
+    $("chat-name").textContent = p.is_system_account ? `${p.name} · ${t("officialAccount")}` : p.name;
     $("chat-sub").textContent = p.title + (p.company && p.company_visible !== false ? " @ " + p.company : "");
+    $("btn-chat-report").hidden = !!p.is_system_account;
     showScreen("chat");
     renderChatMessages();
     markRead(matchId);
@@ -1644,6 +1862,13 @@
     $("chat-input").focus();
   }
 
+  function eventInviteCardHtml(message, mine) {
+    const event = state.events.find((item) => item.id === message.event_id);
+    if (!event) return `<div class="bubble ${mine ? "mine" : "theirs"}">${esc(t("eventNoLongerAvailable"))}</div>`;
+    const host = profileById(event.creator_id);
+    const venue = onlineEventUrl(event) ? t("onlineEvent") : event.location;
+    return `<button class="event-invite-card ${mine ? "mine" : "theirs"}" data-open-invited-event="${esc(event.id)}"><span class="event-invite-message">${esc(t("eventInviteMessage"))}</span><span class="event-invite-label">📅 ${esc(t("eventInvite"))}</span><strong>${esc(event.title)}</strong><span>${esc(fmtEventTime(event.starts_at))}</span><span>${esc(venue)}${host ? ` · ${esc(host.name)}` : ""}</span></button>`;
+  }
   function renderChatMessages() {
     const m = state.matches.find((x) => x.id === state.openMatchId);
     if (!m) return;
@@ -1664,11 +1889,17 @@
     for (const msg of msgs) {
       const mine = msg.sender_id === state.me.id;
       if (prevMine !== mine) html += `<div class="bubble-time ${mine ? "mine" : "theirs"}">${esc(fmtTime(msg.created_at))}</div>`;
-      html += `<div class="bubble ${mine ? "mine" : "theirs"}">${esc(msg.body)}</div>`;
+      html += msg.event_id ? eventInviteCardHtml(msg, mine) : `<div class="bubble ${mine ? "mine" : "theirs"}">${esc(msg.body)}</div>`;
       prevMine = mine;
     }
     const box = $("chat-messages");
     box.innerHTML = html;
+    box.querySelectorAll("[data-open-invited-event]").forEach((card) => card.addEventListener("click", () => {
+      state.openEventId = card.dataset.openInvitedEvent;
+      state.eventTime = "all";
+      state.eventDirectDetail = true;
+      showScreen("events");
+    }));
     box.scrollTop = box.scrollHeight;
   }
 
@@ -2171,6 +2402,10 @@
     $("btn-close-request-modal").addEventListener("click", closeRequestComposer);
     $("btn-cancel-request").addEventListener("click", closeRequestComposer);
     $("btn-submit-request").addEventListener("click", sendRequestClick);
+    $("btn-close-event-share").addEventListener("click", closeEventShare);
+    $("btn-cancel-event-share").addEventListener("click", closeEventShare);
+    $("btn-copy-event-link").addEventListener("click", () => { if (state.eventShareId) copyEventLink(state.eventShareId); });
+    $("btn-send-event-invite").addEventListener("click", sendEventInviteClick);
     $("btn-close-profile-gate").addEventListener("click", closeProfileGate);
     $("btn-keep-browsing").addEventListener("click", closeProfileGate);
     $("btn-complete-profile").addEventListener("click", () => { closeProfileGate(); startOnboarding(); });
@@ -2184,6 +2419,8 @@
     $("btn-create-event").addEventListener("click", createEventClick);
     $("btn-cancel-event-form").addEventListener("click", cancelEventForm);
     $("event-online").addEventListener("change", syncEventOnlineFields);
+    $("event-location").addEventListener("input", searchEventLocation);
+    $("event-location").addEventListener("blur", () => window.setTimeout(hideLocationSuggestions, 140));
     $("btn-refresh-discover").addEventListener("click", refreshDiscoverFromPull);
     // Capture at document level so report buttons keep working even when the
     // discover-list content is refreshed while the app is open.
@@ -2247,6 +2484,14 @@
     });
     $("event-date-trigger").addEventListener("click", () => toggleEventPicker("date"));
     $("event-time-trigger").addEventListener("click", () => toggleEventPicker("time"));
+    $("event-visibility-trigger").addEventListener("click", () => toggleEventPicker("visibility"));
+    $("event-visibility-menu").addEventListener("click", (event) => {
+      const option = event.target.closest("[data-event-visibility]");
+      if (!option) return;
+      $("event-visibility").value = option.dataset.eventVisibility;
+      state.eventPickerOpen = null;
+      renderEventPickers();
+    });
     [1, 2].forEach((number) => {
       $("event-industry-" + number + "-trigger").addEventListener("click", () => toggleEventPicker("industry-" + number));
       $("event-industry-" + number + "-menu").addEventListener("click", (event) => {

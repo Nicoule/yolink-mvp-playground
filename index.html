@@ -156,9 +156,10 @@
           <div class="event-picker-wrap"><span class="event-control-label">Time</span><input type="hidden" id="event-time"><button type="button" class="event-picker-trigger" id="event-time-trigger">Choose time</button><div class="event-picker-menu event-time-menu" id="event-time-menu" hidden></div></div>
         </div>
       </div>
-      <div class="field"><label for="event-location">Location <span class="required-mark" id="event-location-required" aria-hidden="true">*</span></label><input type="text" id="event-location" maxlength="160"></div>
+      <div class="field event-location-field"><label for="event-location">Location <span class="required-mark" id="event-location-required" aria-hidden="true">*</span></label><div class="event-location-search"><input type="text" id="event-location" maxlength="160" autocomplete="off"><div class="event-location-results" id="event-location-results" hidden></div></div><p class="hint" id="event-location-help">Start typing to search for a place.</p></div>
       <div class="field event-online-field"><label class="check-label"><input type="checkbox" id="event-online"><span id="event-online-label">Online event</span></label><div id="event-online-url-field" hidden><label for="event-online-url" id="event-online-url-label">Online event link <span class="required-mark" aria-hidden="true">*</span></label><input type="url" id="event-online-url" maxlength="500" placeholder="https://..."></div></div>
       <div class="field"><label>Event industries <span class="required-mark" aria-hidden="true">*</span> <span class="hint">(up to 2)</span></label><div class="industry-inputs event-industry-inputs"><div class="event-picker-wrap"><input type="hidden" id="event-industry-1"><button type="button" class="event-picker-trigger" id="event-industry-1-trigger">Choose an industry</button><div class="event-picker-menu event-industry-menu" id="event-industry-1-menu" hidden></div></div><div class="event-picker-wrap"><input type="hidden" id="event-industry-2"><button type="button" class="event-picker-trigger" id="event-industry-2-trigger">Add another industry (optional)</button><div class="event-picker-menu event-industry-menu" id="event-industry-2-menu" hidden></div></div></div></div>
+      <div class="field"><label id="event-visibility-label">Who can see this event?</label><div class="event-picker-wrap"><input type="hidden" id="event-visibility" value="public"><button type="button" class="event-picker-trigger" id="event-visibility-trigger">Everyone can see</button><div class="event-picker-menu event-visibility-menu" id="event-visibility-menu" hidden></div></div><p class="hint event-visibility-help" id="event-visibility-help"></p></div>
       <div class="field"><label for="event-max-participants">Maximum participants</label><input type="number" id="event-max-participants" min="1" max="500" value="20" inputmode="numeric"></div>
       <div class="field"><label for="event-description">What should people know? <span class="hint">(optional)</span></label><textarea id="event-description" maxlength="1000" placeholder="A relaxed hour to meet other people in the pool."></textarea></div>
       <p class="error-text" id="event-error"></p>
@@ -330,6 +331,20 @@
     <p id="profile-gate-help">Create your profile to send connection requests, join events, and create your own events.</p>
     <button class="btn full" id="btn-complete-profile">Complete my profile</button>
     <button class="btn full ghost" id="btn-keep-browsing">Keep browsing</button>
+  </div>
+</div>
+
+<!-- ============ Event share ============ -->
+<div id="event-share-modal" aria-hidden="true">
+  <div class="report-dialog event-share-dialog" role="dialog" aria-modal="true" aria-labelledby="event-share-title">
+    <button class="modal-close" id="btn-close-event-share" aria-label="Close">×</button>
+    <h2 id="event-share-title">Share event</h2>
+    <p id="event-share-help">Send this event as an invitation card, or copy its link.</p>
+    <div class="event-share-preview" id="event-share-preview"></div>
+    <div class="event-share-list" id="event-share-list"></div>
+    <button class="btn full" id="btn-send-event-invite" disabled>Send to a conversation</button>
+    <button class="btn full secondary" id="btn-copy-event-link">Copy link</button>
+    <button class="btn full ghost" id="btn-cancel-event-share">Cancel</button>
   </div>
 </div>
 

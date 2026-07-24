@@ -22,7 +22,7 @@
       myEvents: "My events", createEvent: "Create an event", requests: "Requests", report: "Report", accept: "Accept", pass: "Pass", letsNetwork: "🤝 Let's network", requestSent: "Requested ✓", requestSentToast: "Request sent 🤝", addRequestNote: "Add a note", requestNoteHelp: "Add an optional message for this person to see with your connection request.", requestMessage: "Message", sendRequest: "Send request", outgoingRequests: "Sent by you", requestPending: "Pending", completeProfileTitle: "Ready to connect?", completeProfileHelp: "Create your profile to send connection requests, join events, and create your own events.", completeProfile: "Complete my profile", keepBrowsing: "Keep browsing", officialAccount: "Official account", defaultNetworkRequest: "wants to network with you", matchPreviewMutual: "You matched — say hello!", matchPreviewStaff: "Matched by the Yolink team — say hello!", matchOverlayMutual: "both want to connect.", matchOverlayStaff: "The Yolink team thinks you should talk.", chooseYears: "Choose years of experience", noRequestsHelp: "When someone wants to connect with you, they'll show up here.", noMatchesHelp: "Accept a connection request, or wait for a request you've sent to be accepted; your conversations will appear here.", send: "Send", editProfile: "Edit profile", saveChanges: "Save changes", cancel: "Cancel", logOut: "Log out",
       eventsSub: "Make plans with the Yolink community.", refresh: "Refresh", pullToRefresh: "Pull down to refresh", releaseToRefresh: "Release to refresh", refreshing: "Refreshing…", discoverRefreshedToast: "Discover is up to date.", eventsRefreshedToast: "Events are up to date.", languageButton: "中文", languageName: "English",
       photoAdjust: "Adjust your photo", photoAdjustHelp: "Drag to reposition, then use the slider to zoom.", choosePhoto: "Choose a photo", zoom: "Zoom", usePhoto: "Use photo",
-      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventVisibility: "Who can see this event?", visibilityPublic: "Everyone can see", visibilityConnectToJoin: "Connect to join", visibilityConnectionsOnly: "Connections only", visibilityUnlisted: "Share link only", visibilityPublicHelp: "Anyone can discover and join this event.", visibilityConnectToJoinHelp: "Anyone can see it, but only your connections can join.", visibilityConnectionsOnlyHelp: "Only people connected with you can discover and join.", visibilityUnlistedHelp: "Only people with the event link can view and join.", connectToJoin: "Connect with the host to join", onlineEvent: "Online event", onlineEventLink: "Online event link", joinOnlineEvent: "Open online event link", onlineEventUrlRequired: "Please enter a valid online event link.", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", nameRequired: "Please enter your name.", titleRequired: "Please enter your job title.", industryRequired: "Please enter at least one industry.", yearsRequired: "Please choose your years of experience.", backgroundRequired: "Tell people what your background is in.", lookingForRequired: "Tell people who you're looking to network with.", reportReasonRequired: "Please briefly describe the issue.", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
+      copyEventLink: "Copy event link", quitEvent: "Quit event", cancelEvent: "Cancel event", editEvent: "Edit event", newEvent: "New event", publishEvent: "Publish event", saveEvent: "Save event", joinEvent: "Join event", eventFull: "Event is full", eventEnded: "Event ended", eventVisibility: "Who can see this event?", visibilityPublic: "Everyone can see", visibilityConnectToJoin: "Connect to join", visibilityConnectionsOnly: "Connections only", visibilityUnlisted: "Share link only", visibilityPublicHelp: "Anyone can discover and join this event.", visibilityConnectToJoinHelp: "Anyone can see it, but only your connections can join.", visibilityConnectionsOnlyHelp: "Only people connected with you can discover and join.", visibilityUnlistedHelp: "Only people with the event link can view and join.", connectToJoin: "Connect with the host to join", onlineEvent: "Online event", onlineEventLink: "Online event link", joinOnlineEvent: "Open online event link", locationPreview: "Location preview", locationPreviewLoading: "Loading map preview…", locationPreviewUnavailable: "Map preview is unavailable. You can use the address above.", onlineEventUrlRequired: "Please enter a valid online event link.", eventPublishedToast: "Event published 🎉", eventUpdatedToast: "Event updated ✓", copiedToast: "Copied!", copyFailedToast: "Couldn't copy — select it manually.", codeCopiedToast: "Code copied — keep it safe!", eventLinkCopiedToast: "Event link copied!", reportSentToast: "Thanks — your report was sent to the Yolink team.", alreadyReportedToast: "You've already reported this user. Our team is reviewing it.", coffeeRequestedToast: "Coffee chat requested ☕", joinedEventToast: "You're going!", leftEventToast: "You left the event", participantRemovedToast: "Participant removed", eventCancelledToast: "Event cancelled", requestPassedToast: "Passed — no hard feelings.", profileSavedToast: "Profile saved ✓", newMessageFrom: "New message from", chooseIndustry: "Choose an industry", addIndustry: "Add another industry (optional)", clearIndustry: "Clear selection", nameRequired: "Please enter your name.", titleRequired: "Please enter your job title.", industryRequired: "Please enter at least one industry.", yearsRequired: "Please choose your years of experience.", backgroundRequired: "Tell people what your background is in.", lookingForRequired: "Tell people who you're looking to network with.", reportReasonRequired: "Please briefly describe the issue.", eventRequiredDetails: "Please add an event name, date, time, and location.", eventIndustryRequired: "Choose at least one industry for this event.", eventCapacityInvalid: "Maximum participants should be between 1 and 500."
     },
     zh: {
       discover: "发现", events: "活动", matches: "匹配", profile: "个人资料", myProfile: "我的资料",
@@ -33,7 +33,7 @@
       myEvents: "我的活动", createEvent: "创建活动", requests: "请求", report: "举报", accept: "接受", pass: "忽略", letsNetwork: "🤝发起连接", requestSent: "已发送 ✓", requestSentToast: "连接请求已发送 🤝", addRequestNote: "添加留言", requestNoteHelp: "可选填写一段留言，对方会在收到连接请求时看到。", requestMessage: "留言", sendRequest: "发送请求", outgoingRequests: "由你发起", requestPending: "等待对方回应", completeProfileTitle: "完善资料后即可行动", completeProfileHelp: "创建个人资料后，即可发起连接、参加活动和创建自己的活动。", completeProfile: "去完善资料", keepBrowsing: "继续浏览", officialAccount: "官方", defaultNetworkRequest: "想与你建立连接", matchPreviewMutual: "你们已匹配成功，打个招呼吧！", matchPreviewStaff: "Yolink 团队为你推荐了这位匹配对象，打个招呼吧！", matchOverlayMutual: "都想建立连接。", matchOverlayStaff: "Yolink 团队认为你们值得聊一聊。", chooseYears: "选择工作年限", noRequestsHelp: "当有人想与你建立连接时，他们的请求会显示在这里。", noMatchesHelp: "接受连接请求，或等待已发起的请求；你们的对话会显示在这里。", send: "发送", editProfile: "编辑资料", saveChanges: "保存更改", cancel: "取消", logOut: "退出登录",
       eventsSub: "与 Yolink 社群一起制定计划。", refresh: "刷新", pullToRefresh: "下拉刷新", releaseToRefresh: "松开即可刷新", refreshing: "正在刷新…", discoverRefreshedToast: "发现页已更新。", eventsRefreshedToast: "活动页已更新。", languageButton: "EN", languageName: "中文",
       photoAdjust: "调整你的照片", photoAdjustHelp: "拖动照片调整位置，再用滑杆缩放。", choosePhoto: "选择照片", zoom: "缩放", usePhoto: "使用此照片",
-      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventVisibility: "活动可见范围", visibilityPublic: "所有人可见", visibilityConnectToJoin: "连接后可参与", visibilityConnectionsOnly: "仅联系人可见", visibilityUnlisted: "仅分享邀请", visibilityPublicHelp: "所有用户都可以发现并参加此活动。", visibilityConnectToJoinHelp: "所有用户都能看到，但只有与你成功连接的用户可以参加。", visibilityConnectionsOnlyHelp: "只有与你成功连接的用户可以发现并参加。", visibilityUnlistedHelp: "只有获得活动分享链接的用户可以查看和参加。", connectToJoin: "先与主办人连接后再参加", onlineEvent: "线上活动", onlineEventLink: "线上活动链接", joinOnlineEvent: "打开线上活动链接", onlineEventUrlRequired: "请输入有效的线上活动链接。", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", nameRequired: "请填写姓名。", titleRequired: "请填写职位。", industryRequired: "请至少选择一个行业。", yearsRequired: "请选择工作年限。", backgroundRequired: "请介绍一下你的背景。", lookingForRequired: "请说明你希望结识什么样的人。", reportReasonRequired: "请简要说明举报原因。", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
+      copyEventLink: "复制活动链接", quitEvent: "退出活动", cancelEvent: "取消活动", editEvent: "编辑活动", newEvent: "新活动", publishEvent: "发布活动", saveEvent: "保存活动", joinEvent: "参加活动", eventFull: "活动已满", eventEnded: "活动已结束", eventVisibility: "活动可见范围", visibilityPublic: "所有人可见", visibilityConnectToJoin: "连接后可参与", visibilityConnectionsOnly: "仅联系人可见", visibilityUnlisted: "仅分享邀请", visibilityPublicHelp: "所有用户都可以发现并参加此活动。", visibilityConnectToJoinHelp: "所有用户都能看到，但只有与你成功连接的用户可以参加。", visibilityConnectionsOnlyHelp: "只有与你成功连接的用户可以发现并参加。", visibilityUnlistedHelp: "只有获得活动分享链接的用户可以查看和参加。", connectToJoin: "先与主办人连接后再参加", onlineEvent: "线上活动", onlineEventLink: "线上活动链接", joinOnlineEvent: "打开线上活动链接", locationPreview: "地点预览", locationPreviewLoading: "正在加载地图预览…", locationPreviewUnavailable: "暂时无法加载地图预览，你仍可使用上方地址。", onlineEventUrlRequired: "请输入有效的线上活动链接。", eventPublishedToast: "活动已发布 🎉", eventUpdatedToast: "活动已更新 ✓", copiedToast: "已复制！", copyFailedToast: "复制失败，请手动选择并复制。", codeCopiedToast: "专属代码已复制，请妥善保存！", eventLinkCopiedToast: "活动链接已复制！", reportSentToast: "感谢你的反馈，举报已发送给 Yolink 团队。", alreadyReportedToast: "您已经举报过该用户，团队正在审核中。", coffeeRequestedToast: "咖啡交流请求已发送 ☕", joinedEventToast: "你已参加活动！", leftEventToast: "你已退出活动", participantRemovedToast: "参与者已移除", eventCancelledToast: "活动已取消", requestPassedToast: "已忽略该请求。", profileSavedToast: "资料已保存 ✓", newMessageFrom: "收到来自以下用户的新消息：", chooseIndustry: "选择行业", addIndustry: "添加另一个行业（可选）", clearIndustry: "清除选择", nameRequired: "请填写姓名。", titleRequired: "请填写职位。", industryRequired: "请至少选择一个行业。", yearsRequired: "请选择工作年限。", backgroundRequired: "请介绍一下你的背景。", lookingForRequired: "请说明你希望结识什么样的人。", reportReasonRequired: "请简要说明举报原因。", eventRequiredDetails: "请填写活动名称、日期、时间和地点。", eventIndustryRequired: "请至少选择一个活动行业。", eventCapacityInvalid: "参与人数上限应在 1 至 500 人之间。"
     }
   };
   Object.assign(COPY.en, {
@@ -1047,9 +1047,9 @@
 
   function genderIconHtml(gender) {
     const icons = {
-      woman: ["♀", "woman"],
-      man: ["♂", "man"],
-      nonbinary: ["⚧", "nonbinary"],
+      woman: ["<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"5.6\" r=\"3.2\"/><path d=\"M8 8.8v4.8M5.8 11.5h4.4\"/></svg>", "woman"],
+      man: ["<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"6.1\" cy=\"9.8\" r=\"3.2\"/><path d=\"m8.4 7.5 4-4M9.8 3.5h2.6v2.6\"/></svg>", "man"],
+      nonbinary: ["<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"8\" r=\"3\"/><path d=\"m9.2 5.8 3.1-3.1M10.1 2.7h2.2v2.2M7 11v2.6M5.3 12.3h3.4\"/></svg>", "nonbinary"],
     };
     const icon = icons[gender];
     return icon ? `<span class="gender-icon ${icon[1]}" title="${esc(genderLabel(gender))}" aria-label="${esc(genderLabel(gender))}">${icon[0]}</span>` : "";
@@ -1411,6 +1411,32 @@
       return ["http:", "https:"].includes(url.protocol) ? url.href : "";
     } catch { return ""; }
   }
+  function showLocationPreview(location) {
+    const address = String(location || "").trim();
+    if (!address) return;
+    const image = $("location-preview-image");
+    const status = $("location-preview-status");
+    $("location-preview-title").textContent = t("locationPreview");
+    $("location-preview-address").textContent = address;
+    status.textContent = t("locationPreviewLoading");
+    image.removeAttribute("src");
+    image.classList.remove("loaded");
+    image.alt = t("locationPreview");
+    $("location-preview-modal").classList.add("visible");
+    $("location-preview-modal").setAttribute("aria-hidden", "false");
+    image.onload = () => { image.classList.add("loaded"); status.textContent = ""; };
+    image.onerror = () => { image.classList.remove("loaded"); image.removeAttribute("src"); status.textContent = t("locationPreviewUnavailable"); };
+    image.src = `/api/amap-map-preview?address=${encodeURIComponent(address)}`;
+  }
+  function closeLocationPreview() {
+    const image = $("location-preview-image");
+    image.onload = null;
+    image.onerror = null;
+    image.classList.remove("loaded");
+    image.removeAttribute("src");
+    $("location-preview-modal").classList.remove("visible");
+    $("location-preview-modal").setAttribute("aria-hidden", "true");
+  }
   function eventCardHtml(event, expanded, membership) {
     const count = participantsFor(event.id).length;
     const role = membership ? `<div class="event-membership ${membership === "Hosting" ? "hosting" : ""}">${esc(membership)}</div>` : "";
@@ -1418,7 +1444,7 @@
     const visibility = eventVisibility(event);
     const tags = industries.length || visibility !== "public" ? `<div class="event-industries">${industries.map((industry) => `<span>${esc(industryLabel(industry))}</span>`).join("")}${visibility !== "public" ? `<span class="event-visibility-tag">${esc(eventVisibilityLabel(visibility))}</span>` : ""}</div>` : "";
     const onlineUrl = onlineEventUrl(event);
-    const venue = onlineUrl ? `💻 ${esc(t("onlineEvent"))}` : `📍 ${esc(event.location)}`;
+    const venue = onlineUrl ? `💻 ${esc(t("onlineEvent"))}` : `<button type="button" class="event-location-link" data-preview-location="${esc(event.location)}"><span class="event-location-pin" aria-hidden="true">📍</span>${esc(event.location)}</button>`;
     return `<div class="card event-card" data-open-event="${esc(event.id)}"><div class="event-top">${eventDateHtml(event.starts_at)}<div class="event-meta"><h2>${esc(event.title)}</h2><div class="when">${esc(fmtEventTime(event.starts_at))}</div><div class="where">${venue}</div>${tags}<div class="going">${count} / ${esc(String(event.max_participants || 20))} going</div>${role}</div></div>${expanded || ""}</div>`;
   }
   function eventProfileTagHtml(profile, removableEventId) {
@@ -1466,6 +1492,7 @@
       root.querySelector("[data-join-event]")?.addEventListener("click", (event) => joinEventClick(event.currentTarget.dataset.joinEvent, event.currentTarget));
       root.querySelector("[data-leave-event]")?.addEventListener("click", (event) => leaveEventClick(event.currentTarget.dataset.leaveEvent, event.currentTarget, renderEvents));
       root.querySelector("[data-share-event]")?.addEventListener("click", (event) => openEventShare(event.currentTarget.dataset.shareEvent));
+      root.querySelectorAll("[data-preview-location]").forEach((button) => button.addEventListener("click", () => showLocationPreview(button.dataset.previewLocation)));
       root.querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
       return;
     }
@@ -1493,13 +1520,14 @@
     const filtered = state.eventIndustry !== "all" || state.eventTime !== "upcoming";
     $("events-list").innerHTML = list.length ? list.map((event) => eventCardHtml(event, event.id === detail?.id ? eventDetailHtml(event) : "")).join("") : emptyStateHtml(filtered ? "🔎" : "📅", filtered ? "No matching events" : "No events yet", filtered ? "Try widening your industry or time filter." : "Be the person who gets the first gathering on the calendar.");
     $("events-list").querySelectorAll("[data-open-event]").forEach((card) => card.addEventListener("click", (ev) => {
-      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link")) return;
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link, .event-location-link")) return;
       state.eventDirectDetail = false; state.openEventId = card.dataset.openEvent; renderEvents();
     }));
     $("events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderEvents(); });
     $("events-list").querySelector("[data-join-event]")?.addEventListener("click", (ev) => joinEventClick(ev.currentTarget.dataset.joinEvent, ev.currentTarget));
     $("events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderEvents));
     $("events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => openEventShare(ev.currentTarget.dataset.shareEvent));
+    $("events-list").querySelectorAll("[data-preview-location]").forEach((button) => button.addEventListener("click", () => showLocationPreview(button.dataset.previewLocation)));
     $("events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
   }
 
@@ -1529,12 +1557,13 @@
       $("my-events-list").innerHTML = filtered.sort((a, b) => a.starts_at.localeCompare(b.starts_at)).map(card).join("");
     }
     $("my-events-list").querySelectorAll("[data-open-event]").forEach((eventCard) => eventCard.addEventListener("click", (ev) => {
-      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link")) return;
+      if (ev.target.closest("[data-close-event], [data-join-event], [data-leave-event], [data-cancel-event], [data-share-event], [data-view-profile], [data-edit-event], [data-remove-participant], .event-online-link, .event-location-link")) return;
       state.openEventId = eventCard.dataset.openEvent; renderMyEvents();
     }));
     $("my-events-list").querySelector("[data-close-event]")?.addEventListener("click", () => { state.openEventId = null; renderMyEvents(); });
     $("my-events-list").querySelector("[data-leave-event]")?.addEventListener("click", (ev) => leaveEventClick(ev.currentTarget.dataset.leaveEvent, ev.currentTarget, renderMyEvents));
     $("my-events-list").querySelector("[data-share-event]")?.addEventListener("click", (ev) => openEventShare(ev.currentTarget.dataset.shareEvent));
+    $("my-events-list").querySelectorAll("[data-preview-location]").forEach((button) => button.addEventListener("click", () => showLocationPreview(button.dataset.previewLocation)));
     $("my-events-list").querySelectorAll("[data-view-profile]").forEach((tag) => tag.addEventListener("click", () => showMemberProfile(tag.dataset.viewProfile)));
     $("my-events-list").querySelectorAll("[data-edit-event]").forEach((button) => button.addEventListener("click", () => startEventEdit(button.dataset.editEvent)));
     $("my-events-list").querySelectorAll("[data-remove-participant]").forEach((button) => button.addEventListener("click", () => removeEventParticipant(button.dataset.removeFromEvent, button.dataset.removeParticipant, button)));
@@ -1874,7 +1903,7 @@
     if (!m) return;
     const p = matchPartner(m);
     const msgs = messagesFor(m.id);
-    const matchTitle = state.language === "zh" ? `你已与 ${esc(p.name.split(" ")[0])} 匹配` : `You matched with ${esc(p.name.split(" ")[0])}`;
+    const matchTitle = state.language === "zh" ? `你已与 ${esc(p.name)} 匹配` : `You matched with ${esc(p.name)}`;
     const matchSub = m.source === "staff"
       ? (state.language === "zh" ? "由 Yolink 团队为你推荐" : "Hand-picked by the Yolink team")
       : (state.language === "zh" ? "你们都想建立连接" : "You both wanted to connect");
@@ -2224,10 +2253,10 @@
     if (!p) return;
     overlayMatchId = matchId;
     $("overlay-avatars").innerHTML = avatarHtml(state.me, "lg") + avatarHtml(p, "lg");
-    const firstName = p.name.split(" ")[0];
+    const partnerName = p.name;
     $("overlay-text").textContent = m.source === "staff"
-      ? (state.language === "zh" ? `${firstName}，${t("matchOverlayStaff")}` : `The Yolink team thinks you and ${firstName} should talk.`)
-      : (state.language === "zh" ? `你和 ${firstName} ${t("matchOverlayMutual")}` : `You and ${firstName} ${t("matchOverlayMutual")}`);
+      ? (state.language === "zh" ? `${partnerName}，${t("matchOverlayStaff")}` : `The Yolink team thinks you and ${partnerName} should talk.`)
+      : (state.language === "zh" ? `你和 ${partnerName} ${t("matchOverlayMutual")}` : `You and ${partnerName} ${t("matchOverlayMutual")}`);
     $("match-overlay").classList.add("visible");
   }
   function hideMatchOverlay() {
@@ -2404,6 +2433,7 @@
     $("btn-submit-request").addEventListener("click", sendRequestClick);
     $("btn-close-event-share").addEventListener("click", closeEventShare);
     $("btn-cancel-event-share").addEventListener("click", closeEventShare);
+    $("btn-close-location-preview").addEventListener("click", closeLocationPreview);
     $("btn-copy-event-link").addEventListener("click", () => { if (state.eventShareId) copyEventLink(state.eventShareId); });
     $("btn-send-event-invite").addEventListener("click", sendEventInviteClick);
     $("btn-close-profile-gate").addEventListener("click", closeProfileGate);

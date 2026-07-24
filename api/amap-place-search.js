@@ -17,6 +17,11 @@ module.exports = async function amapPlaceSearch(req, res) {
     const response = await fetch(`https://restapi.amap.com/v5/place/text?${params}`, { signal: controller.signal });
     if (!response.ok) throw new Error("AMAP_UNAVAILABLE");
     const data = await response.json();
+    // Amap responds with HTTP 200 for invalid credentials, quota limits, and
+    // parameter errors. Keep those separate from a genuine empty search.
+    if (String(data?.status) !== "1") {
+      return res.status(502).json({ error: "AMAP_REQUEST_FAILED" });
+    }
     const pois = Array.isArray(data?.pois) ? data.pois : [];
     const places = pois.map((poi) => ({
       id: String(poi.id || poi.poi_id || ""),

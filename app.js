@@ -40,13 +40,13 @@
     shareEvent: "Share event", sendToChat: "Send to a conversation", chooseConversation: "Choose a match", copyLink: "Copy link",
     eventInvite: "Event invitation", eventInviteSent: "Event invitation sent", noMatchesToShare: "Match with someone first to send an event invitation.",
     eventNoLongerAvailable: "This event is no longer available", eventInviteMessage: "I wanted to share this event with you — come take a look!",
-    locationSearchHelp: "Start typing to search for a place.", locationSearching: "Searching places…", locationNoResults: "No matching places found. You can still enter a location manually."
+    locationSearchHelp: "Start typing to search for a place.", locationSearching: "Searching places…", locationNoResults: "No matching places found. You can still enter a location manually.", locationSearchUnavailable: "Place search is temporarily unavailable. You can still enter a location manually."
   });
   Object.assign(COPY.zh, {
     shareEvent: "分享活动", sendToChat: "发送到聊天", chooseConversation: "选择一位匹配对象", copyLink: "复制链接",
     eventInvite: "活动邀请", eventInviteSent: "活动邀请已发送", noMatchesToShare: "先与其他用户建立连接，即可向对方发送活动邀请。",
     eventNoLongerAvailable: "该活动已不可用", eventInviteMessage: "我想和你分享这个活动，快来看看吧！",
-    locationSearchHelp: "输入地点名称或地址，即可搜索并选择地点。", locationSearching: "正在搜索地点…", locationNoResults: "未找到匹配地点，你仍可手动填写地点。"
+    locationSearchHelp: "输入地点名称或地址，即可搜索并选择地点。", locationSearching: "正在搜索地点…", locationNoResults: "未找到匹配地点，你仍可手动填写地点。", locationSearchUnavailable: "地点搜索暂不可用，你仍可手动填写地点。"
   });
   function t(key, fallback) { return COPY[state.language]?.[key] || fallback || COPY.en[key] || key; }
   const INDUSTRY_ZH = { Technology: "科技", Healthcare: "医疗健康", Finance: "金融", Consulting: "咨询", Education: "教育", Marketing: "市场营销", Design: "设计", Legal: "法律", Manufacturing: "制造业", "Real Estate": "房地产", "Media & Entertainment": "媒体与娱乐", Nonprofit: "非营利组织", Other: "其他", General: "综合" };
@@ -1583,13 +1583,13 @@
     results.hidden = true;
     results.innerHTML = "";
   }
-  function renderLocationSuggestions(places, empty = false) {
+  function renderLocationSuggestions(places, empty = false, emptyMessage = "") {
     const results = $("event-location-results");
     if (!places.length && !empty) return hideLocationSuggestions();
     results.hidden = false;
     results.innerHTML = places.length
       ? places.map((place, index) => `<button type="button" class="event-location-option" data-location-option="${index}"><strong>${esc(place.name)}</strong><span>${esc(place.address || place.city || "")}</span></button>`).join("")
-      : `<div class="event-location-option"><span>${esc(t("locationNoResults"))}</span></div>`;
+      : `<div class="event-location-option"><span>${esc(emptyMessage || t("locationNoResults"))}</span></div>`;
     results.querySelectorAll("[data-location-option]").forEach((button) => button.addEventListener("click", () => {
       const place = places[Number(button.dataset.locationOption)];
       if (!place) return;
@@ -1615,7 +1615,7 @@
         if (request !== state.locationSearchRequest) return;
         renderLocationSuggestions(Array.isArray(data.places) ? data.places : [], true);
       } catch (_) {
-        if (request === state.locationSearchRequest) hideLocationSuggestions();
+        if (request === state.locationSearchRequest) renderLocationSuggestions([], true, t("locationSearchUnavailable"));
       }
     }, 280);
   }
